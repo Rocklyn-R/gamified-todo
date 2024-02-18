@@ -1,0 +1,75 @@
+.tasks-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date-box {
+    margin-bottom: 1rem;
+}
+
+.to-do-list {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.to-do-element {
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    border: 1px solid black;
+    background-color: lightblue;
+}
+
+.to-do-list button {
+    height: 3rem;
+    cursor: pointer;
+    border: none;
+    background-color: lightblue;
+}
+
+.to-do-list button:hover {
+    color: purple;
+}
+
+.view-task {
+    width: 85%;
+    display: flex;
+    align-items: center;
+}
+
+.add-task {
+    display: flex;
+    align-self: flex-end;
+}
+.add-task button {
+    display: flex;
+    align-items: center;
+    font-size: 4rem;
+    color: lightblue;
+    border: none;
+    background-color: transparent;
+}
+
+.edit-task-icon {
+    font-size: 1.2em;
+}
+
+.delete-task-icon {
+    font-size: 1.3em;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+

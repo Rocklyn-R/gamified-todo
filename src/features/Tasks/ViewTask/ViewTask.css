@@ -1,0 +1,23 @@
+.edit-delete-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-task-icon {
+    font-size: 1.2em;
+}
+
+.delete-task-icon {
+    font-size: 1.3em;
+}
+
+.edit-task, .delete-task {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-delete-buttons button:hover {
+    color: pink;
+}
+
