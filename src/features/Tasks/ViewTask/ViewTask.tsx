@@ -3,7 +3,8 @@ import { UseSelector } from "react-redux";
 import Card from "../../../components/Card";
 import { Task } from "../../../types/Types"
 import { FaRegEdit } from "react-icons/fa";
-import { FiDelete } from "react-icons/fi";
+import { MdDeleteOutline } from "react-icons/md";
+
 import "./ViewTask.css"
 import { TaskForm } from "../TaskForm/TaskForm";
 
@@ -30,7 +31,7 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, setShowTask })
                             onClick={handleEditTask}
                         >
                             <FaRegEdit className="edit-task-icon" /></button>
-                        <button className="delete-task"><FiDelete className='delete-task-icon' /></button>
+                        <button className="delete-task"><MdDeleteOutline className='delete-task-icon' /></button>
                     </div>
 
                     <p>

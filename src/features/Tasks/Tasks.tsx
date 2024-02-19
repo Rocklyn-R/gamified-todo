@@ -55,47 +55,50 @@ export const Tasks = () => {
 
 
     return (
-        <Card className="tasks-container">
-            <div className="date-box">
-                <p>{formattedDate}</p>
-            </div>
-            <div className='to-do-list'>
-                {tasks.map((task, index) => {
-                    return (<div className='to-do-element'>
-                        <button
-                            key={index}
-                            className="view-task"
-                            onClick={() => handleViewTaskClick(task)}
-                        >
-                            {task.name}
-                        </button>
-                    </div>)
-                })}
-            </div>
+        <>
 
+            <Card className="tasks-container">
+                <div className="date-box">
+                    <h1>{formattedDate}</h1>
+                </div>
+                <div className='to-do-list'>
+                    {tasks.map((task, index) => {
+                        return (<div className='to-do-element'>
+                            <button
+                                key={index}
+                                className="view-task"
+                                onClick={() => handleViewTaskClick(task)}
+                            >
+                                {task.name}
+                            </button>
+                    
+                        </div>)
+                    })}
+                </div>
+
+                {showTask && (
+                    <div className='overlay' ref={overlayRef}>
+                        <ViewTask
+                            selectedTask={selectedTask}
+                            setShowTask={setShowTask}
+                        />
+                    </div>
+                )}
+
+                {showForm && (
+                    <div className="overlay" ref={overlayRef}>
+                        <TaskForm
+                            showForm={showForm as boolean}
+                            setShowForm={setShowForm}
+                            isEditMode={false}
+                        />
+                    </div>
+                )
+                }
+            </Card>
             <div className="add-task">
                 <button onClick={handleAddTaskClick}><IoIosAddCircleOutline /></button>
             </div>
-
-            {showTask && (
-                <div className='overlay' ref={overlayRef}>
-                    <ViewTask
-                        selectedTask={selectedTask}
-                        setShowTask={setShowTask}
-                    />
-                </div>
-            )}
-            
-            {showForm && (
-                <div className="overlay" ref={overlayRef}>
-                    <TaskForm
-                        showForm={showForm as boolean}
-                        setShowForm={setShowForm}
-                        isEditMode={false}
-                    />
-                </div>
-            )
-            }
-        </Card>
+        </>
     )
 }

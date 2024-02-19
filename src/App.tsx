@@ -15,7 +15,7 @@ function App() {
        <Navigation />
        <div className="content">
          <Routes>
-        <Route path="" element={<Tasks/>}/>
+        <Route path="/" element={<Tasks/>}/>
         <Route path="/tasks" element={<Tasks/>}/>
       </Routes>
        </div>
