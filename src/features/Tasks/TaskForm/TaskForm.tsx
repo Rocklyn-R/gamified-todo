@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
-import Card from '../../../components/Card';
+import Card from '../../../components/Card/Card';
 import './TaskForm.css';
 import { setTasks, editTask } from '../../../store/TasksSlice';
 import { Task } from '../../../types/Types';
@@ -64,12 +64,24 @@ export const TaskForm: React.FC<AddTaskFormProps> = ({ showForm, setShowForm, is
         setSubmitError(false);
     }
 
+    const handleCloseForm = () => {
+        if (setShowForm) {
+            setShowForm(false);
+        }
+    }
+
 
 
     return (
         <Card className="form-container">
             <form onSubmit={handleSubmit}>
                 <div className="add-task-form">
+                    <button
+                        className='close'
+                        onClick={handleCloseForm}
+                    >
+                        X
+                    </button>
                     <div className='basic-box'>
                         <p>Basic</p>
                         {submitError &&

@@ -34,6 +34,10 @@ export const TasksSlice = createSlice({
             }
         },
 
+        deleteTask: (state, action: PayloadAction<Task>) => {
+            state.tasks = state.tasks.filter(task => task.id !== action.payload.id);
+        },
+
         completeTask: (state, action: PayloadAction<Task>) => {
             const completedTask = state.tasks.find(task => task.id === action.payload.id)
             state.tasks = state.tasks.filter(task => task.id !== action.payload.id);
@@ -47,7 +51,8 @@ export const TasksSlice = createSlice({
 
 export const {
     setTasks,
-    editTask
+    editTask,
+    deleteTask
 } = TasksSlice.actions;
 
 export const selectTasks = (state: RootState) => state.tasks.tasks;

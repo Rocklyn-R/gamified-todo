@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Card from '../../components/Card';
+import Card from '../../components/Card/Card';
 import './Tasks.css';
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { TaskForm } from './TaskForm/TaskForm';
@@ -22,6 +22,7 @@ export const Tasks = () => {
         coinReward: 0,
         id: ""
     });
+    const [ selectedTaskDeleted, setSelectedTaskDeleted ] = useState(false);
     const overlayRef = useRef<HTMLDivElement>(null);
 
     const currentDate = new Date();
@@ -35,7 +36,7 @@ export const Tasks = () => {
     const handleOverlayClick = (event: MouseEvent) => {
         if (event.target === overlayRef.current) {
             setShowForm(false);
-            setShowTask(false) // Close form when clicking on the overlay
+            setShowTask(false);
         }
     };
 
@@ -47,6 +48,16 @@ export const Tasks = () => {
             document.removeEventListener('mousedown', handleOverlayClick);
         };
     }, []);
+
+
+    useEffect(() => {
+        // Check if the selected task is deleted from the tasks array
+        if (selectedTask.id && !tasks.find(task => task.id === selectedTask.id)) {
+            setSelectedTaskDeleted(true);
+        } else {
+            setSelectedTaskDeleted(false);
+        }
+    }, [tasks, selectedTask]);
 
     const handleViewTaskClick = (task: Task) => {
         setShowTask(true);
@@ -62,6 +73,7 @@ export const Tasks = () => {
                     <h1>{formattedDate}</h1>
                 </div>
                 <div className='to-do-list'>
+                    {tasks.length === 0 && <p>Add new tasks!</p>}
                     {tasks.map((task, index) => {
                         return (<div className='to-do-element'>
                             <button
@@ -76,7 +88,7 @@ export const Tasks = () => {
                     })}
                 </div>
 
-                {showTask && (
+                {showTask && !selectedTaskDeleted && (
                     <div className='overlay' ref={overlayRef}>
                         <ViewTask
                             selectedTask={selectedTask}
