@@ -1,0 +1,23 @@
+.to-do-element {
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.view-task {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    background-color: #97c8ed;
+    width: 100%;
+    color: #135382;
+    box-shadow: 0 2px 4px grey;
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+}

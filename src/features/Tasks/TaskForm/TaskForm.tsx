@@ -7,7 +7,7 @@ import { Task } from '../../../types/Types';
 import { v4 as uuidv4 } from "uuid";
 
 
-interface AddTaskFormProps {
+interface TaskFormProps {
     showForm?: boolean;
     setShowForm?: React.Dispatch<React.SetStateAction<boolean>>,
     isEditMode?: boolean,
@@ -16,7 +16,7 @@ interface AddTaskFormProps {
     setShowTask?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const TaskForm: React.FC<AddTaskFormProps> = ({ showForm, setShowForm, isEditMode, selectedTask, setEditTask, setShowTask }) => {
+export const TaskForm: React.FC<TaskFormProps> = ({ showForm, setShowForm, isEditMode, selectedTask, setEditTask, setShowTask }) => {
 
     const dispatch = useDispatch();
     const [taskName, setTaskName] = useState("");

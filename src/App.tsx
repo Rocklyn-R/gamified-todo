@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navigation } from './features/Navigation/Navigation';
-import { Tasks } from './features/Tasks/Tasks';
+import { Tasks } from './features/Tasks/TasksPage';
+import { TaskHistory } from './features/Tasks/TaskHistory/TaskHistory';
 
 
 
@@ -17,6 +18,7 @@ function App() {
          <Routes>
         <Route path="/" element={<Tasks/>}/>
         <Route path="/tasks" element={<Tasks/>}/>
+        <Route path="/tasks/history" element={<TaskHistory/>}/>
       </Routes>
        </div>
      

@@ -1,14 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Card from '../../components/Card/Card';
-import './Tasks.css';
+import './TasksPage.css';
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { TaskForm } from './TaskForm/TaskForm';
 import { useSelector } from 'react-redux';
 import { selectTasks } from '../../store/TasksSlice';
-import { FaRegEdit } from "react-icons/fa";
-import { FiDelete } from "react-icons/fi";
 import { ViewTask } from './ViewTask/ViewTask';
 import { Task } from "../../types/Types";
+import { TaskItem } from "./TaskItem/TaskItem";
+import { GrHistory } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 
 export const Tasks = () => {
@@ -67,7 +68,10 @@ export const Tasks = () => {
 
     return (
         <>
-
+            <div className='task-history-icon'>
+                <Link to="/tasks/history" ><GrHistory className='history-icon' /></Link>
+            </div>
+            
             <Card className="tasks-container">
                 <div className="date-box">
                     <h1>{formattedDate}</h1>
@@ -75,16 +79,7 @@ export const Tasks = () => {
                 <div className='to-do-list'>
                     {tasks.length === 0 && <p>Add new tasks!</p>}
                     {tasks.map((task, index) => {
-                        return (<div className='to-do-element'>
-                            <button
-                                key={index}
-                                className="view-task"
-                                onClick={() => handleViewTaskClick(task)}
-                            >
-                                {task.name}
-                            </button>
-                    
-                        </div>)
+                        return <TaskItem task={task} index={index} handleViewTaskClick={handleViewTaskClick} />
                     })}
                 </div>
 

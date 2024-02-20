@@ -10,19 +10,27 @@
 .date-box {
     margin-bottom: 1rem;
     background-color: #135382;
-    padding: 1rem; /* Add padding for spacing */
-    text-align: center; /* Center align text */
+    padding: 1rem;
+    /* Add padding for spacing */
+    text-align: center;
+    /* Center align text */
     border-radius: 2rem;
-    box-shadow: 0 2px 4px grey /* Add shadow */
+    box-shadow: 0 2px 4px grey
+        /* Add shadow */
 }
 
 .date-box h1 {
-    font-size: 2rem; /* Adjust font size */
-  font-weight: bold; /* Make the text bold */
-  color: aliceblue; /* Text color */
-  text-transform: uppercase; /* Convert text to uppercase */
-  margin: 0; /* Remove margin to avoid extra spacing */
-  /* Add any additional styling to make it creative */
+    font-size: 2rem;
+    /* Adjust font size */
+    font-weight: bold;
+    /* Make the text bold */
+    color: aliceblue;
+    /* Text color */
+    text-transform: uppercase;
+    /* Convert text to uppercase */
+    margin: 0;
+    /* Remove margin to avoid extra spacing */
+    /* Add any additional styling to make it creative */
 
 }
 
@@ -39,18 +47,7 @@
     width: 100%;
 }
 
-.to-do-list button {
-    height: 3rem;
-    cursor: pointer;
-    border: none;
-    border-radius: 1rem;
-    background-color: #97c8ed;
-    width: 100%;
-    color: #135382;
-    box-shadow: 0 2px 4px grey;
-    font-family: "Nunito", sans-serif;
-    font-size: 1rem;
-}
+
 
 .to-do-list button:hover {
     color: purple;
@@ -60,6 +57,25 @@
     width: 85%;
     display: flex;
     align-items: center;
+}
+
+.task-history-icon {
+    position: fixed;
+    top: 4rem;
+    right: 0;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+
+.history-icon {
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    color: lightblue;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .add-task {
@@ -102,5 +118,3 @@
     z-index: 1000;
     /* Ensure it appears above other content */
 }
-
-
