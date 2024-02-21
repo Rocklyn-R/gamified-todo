@@ -4,7 +4,7 @@ import './TasksPage.css';
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { TaskForm } from './TaskForm/TaskForm';
 import { useSelector } from 'react-redux';
-import { selectTasks } from '../../store/TasksSlice';
+import { selectTasks, selectCompletedTasks } from '../../store/TasksSlice';
 import { ViewTask } from './ViewTask/ViewTask';
 import { Task } from "../../types/Types";
 import { TaskItem } from "./TaskItem/TaskItem";
@@ -23,12 +23,14 @@ export const Tasks = () => {
         coinReward: 0,
         id: ""
     });
-    const [ selectedTaskDeleted, setSelectedTaskDeleted ] = useState(false);
+    const [selectedTaskDeleted, setSelectedTaskDeleted] = useState(false);
     const overlayRef = useRef<HTMLDivElement>(null);
 
     const currentDate = new Date();
     const options: Intl.DateTimeFormatOptions = { weekday: 'long', month: 'long', day: 'numeric' };
     const formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+    const completedTasks = useSelector(selectCompletedTasks)
 
     const handleAddTaskClick = () => {
         setShowForm(!showForm);
@@ -65,13 +67,23 @@ export const Tasks = () => {
         setSelectedTask(task);
     }
 
+    const handleHideTask = () => {
+        setShowTask(false);
+    }
+
+    const handleCloseForm = () => {
+        setShowForm(false);
+    }
+
 
     return (
-        <>
+        <>  {completedTasks.length > 0 &&
             <div className='task-history-icon'>
                 <Link to="/tasks/history" ><GrHistory className='history-icon' /></Link>
             </div>
-            
+        }
+
+
             <Card className="tasks-container">
                 <div className="date-box">
                     <h1>{formattedDate}</h1>
@@ -87,7 +99,7 @@ export const Tasks = () => {
                     <div className='overlay' ref={overlayRef}>
                         <ViewTask
                             selectedTask={selectedTask}
-                            setShowTask={setShowTask}
+                            handleHideTask={handleHideTask}
                             history={false}
                         />
                     </div>
@@ -96,8 +108,7 @@ export const Tasks = () => {
                 {showForm && (
                     <div className="overlay" ref={overlayRef}>
                         <TaskForm
-                            showForm={showForm as boolean}
-                            setShowForm={setShowForm}
+                            handleCloseForm={handleCloseForm}
                             isEditMode={false}
                         />
                     </div>

@@ -18,13 +18,50 @@ export const TasksSlice = createSlice({
             name: "Wash a load of laundry",
             notes: "Hard One",
             coinReward: 100,
-            id: '1213'
+            id: '12134'
+        },
+        {
+            name: "Wash the dishes",
+            notes: "This one might be tough",
+            coinReward: 50,
+            id: '1234'
+        },
+        {
+            name: "Wash a load of laundry",
+            notes: "Hard One",
+            coinReward: 100,
+            id: '12133'
+        },
+        {
+            name: "Wash the dishes",
+            notes: "This one might be tough",
+            coinReward: 50,
+            id: '123433'
+        },
+        {
+            name: "Wash a load of laundry",
+            notes: "Hard One",
+            coinReward: 100,
+            id: '1213242'
+        },
+        {
+            name: "Wash the dishes",
+            notes: "This one might be tough",
+            coinReward: 50,
+            id: '12341414'
+        },
+        {
+            name: "Wash a load of laundry",
+            notes: "Hard One",
+            coinReward: 100,
+            id: '121314123'
         }] as Task[],
-        completedTasks: [] as Task[]
+        completedTasks: []
     } as TasksState,
+
     reducers: {
         setTasks: (state, action: PayloadAction<Task>) => {
-            state.tasks.push(action.payload);
+            state.tasks.unshift(action.payload);
         },
 
         editTask: (state, action: PayloadAction<Task>) => {
@@ -43,7 +80,7 @@ export const TasksSlice = createSlice({
             state.tasks = state.tasks.filter(task => task.id !== action.payload.id);
             
             if (completedTask) {
-                state.completedTasks.push(completedTask);
+                state.completedTasks.unshift(completedTask);
             }
         },
 
@@ -52,7 +89,7 @@ export const TasksSlice = createSlice({
             state.completedTasks = state.completedTasks.filter(task => task.id !== action.payload.id);
 
             if (taskToUndo) {
-                state.tasks.push(taskToUndo);
+                state.tasks.unshift(taskToUndo);
             }
             
         },

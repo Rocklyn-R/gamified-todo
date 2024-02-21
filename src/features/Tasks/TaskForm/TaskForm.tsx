@@ -8,21 +8,21 @@ import { v4 as uuidv4 } from "uuid";
 
 
 interface TaskFormProps {
-    showForm?: boolean;
-    setShowForm?: React.Dispatch<React.SetStateAction<boolean>>,
+    handleCloseForm: () => void;
     isEditMode?: boolean,
     selectedTask?: Task,
-    setEditTask?: React.Dispatch<React.SetStateAction<boolean>>,
-    setShowTask?: React.Dispatch<React.SetStateAction<boolean>>
+    handleHideFormAfterEdit?: () => void;
+    handleHideTask?: () => void;
 }
 
-export const TaskForm: React.FC<TaskFormProps> = ({ showForm, setShowForm, isEditMode, selectedTask, setEditTask, setShowTask }) => {
+export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode, selectedTask, handleHideFormAfterEdit, handleHideTask }) => {
 
     const dispatch = useDispatch();
     const [taskName, setTaskName] = useState("");
     const [notes, setNotes] = useState('');
     const [coinReward, setCoinReward] = useState(0);
     const [submitError, setSubmitError] = useState(false);
+
 
     useEffect(() => {
         if (isEditMode && selectedTask) {
@@ -45,30 +45,25 @@ export const TaskForm: React.FC<TaskFormProps> = ({ showForm, setShowForm, isEdi
                 coinReward: coinReward,
                 id: uuidv4(),
             }))
-            if (setShowForm) {
-                setShowForm(false);
+            if (handleCloseForm) {
+                handleCloseForm()
             }
         }
-        if (isEditMode && selectedTask && setEditTask && setShowTask) {
+        if (isEditMode && selectedTask && handleHideFormAfterEdit && handleHideTask) {
             dispatch(editTask({
                 name: taskName,
                 notes: notes,
                 coinReward: coinReward,
                 id: selectedTask.id
             }))
-            setEditTask(false);
-            setShowTask(false);
+            handleHideFormAfterEdit();
+            handleHideTask();
         }
 
 
         setSubmitError(false);
     }
 
-    const handleCloseForm = () => {
-        if (setShowForm) {
-            setShowForm(false);
-        }
-    }
 
 
 
@@ -77,6 +72,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ showForm, setShowForm, isEdi
             <form onSubmit={handleSubmit}>
                 <div className="add-task-form">
                     <button
+                        type="button"
                         className='close'
                         onClick={handleCloseForm}
                     >

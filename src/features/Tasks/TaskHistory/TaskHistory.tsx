@@ -39,6 +39,10 @@ export const TaskHistory = () => {
         };
     }, []);
 
+    const handleHideTask = () => {
+        setViewHistoryTask(false);
+    }
+
     return (
         <>
         <Link to="../tasks"><IoArrowBackOutline className="back-icon" /></Link>
@@ -58,7 +62,7 @@ export const TaskHistory = () => {
 
                  <ViewTask
                 selectedTask={selectedTask}
-                setShowTask={setViewHistoryTask}
+                handleHideTask={handleHideTask}
                 history={true}
             />
             </div>

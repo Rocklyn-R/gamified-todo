@@ -28,7 +28,7 @@
     align-items: center;
 }
 
-#notes, #task-name, #coin-reward {
+#notes, #task-name, #coin-reward, #item-name, #price, #description {
     width: 70%;
     padding: 8px;
     border: 1px solid #ccc;

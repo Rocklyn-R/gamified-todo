@@ -78,7 +78,7 @@
     cursor: pointer;
 }
 
-.add-task {
+.add-task, .add-reward {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -86,7 +86,7 @@
     margin-right: 20px;
 }
 
-.add-task button {
+.add-task button, .add-reward button {
     display: flex;
     align-items: center;
     font-size: 4rem;

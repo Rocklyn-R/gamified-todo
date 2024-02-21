@@ -23,9 +23,9 @@ export const Navigation = () => {
                         <span className="nav-text">Pomodoro</span>
                     </Link>
                 </li>
-                <li><Link to="/shop">
+                <li><Link to="/rewards">
                     <FaShoppingCart className='shopping-icon' />
-                    <span className="nav-text">Shopping</span>
+                    <span className="nav-text">Shop</span>
                     </Link></li>
                 <li><Link to="/stats">
                         <img src={statistics} width="24" height="24" alt="Statistics" />

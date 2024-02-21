@@ -3,6 +3,7 @@ import './CompleteTask.css';
 import { useDispatch } from 'react-redux';
 import { Task } from '../../../types/Types';
 import { completeTask } from '../../../store/TasksSlice';
+import { addToCoins } from '../../../store/RewardsSlice';
 
 interface CompleteTaskProps {
     task: Task
@@ -19,6 +20,7 @@ export const CompleteTask: React.FC<CompleteTaskProps> = ({ task }) => {
 
         setTimeout(() => {
            dispatch(completeTask(task)); 
+           dispatch(addToCoins(task.coinReward));
            setIsChecked(false);
         }, 800)
         

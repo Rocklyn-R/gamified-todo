@@ -1,4 +1,4 @@
-.to-do-element {
+.to-do-element, .reward-item {
     display: flex;
     margin-bottom: 1rem;
     justify-content: space-between;
@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.view-task {
+.view-task, .view-reward {
     width: 85%;
     display: flex;
     align-items: center;

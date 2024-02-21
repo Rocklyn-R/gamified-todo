@@ -1,4 +1,4 @@
-.view-task-container {
+.view-task-container, .view-rewards-container {
     display: flex;
     flex-direction: column;
 }
@@ -12,15 +12,15 @@
     justify-content: center;
 }
 
-.edit-task-icon {
+.edit-task-icon, .edit-reward-icon {
     font-size: 1.4em;
 }
 
-.delete-task-icon {
+.delete-task-icon, .delete-reward-icon {
     font-size: 1.4em;
 }
 
-.edit-task, .delete-task {
+.edit-task, .delete-task, .edit-reward, .delete-reward {
     background-color: transparent;
     border: none;
     cursor: pointer;

@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navigation } from './features/Navigation/Navigation';
 import { Tasks } from './features/Tasks/TasksPage';
 import { TaskHistory } from './features/Tasks/TaskHistory/TaskHistory';
+import { RewardsPage } from './features/Rewards/RewardsPage';
 
 
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Tasks/>}/>
         <Route path="/tasks" element={<Tasks/>}/>
         <Route path="/tasks/history" element={<TaskHistory/>}/>
+        <Route path="/rewards" element={<RewardsPage/>}/>
       </Routes>
        </div>
      

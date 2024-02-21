@@ -10,36 +10,35 @@ import { TaskForm } from "../TaskForm/TaskForm";
 import { DeleteMessage } from "../../../components/DeleteMessage/DeleteMessage";
 import { selectTasks } from "../../../store/TasksSlice";
 import { undoCompleteTask } from "../../../store/TasksSlice";
+import { subtractCoins } from "../../../store/RewardsSlice";
 
 interface ViewTaskProps {
     selectedTask: Task,
-    setShowTask: React.Dispatch<React.SetStateAction<boolean>>,
+    handleHideTask: () => void;
     history: boolean
 }
 
-export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, setShowTask, history }) => {
+export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask, history }) => {
     const [editTask, setEditTask] = useState(false);
     const [showDeleteMessage, setShowDeleteMessage] = useState(false);
     const [selectedTaskDeleted, setSelectedTaskDeleted] = useState(false);
     const dispatch = useDispatch();
 
-    const allTasks = useSelector(selectTasks)
+    const allTasks = useSelector(selectTasks);
 
     const handleEditTask = () => {
         setEditTask(true);
     }
 
-    const handleCloseViewTask = () => {
-        setShowTask(false);
-    }
 
     const handleDeleteTask = () => {
         setShowDeleteMessage(true);
     }
 
     const handleUndoComplete = (task: Task) => {
-        dispatch(undoCompleteTask(task))
-        handleCloseViewTask();
+        dispatch(undoCompleteTask(task));
+        dispatch(subtractCoins(task.coinReward));
+        handleHideTask();
     }
 
     const overlayRef = useRef<HTMLDivElement>(null);
@@ -47,7 +46,6 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, setShowTask, h
 
     useEffect(() => {
         if (history) {
-            console.log("This is happening")
             return;
         }
         if (!allTasks.includes(selectedTask)) {
@@ -56,13 +54,21 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, setShowTask, h
     }, [allTasks, selectedTask])
 
 
+    const handleHideFormAfterEdit = () => {
+        setEditTask(false);
+    }
+
+    const handleCloseForm = () => {
+        setEditTask(false);
+    }
+
     return (
         <>
             {!editTask && !selectedTaskDeleted &&
                 <Card className="view-task-container">
                     <button
                         className="close"
-                        onClick={handleCloseViewTask}
+                        onClick={handleHideTask}
                     >
                         X
                     </button>
@@ -103,7 +109,7 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, setShowTask, h
                                 setShowDeleteMessage={setShowDeleteMessage}
                                 selectedTask={selectedTask}
                                 history={history}
-                                setShowTask={setShowTask}
+                                handleHideTask={handleHideTask}
                             />
                         </div>
 
@@ -115,8 +121,9 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, setShowTask, h
                 <TaskForm
                     selectedTask={selectedTask}
                     isEditMode={true}
-                    setEditTask={setEditTask}
-                    setShowTask={setShowTask}
+                    handleHideFormAfterEdit={handleHideFormAfterEdit}
+                    handleHideTask={handleHideTask}
+                    handleCloseForm={handleCloseForm}
                 />}
 
         </>

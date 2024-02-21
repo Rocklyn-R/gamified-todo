@@ -4,17 +4,17 @@ import "./DeleteMessage.css";
 import { Task } from "../../types/Types";
 import { useDispatch } from "react-redux";
 import { deleteTask, deleteTaskFromHistory } from "../../store/TasksSlice";
-import e from "express";
+
 
 interface DeleteMessageProps {
     showDeleteMessage: boolean;
     setShowDeleteMessage: React.Dispatch<React.SetStateAction<boolean>>;
     selectedTask: Task;
     history: boolean;
-    setShowTask: React.Dispatch<React.SetStateAction<boolean>>;
+    handleHideTask: () => void;
 }
 
-export const DeleteMessage: React.FC<DeleteMessageProps> = ({showDeleteMessage, setShowDeleteMessage, selectedTask, history, setShowTask }) => {
+export const DeleteMessage: React.FC<DeleteMessageProps> = ({showDeleteMessage, setShowDeleteMessage, selectedTask, history, handleHideTask }) => {
     const dispatch = useDispatch();
 
 
@@ -27,7 +27,7 @@ export const DeleteMessage: React.FC<DeleteMessageProps> = ({showDeleteMessage, 
            dispatch(deleteTask(selectedTask)); 
         } else {
             dispatch(deleteTaskFromHistory(selectedTask));
-            setShowTask(false);
+            handleHideTask();
         }
         
         setShowDeleteMessage(false);
