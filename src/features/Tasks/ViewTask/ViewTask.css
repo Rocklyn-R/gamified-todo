@@ -45,5 +45,15 @@
     /* Ensure it appears above other content */
 }
 
+.undo-complete {
+    border: none;
+    background-color: lightblue;
+    border-radius: 2rem;
+    padding: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
 
 

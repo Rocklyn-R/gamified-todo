@@ -6,7 +6,7 @@ import "./TaskItem.css";
 interface TaskItemProps {
     task: Task,
     index: number,
-    handleViewTaskClick?: (task: Task) => void;
+    handleViewTaskClick: (task: Task) => void;
     history?: boolean
 }
 

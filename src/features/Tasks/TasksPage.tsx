@@ -88,6 +88,7 @@ export const Tasks = () => {
                         <ViewTask
                             selectedTask={selectedTask}
                             setShowTask={setShowTask}
+                            history={false}
                         />
                     </div>
                 )}

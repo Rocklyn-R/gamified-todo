@@ -45,6 +45,20 @@ export const TasksSlice = createSlice({
             if (completedTask) {
                 state.completedTasks.push(completedTask);
             }
+        },
+
+        undoCompleteTask: (state, action: PayloadAction<Task>) => {
+            const taskToUndo = state.completedTasks.find(task => task.id === action.payload.id);
+            state.completedTasks = state.completedTasks.filter(task => task.id !== action.payload.id);
+
+            if (taskToUndo) {
+                state.tasks.push(taskToUndo);
+            }
+            
+        },
+
+        deleteTaskFromHistory: (state, action: PayloadAction<Task>) => {
+            state.completedTasks = state.completedTasks.filter(task => task.id !== action.payload.id);
         }
     }
 })
@@ -53,7 +67,9 @@ export const {
     setTasks,
     editTask,
     deleteTask,
-    completeTask
+    completeTask,
+    undoCompleteTask,
+    deleteTaskFromHistory
 } = TasksSlice.actions;
 
 export const selectTasks = (state: RootState) => state.tasks.tasks;
