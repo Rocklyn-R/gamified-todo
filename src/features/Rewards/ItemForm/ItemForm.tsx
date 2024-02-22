@@ -12,10 +12,11 @@ import { Reward } from "../../../types/Types";
 interface ItemFormProps {
     handleCloseForm: () => void;
     isEditMode: boolean;
-    selectedReward?: Reward
+    selectedReward?: Reward;
+    handleHideReward?: () => void;
 }
 
-export const ItemForm: React.FC<ItemFormProps>  = ({ handleCloseForm, isEditMode, selectedReward}) => {
+export const ItemForm: React.FC<ItemFormProps>  = ({ handleCloseForm, isEditMode, selectedReward, handleHideReward}) => {
     const dispatch = useDispatch();
     const [ name, setName ] = useState("");
     const [ price, setPrice ] = useState(0);
@@ -39,13 +40,14 @@ export const ItemForm: React.FC<ItemFormProps>  = ({ handleCloseForm, isEditMode
             description: description,
             id: uuidv4()
         }))
-        } else if (isEditMode && selectedReward){
+        } else if (isEditMode && selectedReward && handleHideReward){
             dispatch(editItemInShop({
                 name: name,
                 price: price,
                 description: description,
                 id: selectedReward.id
             }))
+            handleHideReward();
         }
        
 

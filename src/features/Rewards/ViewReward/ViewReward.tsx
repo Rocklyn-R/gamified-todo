@@ -119,6 +119,7 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
                     isEditMode={true}
                     handleCloseForm={handleCloseForm}
                     selectedReward={selectedReward}
+                    handleHideReward={handleHideReward}
                 />
             )}
 

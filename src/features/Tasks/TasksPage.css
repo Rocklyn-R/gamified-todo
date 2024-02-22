@@ -4,7 +4,7 @@
     align-items: center;
     width: 30%;
     height: fit-content;
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 
 .date-box {
@@ -14,13 +14,11 @@
     /* Add padding for spacing */
     text-align: center;
     /* Center align text */
-    border-radius: 2rem;
-    box-shadow: 0 2px 4px grey
         /* Add shadow */
 }
 
 .date-box h1 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     /* Adjust font size */
     font-weight: bold;
     /* Make the text bold */
@@ -48,10 +46,6 @@
 }
 
 
-
-.to-do-list button:hover {
-    color: purple;
-}
 
 .view-task {
     width: 85%;

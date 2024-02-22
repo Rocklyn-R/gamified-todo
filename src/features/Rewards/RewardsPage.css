@@ -3,14 +3,23 @@
 }
 
 .coin-count-header {
-    margin-bottom: 1rem;
+   
     background-color: #135382;
-    padding: 1rem;
     /* Add padding for spacing */
     text-align: center;
     /* Center align text */
     border-radius: 2rem;
         /* Add shadow */
+}
+
+.rewards-box {
+    margin-top: 0;
+}
+
+.rewards-box h1 {
+    padding: 0;
+    margin-top: 0;
+    color: aliceblue;
 }
 
 .coin-count-header h1 {
@@ -28,6 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .coin-icon {

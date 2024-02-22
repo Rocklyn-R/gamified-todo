@@ -83,8 +83,6 @@ export const Tasks = () => {
                 <Link to="/tasks/history" ><GrHistory className='history-icon' /></Link>
             </div>
         }
-
-
             <Card className="tasks-container">
                 <div className="date-box">
                     <h1>{formattedDate}</h1>

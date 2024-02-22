@@ -18,13 +18,13 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: transparent;
+  background-color: aliceblue;
   border: 1px solid lightblue;
 }
 
 /* Background color when checked */
 .custom-checkbox input[type="checkbox"]:checked + .checkmark {
-  background-color: #135382;
+  background-color: aliceblue;
 }
 
 /* White checkmark */
@@ -36,8 +36,8 @@
   transform: translate(-50%, -50%) rotate(45deg); /* Rotate the checkmark */
   width: 5px; /* Adjust the length of the checkmark lines */
   height: 10px;
-  border: solid aliceblue;
-  border-width: 0 2px 2px 0; /* Create the checkmark shape */
+  border: solid #135382;
+  border-width: 0 3px 3px 0; /* Create the checkmark shape */
   transition: top 0.3s ease; /* Add transition effect for top position */
 }
 
