@@ -6,6 +6,7 @@ interface RewardItemProps {
     reward: Reward;
     index: number;
     handleViewReward: (reward: Reward) => void;
+    inventory?: boolean;
 }
 
 export const RewardItem: React.FC<RewardItemProps> = ({reward, index, handleViewReward}) => {
@@ -13,7 +14,7 @@ export const RewardItem: React.FC<RewardItemProps> = ({reward, index, handleView
         <div className="reward-item">
             <button 
                 className="view-reward"
-                onClick={() => handleViewReward(reward)}
+                onClick={() => {handleViewReward(reward)}}
             >
                 {reward.name}
             </button>

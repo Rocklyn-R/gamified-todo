@@ -11,11 +11,10 @@ interface TaskFormProps {
     handleCloseForm: () => void;
     isEditMode?: boolean,
     selectedTask?: Task,
-    handleHideFormAfterEdit?: () => void;
     handleHideTask?: () => void;
 }
 
-export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode, selectedTask, handleHideFormAfterEdit, handleHideTask }) => {
+export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode, selectedTask, handleHideTask }) => {
 
     const dispatch = useDispatch();
     const [taskName, setTaskName] = useState("");
@@ -45,20 +44,18 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                 coinReward: coinReward,
                 id: uuidv4(),
             }))
-            if (handleCloseForm) {
-                handleCloseForm()
-            }
         }
-        if (isEditMode && selectedTask && handleHideFormAfterEdit && handleHideTask) {
+        if (isEditMode && selectedTask && handleHideTask) {
             dispatch(editTask({
                 name: taskName,
                 notes: notes,
                 coinReward: coinReward,
                 id: selectedTask.id
             }))
-            handleHideFormAfterEdit();
             handleHideTask();
         }
+
+        handleCloseForm();
 
 
         setSubmitError(false);

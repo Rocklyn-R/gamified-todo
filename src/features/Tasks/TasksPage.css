@@ -59,7 +59,7 @@
     align-items: center;
 }
 
-.task-history-icon {
+.task-history-icon, .inventory-link, .inventory-history-icon {
     position: fixed;
     top: 4rem;
     right: 0;
@@ -68,7 +68,7 @@
 }
 
 
-.history-icon {
+.history-icon, .inventory-icon {
     display: flex;
     align-items: center;
     font-size: 3rem;

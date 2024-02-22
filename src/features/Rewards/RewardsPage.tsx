@@ -9,15 +9,17 @@ import { ItemForm } from './ItemForm/ItemForm';
 import { RewardItem } from './RewardItem/RewardItem';
 import { ViewReward } from './ViewReward/ViewReward';
 import { Reward } from '../../types/Types';
+import { FiGift } from "react-icons/fi";
+import { Link } from 'react-router-dom';
 
 
 export const RewardsPage = () => {
     const totalCoins = useSelector(selectTotalCoins);
-    const [ showForm, setShowForm ] = useState(false);
+    const [showForm, setShowForm] = useState(false);
     const overlayRef = useRef<HTMLDivElement>(null);
     const shopItems = useSelector(selectItemsInShop);
-    const [ showReward, setShowReward ] = useState(false);
-    const [ selectedReward, setSelectedReward ] = useState({
+    const [showReward, setShowReward] = useState(false);
+    const [selectedReward, setSelectedReward] = useState({
         name: "",
         price: 0,
         description: "",
@@ -52,47 +54,55 @@ export const RewardsPage = () => {
     const handleHideReward = () => {
         setShowReward(false);
     }
-    
-    const handleHideForm = () => {
+
+    const handleCloseForm = () => {
         setShowForm(false);
     }
-    
+
 
     return (
-        <div className='rewards-container'>
-            <div className="coin-count-header">
-                <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
+        <>
+            <div className='inventory-link'>
+                <Link to="/rewards/inventory"><FiGift className='inventory-icon' /></Link>
             </div>
-            <Card>
-                <h1>Rewards Shop</h1>
-                {showForm && (
-                    <div className="overlay" ref={overlayRef}>
-                        <ItemForm
-                            handleHideForm={handleHideForm}
-                            isEditMode={false}
-                        />
-                    </div>
-                )
-                }
-            {shopItems.map((item, index) => 
-                <RewardItem reward={item} index={index} handleViewReward={handleViewReward} />
-                )}
 
-            {showReward && (
-                <div className='overlay' ref={overlayRef}>
-                <ViewReward 
-                    selectedReward={selectedReward}
-                    handleHideReward={handleHideReward}
-                />
+            <div className='rewards-container'>
+                <div className="coin-count-header">
+                    <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
                 </div>
-            )
-            }
-                
-            </Card>
-            <div className="add-reward">
-                <button onClick={() => handleAddNewItem()}><IoIosAddCircleOutline /></button>
+                <Card>
+                    <h1>Rewards Shop</h1>
+                    {shopItems.map((item, index) =>
+                        <RewardItem reward={item} index={index} handleViewReward={handleViewReward} />
+                    )}
+
+                    {showForm && (
+                        <div className="overlay" ref={overlayRef}>
+                            <ItemForm
+                                handleCloseForm={handleCloseForm}
+                                isEditMode={false}
+                            />
+                        </div>
+                    )
+                    }
+
+                    {showReward && (
+                        <div className='overlay' ref={overlayRef}>
+                            <ViewReward
+                                selectedReward={selectedReward}
+                                handleHideReward={handleHideReward}
+                            />
+                        </div>
+                    )
+                    }
+
+                </Card>
+                <div className="add-reward">
+                    <button onClick={() => handleAddNewItem()}><IoIosAddCircleOutline /></button>
+                </div>
             </div>
-        </div>
+        </>
+
 
     )
 }

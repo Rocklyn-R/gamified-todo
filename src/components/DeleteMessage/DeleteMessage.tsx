@@ -1,43 +1,55 @@
 import React from "react";
 import Card from "../Card/Card";
 import "./DeleteMessage.css";
-import { Task } from "../../types/Types";
+import { Reward, Task } from "../../types/Types";
 import { useDispatch } from "react-redux";
 import { deleteTask, deleteTaskFromHistory } from "../../store/TasksSlice";
+import { deleteItemFromShop } from "../../store/RewardsSlice";
 
 
 interface DeleteMessageProps {
-    showDeleteMessage: boolean;
-    setShowDeleteMessage: React.Dispatch<React.SetStateAction<boolean>>;
-    selectedTask: Task;
-    history: boolean;
-    handleHideTask: () => void;
+    hideDeleteMessage: () => void;
+    selectedTask?: Task;
+    selectedReward?: Reward;
+    history?: boolean;
+    handleHideTask?: () => void;
+    handleHideReward?: () => void;
 }
 
-export const DeleteMessage: React.FC<DeleteMessageProps> = ({showDeleteMessage, setShowDeleteMessage, selectedTask, history, handleHideTask }) => {
+export const DeleteMessage: React.FC<DeleteMessageProps> = ({
+    hideDeleteMessage,
+    selectedTask,
+    history,
+    handleHideTask,
+    selectedReward,
+    handleHideReward
+}) => {
+
     const dispatch = useDispatch();
 
 
-    const handleCancel = () => {
-        setShowDeleteMessage(false)
-    }
-
     const handleDelete = () => {
-        if (!history) {
-           dispatch(deleteTask(selectedTask)); 
-        } else {
+        if (!history && selectedTask) {
+            dispatch(deleteTask(selectedTask));
+        } else if (history && selectedTask && handleHideTask) {
             dispatch(deleteTaskFromHistory(selectedTask));
             handleHideTask();
         }
-        
-        setShowDeleteMessage(false);
+
+        if (selectedReward && handleHideReward) {
+            dispatch(deleteItemFromShop(selectedReward));
+            handleHideReward();
+        }
+
+        hideDeleteMessage();
     }
 
     return (
         <Card >
             <h4>Delete</h4>
-            <p>Do you really wish to delete this task{history && " from your history"}?</p>
-            <button className="cancel" onClick={handleCancel}>Cancel</button>
+            {selectedTask && <p>Do you really wish to delete this task{history && " from your history"}?</p>}
+            {selectedReward && <p>Do you really wish to delete this item?</p>}
+            <button className="cancel" onClick={hideDeleteMessage}>Cancel</button>
             <button className="delete" onClick={handleDelete}>Delete</button>
         </Card>
     )

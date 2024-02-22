@@ -21,10 +21,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({task, index, handleViewTaskCl
         <button
             key={index}
             className="view-task"
-            onClick={() => {
-                if(handleViewTaskClick) 
-                { handleViewTaskClick(task)}
-            }}
+            onClick={() => {handleViewTaskClick(task)}}
         >
             {task.name}
         </button>

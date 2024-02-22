@@ -77,7 +77,8 @@ export const Tasks = () => {
 
 
     return (
-        <>  {completedTasks.length > 0 &&
+        <>  
+        {completedTasks.length > 0 &&
             <div className='task-history-icon'>
                 <Link to="/tasks/history" ><GrHistory className='history-icon' /></Link>
             </div>

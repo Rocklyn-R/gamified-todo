@@ -1,35 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../../../components/Card/Card";
 import "./ItemForm.css";
-import { useDispatch, UseDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addItemToShop } from "../../../store/RewardsSlice";
 import { v4 as uuidv4 } from "uuid";
+import { editItemInShop } from "../../../store/RewardsSlice";
+import { identifier } from "@babel/types";
+import { RewardItem } from "../RewardItem/RewardItem";
+import { Reward } from "../../../types/Types";
 
 interface ItemFormProps {
-    handleHideForm: () => void;
+    handleCloseForm: () => void;
     isEditMode: boolean;
+    selectedReward?: Reward
 }
 
-export const ItemForm: React.FC<ItemFormProps>  = ({ handleHideForm, isEditMode}) => {
+export const ItemForm: React.FC<ItemFormProps>  = ({ handleCloseForm, isEditMode, selectedReward}) => {
     const dispatch = useDispatch();
     const [ name, setName ] = useState("");
     const [ price, setPrice ] = useState(0);
     const [ description, setDescription ] = useState("");
 
+    useEffect(() => {
+        if (isEditMode && selectedReward) {
+            setName(selectedReward.name);
+            setPrice(selectedReward.price);
+            setDescription(selectedReward.description);
+        }
+    }, [isEditMode, selectedReward]);
 
 
     const handleSubmitAddItem = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+        if (!isEditMode) {
+             event.preventDefault();
         dispatch(addItemToShop({
             name: name,
             price: price,
             description: description,
             id: uuidv4()
         }))
-
-        if(handleHideForm) {
-           handleHideForm(); 
+        } else if (isEditMode && selectedReward){
+            dispatch(editItemInShop({
+                name: name,
+                price: price,
+                description: description,
+                id: selectedReward.id
+            }))
         }
+       
+
+        handleCloseForm();
     }
 
     return (
@@ -41,7 +61,7 @@ export const ItemForm: React.FC<ItemFormProps>  = ({ handleHideForm, isEditMode}
                     <button
                         type="button"
                         className='close'
-                        onClick={handleHideForm}
+                        onClick={handleCloseForm}
                     >
                         X
                     </button>
@@ -67,7 +87,7 @@ export const ItemForm: React.FC<ItemFormProps>  = ({ handleHideForm, isEditMode}
                 </div>
 
                     <button type="submit" value="Submit" className="submit-task-button">
-                        Create item
+                        {isEditMode? "Edit item" : "Create item"}
                     </button>
                 </div>
 

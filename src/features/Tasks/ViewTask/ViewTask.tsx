@@ -35,6 +35,10 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
         setShowDeleteMessage(true);
     }
 
+    const hideDeleteMessage = () => {
+        setShowDeleteMessage(false)
+    }
+
     const handleUndoComplete = (task: Task) => {
         dispatch(undoCompleteTask(task));
         dispatch(subtractCoins(task.coinReward));
@@ -54,9 +58,6 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
     }, [allTasks, selectedTask])
 
 
-    const handleHideFormAfterEdit = () => {
-        setEditTask(false);
-    }
 
     const handleCloseForm = () => {
         setEditTask(false);
@@ -105,8 +106,7 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
                     {showDeleteMessage &&
                         <div className="overlay" ref={overlayRef}>
                             <DeleteMessage
-                                showDeleteMessage={showDeleteMessage}
-                                setShowDeleteMessage={setShowDeleteMessage}
+                                hideDeleteMessage={hideDeleteMessage}
                                 selectedTask={selectedTask}
                                 history={history}
                                 handleHideTask={handleHideTask}
@@ -121,7 +121,6 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
                 <TaskForm
                     selectedTask={selectedTask}
                     isEditMode={true}
-                    handleHideFormAfterEdit={handleHideFormAfterEdit}
                     handleHideTask={handleHideTask}
                     handleCloseForm={handleCloseForm}
                 />}
