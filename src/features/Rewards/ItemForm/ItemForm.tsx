@@ -5,8 +5,6 @@ import { useDispatch } from "react-redux";
 import { addItemToShop } from "../../../store/RewardsSlice";
 import { v4 as uuidv4 } from "uuid";
 import { editItemInShop } from "../../../store/RewardsSlice";
-import { identifier } from "@babel/types";
-import { RewardItem } from "../RewardItem/RewardItem";
 import { Reward } from "../../../types/Types";
 
 interface ItemFormProps {

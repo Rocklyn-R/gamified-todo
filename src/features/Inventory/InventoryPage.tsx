@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Card from "../../components/Card/Card";
 import "./InventoryPage.css";
-import { IoArrowBackOutline } from "react-icons/io5";
 import { FaCoins } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { selectTotalCoins, selectInventory, selectUsedRewards } from "../../store/RewardsSlice";
 import { useSelector } from "react-redux";
 import { RewardItem } from "../Rewards/RewardItem/RewardItem";
-import { ViewReward } from "../Rewards/ViewReward/ViewReward";
 import { ViewInventoryItem } from "./ViewInventoryItem/ViewInventoryItem";
 import { Reward } from "../../types/Types";
 import { GrHistory } from "react-icons/gr";
@@ -23,7 +21,6 @@ export const InventoryPage = () => {
         id: ""
     })
 
-    const [showHistory, setShowHistory] = useState(false);
     const usedRewards = useSelector(selectUsedRewards)
 
     const overlayRef = useRef<HTMLDivElement>(null);

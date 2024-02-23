@@ -18,7 +18,7 @@ export const RewardItem: React.FC<RewardItemProps> = ({reward, index, handleView
                 className="view-reward"
                 onClick={() => {handleViewReward(reward)}}
             >
-                <img src={gift} />
+                <img alt="" src={gift} />
                 <div className="reward-details">
                     <p>{reward.name}</p>  
                 <p>{reward.description}</p>

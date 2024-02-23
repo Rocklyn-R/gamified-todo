@@ -9,8 +9,6 @@ import { ItemForm } from './ItemForm/ItemForm';
 import { RewardItem } from './RewardItem/RewardItem';
 import { ViewReward } from './ViewReward/ViewReward';
 import { Reward } from '../../types/Types';
-import { FiGift } from "react-icons/fi";
-import { Link } from 'react-router-dom';
 
 
 export const RewardsPage = () => {

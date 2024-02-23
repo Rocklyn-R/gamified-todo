@@ -1,21 +1,19 @@
 import React from "react";
 import './ViewInventoryItem.css';
 import Card from "../../../components/Card/Card";
-import { selectInventory } from "../../../store/RewardsSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Reward } from "../../../types/Types";
-import { RewardItem } from "../../Rewards/RewardItem/RewardItem";
 import { FaCoins } from "react-icons/fa";
 import { spendReward } from "../../../store/RewardsSlice";
 
 
 
-interface ViewInventoryItem {
+interface ViewInventoryItemProps {
     selectedInventoryItem: Reward;
     hideInventoryItem: () => void;
 }
 
-export const ViewInventoryItem: React.FC<ViewInventoryItem> = ({ selectedInventoryItem, hideInventoryItem }) => {
+export const ViewInventoryItem: React.FC<ViewInventoryItemProps> = ({ selectedInventoryItem, hideInventoryItem }) => {
 
 
     const dispatch = useDispatch();
