@@ -6,7 +6,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import { Reward } from '../../../types/Types';
 import { ItemForm } from '../ItemForm/ItemForm';
 import { DeleteMessage } from '../../../components/DeleteMessage/DeleteMessage';
-import { buyItem, deleteItemFromShop, selectTotalCoins } from '../../../store/RewardsSlice';
+import { buyItem, selectTotalCoins } from '../../../store/RewardsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 

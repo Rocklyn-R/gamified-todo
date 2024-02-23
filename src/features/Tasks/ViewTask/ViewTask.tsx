@@ -55,7 +55,7 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
         if (!allTasks.includes(selectedTask)) {
             setSelectedTaskDeleted(true);
         }
-    }, [allTasks, selectedTask])
+    }, [allTasks, selectedTask, history])
 
 
 

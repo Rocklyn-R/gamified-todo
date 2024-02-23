@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./Store";
 import { Reward, RewardsState } from "../types/Types";
-import { act } from "react-dom/test-utils";
 
 
 export const RewardsSlice = createSlice({
