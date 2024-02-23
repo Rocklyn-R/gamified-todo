@@ -55,11 +55,8 @@ export const ItemForm: React.FC<ItemFormProps>  = ({ handleCloseForm, isEditMode
     }
 
     return (
-        <Card>
+        <Card className="form-container">
             <form onSubmit={handleSubmitAddItem}>
-
-
-                <div className="add-task-form">
                     <button
                         type="button"
                         className='close'
@@ -67,31 +64,31 @@ export const ItemForm: React.FC<ItemFormProps>  = ({ handleCloseForm, isEditMode
                     >
                         X
                     </button>
-                    <div className='basic-box'>
+                        <label>Name:</label>
                         <input
                             placeholder="Name"
                             id="item-name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
-                        <input
-                            placeholder='Price'
-                            id="price"
-                            type="number"
-                            onChange={(e) => setPrice(parseInt(e.target.value))}
-                        />
+                        <label>Description:</label>
                         <input
                             placeholder="Description (optional)"
                             id="description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                         />
-                </div>
+                          <label>Price:</label>
+                        <input
+                            placeholder='Price'
+                            id="price"
+                            type="number"
+                            onChange={(e) => setPrice(parseInt(e.target.value))}
+                        />
 
                     <button type="submit" value="Submit" className="submit-task-button">
                         {isEditMode? "Edit item" : "Create item"}
                     </button>
-                </div>
 
 
             </form>

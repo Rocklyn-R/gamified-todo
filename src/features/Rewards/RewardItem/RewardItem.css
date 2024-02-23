@@ -1,0 +1,32 @@
+.view-reward {
+    display: flex;
+    height: fit-content;
+    align-items: center;
+}
+
+.view-reward p {
+    margin: 0;
+    padding: 0;
+}
+
+.view-reward img {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.reward-details {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.price-details {
+    display: flex;
+    align-items: center;
+}
+
+.coins-icon {
+    color: darkgoldenrod;
+    margin-right: .5rem;
+}

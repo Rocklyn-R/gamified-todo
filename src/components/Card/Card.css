@@ -1,10 +1,10 @@
 .card {
-    background-color: #135382;
+    background-color: aliceblue;
     margin: 2rem 1rem;
     padding: 2rem 2rem;
     font-family: "Nunito", sans-serif;
     box-sizing: content-box;
-    border-radius: 3rem;
+    border-radius: 1rem;
     min-width: 12rem;
 }
 

@@ -5,8 +5,8 @@ import { Navigation } from './features/Navigation/Navigation';
 import { Tasks } from './features/Tasks/TasksPage';
 import { TaskHistory } from './features/Tasks/TaskHistory/TaskHistory';
 import { RewardsPage } from './features/Rewards/RewardsPage';
-import { InventoryPage } from './features/Rewards/Inventory/InventoryPage';
-import { RewardHistory } from './features/Rewards/Inventory/RewardHistory/RewardHistory';
+import { InventoryPage } from './features/Inventory/InventoryPage';
+import { RewardHistory } from './features/Inventory/RewardHistory/RewardHistory';
 
 
 
@@ -21,9 +21,9 @@ function App() {
         <Route path="/" element={<Tasks/>}/>
         <Route path="/tasks" element={<Tasks/>}/>
         <Route path="/tasks/history" element={<TaskHistory/>}/>
-        <Route path="/rewards" element={<RewardsPage/>}/>
-        <Route path="/rewards/inventory" element={<InventoryPage/>} />
-        <Route path="/rewards/inventory/history" element={<RewardHistory/>} />
+        <Route path="/rewards-shop" element={<RewardsPage/>}/>
+        <Route path="/inventory" element={<InventoryPage/>} />
+        <Route path="/inventory/history" element={<RewardHistory/>} />
       </Routes>
        </div>
      

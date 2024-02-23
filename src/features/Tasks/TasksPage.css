@@ -5,6 +5,7 @@
     width: 30%;
     height: fit-content;
     margin-top: 2rem;
+    background-color: #135382;
 }
 
 .date-box {
@@ -62,7 +63,7 @@
 }
 
 
-.history-icon, .inventory-icon {
+.history-icon {
     display: flex;
     align-items: center;
     font-size: 3rem;

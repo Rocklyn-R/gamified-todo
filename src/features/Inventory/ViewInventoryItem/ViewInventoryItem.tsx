@@ -1,11 +1,13 @@
 import React from "react";
-import Card from "../../../../components/Card/Card";
-import { selectInventory } from "../../../../store/RewardsSlice";
+import './ViewInventoryItem.css';
+import Card from "../../../components/Card/Card";
+import { selectInventory } from "../../../store/RewardsSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Reward } from "../../../../types/Types";
-import { RewardItem } from "../../RewardItem/RewardItem";
+import { Reward } from "../../../types/Types";
+import { RewardItem } from "../../Rewards/RewardItem/RewardItem";
 import { FaCoins } from "react-icons/fa";
-import { spendReward } from "../../../../store/RewardsSlice";
+import { spendReward } from "../../../store/RewardsSlice";
+
 
 
 interface ViewInventoryItem {
@@ -27,8 +29,8 @@ export const ViewInventoryItem: React.FC<ViewInventoryItem> = ({ selectedInvento
         <Card>
             <p>Name: {selectedInventoryItem.name}</p>
             {selectedInventoryItem.description && <p>Description: {selectedInventoryItem.description}</p>}
-            <p>Purchased for {selectedInventoryItem.price} <FaCoins/></p>
-            <button onClick={handleUseReward} >Use</button>
+            <p>Purchased for <FaCoins/>{selectedInventoryItem.price} </p>
+            <button className="use-button" onClick={handleUseReward} >Use</button>
         </Card>
     )
 }

@@ -67,7 +67,6 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
     return (
         <Card className="form-container">
             <form onSubmit={handleSubmit}>
-                <div className="add-task-form">
                     <button
                         type="button"
                         className='close'
@@ -75,27 +74,27 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                     >
                         X
                     </button>
-                    <div className='basic-box'>
-                        <p>Basic</p>
+                    
+    
                         {submitError &&
                             <p>Please name your task</p>
                         }
+                        <label htmlFor='task-name'>Name:</label>
                         <input
                             placeholder="Task Name"
                             id="task-name"
                             value={taskName}
                             onChange={(e) => setTaskName(e.target.value)}
-                        />
+                        /> 
+                       
+                        <label htmlFor='notes'>Notes:</label>
                         <input
                             placeholder='Notes (optional)'
                             id="notes"
                             value={notes}
                             onChange={(e) => setNotes(e.target.value)}
                         />
-                    </div>
-
-                    <div className='reward-box'>
-                        <p>Coin Reward</p>
+                        <label htmlFor='coin-reward'>Coin Reward:</label>
                         <input
                             placeholder='Coin Reward'
                             id="coin-reward"
@@ -103,10 +102,10 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                             value={coinReward}
                             onChange={(e) => setCoinReward(parseInt(e.target.value, 10))}
                         />
-                    </div>
+                    
 
                     <button type="submit" value="Submit" className="submit-task-button">{selectedTask ? "Done editing" : "Create task"}</button>
-                </div>
+              
 
             </form>
         </Card>
