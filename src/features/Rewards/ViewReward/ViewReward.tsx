@@ -97,7 +97,7 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
                         <p>You don't have enough coins to buy this item!</p>
                     )}
                     <button
-                        className='buy-reward'
+                        className='command-button'
                         onClick={handleBuyItem}
                     >
                         Buy

@@ -1,11 +1,11 @@
 import React from 'react';
 import "./Navigation.css";
 import { Link } from 'react-router-dom';
-import tomatoImg from "../../Images/tomato.png"
+import tomatoImg from "../../images/tomato.png"
 import { FaTasks } from "react-icons/fa";
-import lightbulb from "../../Images/lightbulb.svg"
-import gift from "../../Images/gift.png";
-import shop from "../../Images/shop.png";
+import lightbulb from "../../images/lightbulb.svg"
+import gift from "../../images/gift.png";
+import shop from "../../images/shop.png";
 
 
 

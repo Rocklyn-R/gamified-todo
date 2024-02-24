@@ -10,7 +10,7 @@
     width: 85%;
     display: flex;
     align-items: center;
-    height: 3rem;
+    height: fit-content;
     cursor: pointer;
     border: none;
     border-radius: .4rem;

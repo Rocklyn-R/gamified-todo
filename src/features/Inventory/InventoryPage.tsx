@@ -18,7 +18,8 @@ export const InventoryPage = () => {
         name: "",
         price: 0,
         description: "",
-        id: ""
+        id: "",
+        icon: ""
     })
 
     const usedRewards = useSelector(selectUsedRewards)

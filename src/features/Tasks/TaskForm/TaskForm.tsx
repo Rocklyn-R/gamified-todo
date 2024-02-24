@@ -104,7 +104,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                         />
                     
 
-                    <button type="submit" value="Submit" className="submit-task-button">{selectedTask ? "Done editing" : "Create task"}</button>
+                    <button type="submit" value="Submit" className="command-button">{selectedTask ? "Done editing" : "Create task"}</button>
               
 
             </form>

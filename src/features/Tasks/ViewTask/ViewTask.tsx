@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../../components/Card/Card";
 import { Task } from "../../../types/Types"
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-
+import { FaCoins } from "react-icons/fa";
 import "./ViewTask.css"
 import { TaskForm } from "../TaskForm/TaskForm";
 import { DeleteMessage } from "../../../components/DeleteMessage/DeleteMessage";
@@ -33,10 +33,12 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
 
     const handleDeleteTask = () => {
         setShowDeleteMessage(true);
+        setEditTask(true);
     }
 
     const hideDeleteMessage = () => {
-        setShowDeleteMessage(false)
+        setShowDeleteMessage(false);
+        setEditTask(false);
     }
 
     const handleUndoComplete = (task: Task) => {
@@ -45,7 +47,6 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
         handleHideTask();
     }
 
-    const overlayRef = useRef<HTMLDivElement>(null);
 
 
     useEffect(() => {
@@ -97,27 +98,28 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
                         {selectedTask.notes && `Notes: ${selectedTask.notes}`}
                     </p>
                     <p>
-                        Coin Reward: {selectedTask.coinReward}
+                        Coin Reward: <FaCoins className="coins-icon" />{selectedTask.coinReward}
                     </p>
                     {history && 
                         <button className="undo-complete" onClick={() => handleUndoComplete(selectedTask)}>
                             Undo completion
                         </button>}
-                    {showDeleteMessage &&
-                        <div className="overlay" ref={overlayRef}>
+
+
+                     </Card>
+            }
+        
+                    {showDeleteMessage && editTask &&
                             <DeleteMessage
                                 hideDeleteMessage={hideDeleteMessage}
                                 selectedTask={selectedTask}
                                 history={history}
                                 handleHideTask={handleHideTask}
                             />
-                        </div>
 
                     }
-                </Card>
-            }
-
-            {editTask &&
+           
+            {editTask && !showDeleteMessage &&
                 <TaskForm
                     selectedTask={selectedTask}
                     isEditMode={true}

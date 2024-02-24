@@ -6,6 +6,11 @@
     margin-top: 0;
 }
 
+.view-rewards-container {
+    display: flex;
+    justify-content: center;
+}
+
 .buy-reward {
     border: none;
     background-color: lightblue;

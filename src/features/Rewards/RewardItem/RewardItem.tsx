@@ -1,8 +1,8 @@
 import React from "react";
 import "./RewardItem.css";
 import { Reward } from "../../../types/Types";
-import gift from "../../../Images/gift.png";
 import { FaCoins } from "react-icons/fa";
+import { renderIcon } from "../../../utilities/utilities";
 
 interface RewardItemProps {
     reward: Reward;
@@ -18,7 +18,7 @@ export const RewardItem: React.FC<RewardItemProps> = ({reward, index, handleView
                 className="view-reward"
                 onClick={() => {handleViewReward(reward)}}
             >
-                <img alt="" src={gift} />
+                <img alt="" src={renderIcon(reward.icon)} />
                 <div className="reward-details">
                     <p>{reward.name}</p>  
                 <p>{reward.description}</p>

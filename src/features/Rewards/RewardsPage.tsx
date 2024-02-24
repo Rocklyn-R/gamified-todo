@@ -21,7 +21,8 @@ export const RewardsPage = () => {
         name: "",
         price: 0,
         description: "",
-        id: ""
+        id: "",
+        icon: ""
     })
 
     const handleAddNewItem = () => {
@@ -47,6 +48,7 @@ export const RewardsPage = () => {
     const handleViewReward = (reward: Reward) => {
         setShowReward(true);
         setSelectedReward(reward);
+        console.log(selectedReward);
     }
 
     const handleHideReward = () => {

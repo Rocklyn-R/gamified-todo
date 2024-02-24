@@ -23,6 +23,8 @@ export interface Reward {
     price: number;
     description: string;
     id: string;
+    icon: string;
+    quantity?: number;
 }
 
 

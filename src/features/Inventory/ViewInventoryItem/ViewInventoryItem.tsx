@@ -28,7 +28,7 @@ export const ViewInventoryItem: React.FC<ViewInventoryItemProps> = ({ selectedIn
             <p>Name: {selectedInventoryItem.name}</p>
             {selectedInventoryItem.description && <p>Description: {selectedInventoryItem.description}</p>}
             <p>Purchased for <FaCoins/>{selectedInventoryItem.price} </p>
-            <button className="use-button" onClick={handleUseReward} >Use</button>
+            <button className="command-button" onClick={handleUseReward} >Use</button>
         </Card>
     )
 }

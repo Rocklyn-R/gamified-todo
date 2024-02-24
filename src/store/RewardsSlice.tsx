@@ -11,7 +11,8 @@ export const RewardsSlice = createSlice({
             name: "Movie",
             price: 50,
             description: "",
-            id: "12423"
+            id: "12423",
+            icon: "gift"
         }],
         inventory: [],
         usedRewards: []

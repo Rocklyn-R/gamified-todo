@@ -1,0 +1,14 @@
+.icon-choices {
+    margin-bottom: 1rem;
+}
+
+.icon-choices button {
+    margin: 1rem .6rem;
+    background-color: transparent;
+    border: 1px solid lightblue;
+    cursor: pointer;
+}
+
+.icon-choices button.selected {
+    background-color: lightblue;
+}
