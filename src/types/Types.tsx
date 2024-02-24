@@ -15,6 +15,7 @@ export interface InventoryItem {
     price: number;
     description: string;
     id: string;
+    icon: string;
     quantity: number;
 }
 
@@ -24,7 +25,15 @@ export interface Reward {
     description: string;
     id: string;
     icon: string;
-    quantity?: number;
+}
+
+export interface UsedRewards {
+    name: string;
+    price: number;
+    description: string;
+    id: string;
+    icon: string;
+    dateUsed: string;
 }
 
 
@@ -32,6 +41,6 @@ export interface Reward {
 export interface RewardsState {
     totalCoins: number;
     shop: Reward [];
-    inventory: Reward [];
-    usedRewards: Reward [];
+    inventory: InventoryItem [];
+    usedRewards: UsedRewards [];
 }

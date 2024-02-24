@@ -7,7 +7,7 @@ import { selectTotalCoins, selectInventory, selectUsedRewards } from "../../stor
 import { useSelector } from "react-redux";
 import { RewardItem } from "../Rewards/RewardItem/RewardItem";
 import { ViewInventoryItem } from "./ViewInventoryItem/ViewInventoryItem";
-import { Reward } from "../../types/Types";
+import { InventoryItem, Reward } from "../../types/Types";
 import { GrHistory } from "react-icons/gr";
 
 export const InventoryPage = () => {
@@ -19,7 +19,8 @@ export const InventoryPage = () => {
         price: 0,
         description: "",
         id: "",
-        icon: ""
+        icon: "",
+        quantity: 0
     })
 
     const usedRewards = useSelector(selectUsedRewards)
@@ -46,7 +47,7 @@ export const InventoryPage = () => {
     }
 
 
-    const handleViewInventoryItem = (item: Reward) => {
+    const handleViewInventoryItem = (item: InventoryItem) => {
         setShowItemDetails(true);
         setSelectedInventoryItem(item)
     }
@@ -73,7 +74,7 @@ export const InventoryPage = () => {
                             key={index}
                             index={index}
                             reward={item}
-                            handleViewReward={handleViewInventoryItem}
+                            handleViewInventoryItem={handleViewInventoryItem}
                             inventory={true}
                         />
                     ))}

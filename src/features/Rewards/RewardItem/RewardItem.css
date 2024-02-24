@@ -2,6 +2,7 @@
     display: flex;
     height: fit-content;
     align-items: center;
+    justify-content: space-between;
 }
 
 .view-reward p {
@@ -21,12 +22,20 @@
     align-items: flex-start;
 }
 
-.price-details {
+.reward-item {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
 }
 
-.coins-icon {
-    color: darkgoldenrod;
-    margin-right: .5rem;
+.icon-with-details {
+    display: flex;
+}
+
+.reward-description {
+    font-size: .8rem;
+}
+
+.reward-quantity {
+    margin-left: 4rem;
+    font-size: .8rem;
 }

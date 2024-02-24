@@ -11,6 +11,11 @@
     justify-content: center;
 }
 
+.view-rewards-container img {
+    align-self: center;
+    margin-top: 1em;
+}
+
 .buy-reward {
     border: none;
     background-color: lightblue;
@@ -21,3 +26,4 @@
     cursor: pointer;
     font-size: 1rem;
 }
+

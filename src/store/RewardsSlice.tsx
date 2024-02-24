@@ -1,6 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./Store";
-import { Reward, RewardsState } from "../types/Types";
+import { InventoryItem, Reward, RewardsState } from "../types/Types";
+import { v4 as uuidv4 } from "uuid";
+
+const currentDate = new Date();
+const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
+const formattedDate = currentDate.toLocaleDateString('en-US', options);
 
 
 export const RewardsSlice = createSlice({
@@ -10,12 +15,36 @@ export const RewardsSlice = createSlice({
         shop: [{
             name: "Movie",
             price: 50,
-            description: "",
+            description: "2 hour long",
             id: "12423",
             icon: "gift"
         }],
-        inventory: [],
-        usedRewards: []
+        inventory: [{
+            name: "Movie",
+            price: 50,
+            description: "2 hour long",
+            id: "12423",
+            icon: "gift",
+            quantity: 4
+        }],
+        usedRewards: [
+            {
+                name: "Movie",
+                price: 50,
+                description: "2 hour long",
+                id: "12423",
+                icon: "gift",
+                dateUsed: "02/14/14"
+            },
+            {
+                name: "Movie",
+                price: 50,
+                description: "2 hour long",
+                id: "12423",
+                icon: "gift",
+                dateUsed: "02/14/14"
+            }
+        ]
     } as RewardsState,
 
     reducers: {
@@ -32,9 +61,23 @@ export const RewardsSlice = createSlice({
         },
 
         editItemInShop: (state, action: PayloadAction<Reward>) => {
-            const index = state.shop.findIndex(item => item.id === action.payload.id);
-            if (index !== -1) {
-                state.shop[index] = action.payload;
+            const shopItemIndex = state.shop.findIndex(item => item.id === action.payload.id);
+            if (shopItemIndex !== -1) {
+                state.shop[shopItemIndex] = action.payload;
+            }
+            const inventoryItemIndex = state.inventory.findIndex(item => item.id === action.payload.id);
+            if (inventoryItemIndex !== -1) {
+                state.inventory[inventoryItemIndex].icon = action.payload.icon;
+            }
+            
+            const usedItemIndex = state.usedRewards.findIndex(item => item.id === action.payload.id);
+            if (usedItemIndex !== -1) {
+                state.usedRewards = state.usedRewards.map(reward => {
+                    if (reward.id === action.payload.id) {
+                        return {...reward, icon: action.payload.icon}
+                    }
+                    return reward;
+                })
             }
         },
 
@@ -43,13 +86,33 @@ export const RewardsSlice = createSlice({
         },
 
         buyItem: (state, action: PayloadAction<Reward>) => {
-            state.inventory.unshift(action.payload);
+            const existingItemIndex = state.inventory.findIndex(item => item.id === action.payload.id);
+            if (existingItemIndex !== -1) {
+                   state.inventory[existingItemIndex].quantity +=1; 
+                } else {
+                    const itemWithQuantity: InventoryItem = { ...action.payload, quantity: 1};
+                    state.inventory.unshift(itemWithQuantity)
+                }
+                
             state.totalCoins = state.totalCoins - action.payload.price;
         },
 
-        spendReward: (state, action: PayloadAction<Reward>) => {
-            state.inventory = state.inventory.filter(item => item.id !== action.payload.id);
-            state.usedRewards.unshift(action.payload);
+        spendReward: (state, action: PayloadAction<InventoryItem>) => {
+            const existingItemIndex = state.inventory.findIndex(item => item.id === action.payload.id);
+            if (existingItemIndex !== -1) {
+                state.inventory[existingItemIndex].quantity -=1;
+            } else {
+                state.inventory = state.inventory.filter(item => item.id !== action.payload.id);
+            }
+            state.usedRewards.unshift({
+                name: action.payload.name,
+                price: action.payload.price,
+                description: action.payload.description,
+                id: action.payload.id,
+                icon: action.payload.icon,
+                dateUsed: formattedDate
+            });
+            
         }
     }
 })

@@ -1,37 +1,55 @@
 import React from "react";
 import "./RewardItem.css";
-import { Reward } from "../../../types/Types";
+import { InventoryItem, Reward } from "../../../types/Types";
 import { FaCoins } from "react-icons/fa";
 import { renderIcon } from "../../../utilities/utilities";
+import { emitKeypressEvents } from "readline";
 
 interface RewardItemProps {
-    reward: Reward;
+    reward: Reward | InventoryItem;
     index: number;
-    handleViewReward: (reward: Reward) => void;
+    handleViewReward?: (reward: Reward) => void;
+    handleViewInventoryItem?: (reward: InventoryItem) => void;
     inventory: boolean;
 }
 
-export const RewardItem: React.FC<RewardItemProps> = ({reward, index, handleViewReward, inventory}) => {
+export const RewardItem: React.FC<RewardItemProps> = ({ reward, index, handleViewReward, inventory, handleViewInventoryItem }) => {
+
+    const handleViewItem = () => {
+        if (handleViewReward) {
+            handleViewReward(reward as Reward)
+        } else if (handleViewInventoryItem) {
+            handleViewInventoryItem(reward as InventoryItem)
+        }
+    }
+
     return (
         <div className="reward-item">
-            <button 
+            <button
                 className="view-reward"
-                onClick={() => {handleViewReward(reward)}}
+                onClick={() => handleViewItem()}
             >
-                <img alt="" src={renderIcon(reward.icon)} />
-                <div className="reward-details">
-                    <p>{reward.name}</p>  
-                <p>{reward.description}</p>
+                <div className="icon-with-details">
+                    <img alt="" src={renderIcon(reward.icon)}  />
+                    <div className="reward-details">
+                        <p>{reward.name}</p>
+                        <p className="reward-description">{reward.description}</p>
+                    </div>
+                </div>
+
                 {!inventory && (
                     <div className="price-details">
-                    <FaCoins className="coins-icon" />
-                    <p>{reward.price}</p>
-                </div>
+                        <FaCoins className="coins-icon" />
+                        <p>{reward.price}</p>
+                    </div>
                 )}
-                
-                
-                </div>
-              
+
+                {inventory && (
+                    <div className="reward-quantity">
+                        <p>Quantity: {(reward as InventoryItem).quantity}</p>
+                    </div>
+                )}
+
             </button>
         </div>
     )

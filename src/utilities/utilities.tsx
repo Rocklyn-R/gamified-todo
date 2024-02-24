@@ -55,6 +55,8 @@ export const renderIcon = (icon: string) => {
             return love;
         case "gift":
             return gift;
+        default:
+            return gift;
 
     }
 }

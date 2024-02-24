@@ -99,6 +99,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                     id="item-name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    required
                 />
                 <label>Description:</label>
                 <input
@@ -109,9 +110,10 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                 />
                 <label>Price:</label>
                 <input
-                    placeholder='Price'
+                    placeholder='0'
                     id="price"
                     type="number"
+                    value={price}
                     onChange={(e) => setPrice(parseInt(e.target.value))}
                 />
                 <label>Select icon:</label>

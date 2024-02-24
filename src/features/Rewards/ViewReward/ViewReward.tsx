@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import Card from '../../../components/Card/Card';
 import "./ViewReward.css";
-import { FaRegEdit } from "react-icons/fa";
+import { FaCoins, FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { Reward } from '../../../types/Types';
 import { ItemForm } from '../ItemForm/ItemForm';
 import { DeleteMessage } from '../../../components/DeleteMessage/DeleteMessage';
 import { buyItem, selectTotalCoins } from '../../../store/RewardsSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
+import { renderIcon } from '../../../utilities/utilities';
 
 interface ViewRewardProps {
     selectedReward: Reward;
@@ -46,11 +46,7 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
         if (selectedReward.price > totalCoins) {
             setPurchaseFailed(true);
         } else {
-            const selectedRewardWithNewId = {
-                ...selectedReward,
-                id: uuidv4()
-            }
-            dispatch(buyItem(selectedRewardWithNewId));
+            dispatch(buyItem(selectedReward));
             handleHideReward();
         }
     }
@@ -83,15 +79,15 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
                             <MdDeleteOutline className='delete-reward-icon' />
                         </button>
                     </div>
-
+                    <img src={renderIcon(selectedReward.icon)} height="40" width="40" />
                     <p className="reward-name">
                         Name: {selectedReward.name}
                     </p>
-                    <p className='reward-description'>
+                    <p className='item-description'>
                         {selectedReward.description && `Description: ${selectedReward.description}`}
                     </p>
-                    <p>
-                        Price: {selectedReward.price}
+                    <p className='view-item-price-details'>
+                        Price: <FaCoins className='coins-icon view-coins-icon' />{selectedReward.price}
                     </p>
                     {purchaseFailed && (
                         <p>You don't have enough coins to buy this item!</p>

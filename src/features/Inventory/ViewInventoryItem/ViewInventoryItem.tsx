@@ -2,14 +2,15 @@ import React from "react";
 import './ViewInventoryItem.css';
 import Card from "../../../components/Card/Card";
 import { useDispatch } from "react-redux";
-import { Reward } from "../../../types/Types";
+import { InventoryItem, Reward } from "../../../types/Types";
 import { FaCoins } from "react-icons/fa";
 import { spendReward } from "../../../store/RewardsSlice";
+import { renderIcon } from "../../../utilities/utilities";
 
 
 
 interface ViewInventoryItemProps {
-    selectedInventoryItem: Reward;
+    selectedInventoryItem: InventoryItem;
     hideInventoryItem: () => void;
 }
 
@@ -25,9 +26,10 @@ export const ViewInventoryItem: React.FC<ViewInventoryItemProps> = ({ selectedIn
   
     return (
         <Card>
+            <img src={renderIcon(selectedInventoryItem.icon)} height="40" width="40" />
             <p>Name: {selectedInventoryItem.name}</p>
             {selectedInventoryItem.description && <p>Description: {selectedInventoryItem.description}</p>}
-            <p>Purchased for <FaCoins/>{selectedInventoryItem.price} </p>
+            <p className='view-item-price-details'>Purchased for <FaCoins className="coins-icon view-coins-icon"/>{selectedInventoryItem.price} </p>
             <button className="command-button" onClick={handleUseReward} >Use</button>
         </Card>
     )

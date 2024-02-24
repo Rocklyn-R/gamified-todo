@@ -5,6 +5,8 @@ import './TaskForm.css';
 import { setTasks, editTask } from '../../../store/TasksSlice';
 import { Task } from '../../../types/Types';
 import { v4 as uuidv4 } from "uuid";
+import DatePicker from 'react-datepicker';
+
 
 
 interface TaskFormProps {
@@ -31,12 +33,10 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
         }
     }, [isEditMode, selectedTask]);
 
+
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (!selectedTask && !taskName) {
-            setSubmitError(true)
-            return;
-        }
         if (!isEditMode) {
             dispatch(setTasks({
                 name: taskName,
@@ -85,6 +85,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                             id="task-name"
                             value={taskName}
                             onChange={(e) => setTaskName(e.target.value)}
+                            required
                         /> 
                        
                         <label htmlFor='notes'>Notes:</label>
@@ -94,6 +95,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                             value={notes}
                             onChange={(e) => setNotes(e.target.value)}
                         />
+                       
                         <label htmlFor='coin-reward'>Coin Reward:</label>
                         <input
                             placeholder='Coin Reward'
@@ -101,6 +103,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                             type="number"
                             value={coinReward}
                             onChange={(e) => setCoinReward(parseInt(e.target.value, 10))}
+                            required
                         />
                     
 
