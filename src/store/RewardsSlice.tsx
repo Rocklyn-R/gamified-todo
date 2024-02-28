@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./Store";
 import { InventoryItem, Reward, RewardsState } from "../types/Types";
-import { v4 as uuidv4 } from "uuid";
 
 const currentDate = new Date();
 const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };

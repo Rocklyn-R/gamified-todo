@@ -1,0 +1,27 @@
+.pomodoro-container {
+    background-color: #135382;
+}
+
+.control-timer-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.play-button {
+    background-color: aliceblue;
+    color: #135382;
+    border: none;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.control-icon {
+    font-size: 2rem;
+}

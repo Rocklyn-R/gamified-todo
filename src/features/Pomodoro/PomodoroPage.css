@@ -1,0 +1,27 @@
+.pomodoro-container {
+    background-color: #135382;
+}
+
+.settings-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    top: 4rem;
+    right: 0;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.settings-icon {
+    font-size: 3rem;
+    color: lightblue;
+}
+
+
+.pomodoro-button {
+    margin-top: 2rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

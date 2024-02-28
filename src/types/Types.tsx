@@ -44,7 +44,16 @@ export interface UsedRewards {
 
 export interface RewardsState {
     totalCoins: number;
-    shop: Reward [];
-    inventory: InventoryItem [];
-    usedRewards: UsedRewards [];
+    shop: Reward[];
+    inventory: InventoryItem[];
+    usedRewards: UsedRewards[];
+}
+
+export interface PomodoroState {
+    secondsLeft: number;
+    isPaused: boolean;
+    workMinutes: number;
+    breakMinutes: number;
+    mode: "work" | "break";
+    pomodoros: number;
 }

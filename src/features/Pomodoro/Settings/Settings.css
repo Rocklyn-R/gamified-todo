@@ -1,0 +1,19 @@
+.pomodoro-settings-container label{
+  display: block;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.slider {
+    height: 40px;
+    border: 2px solid lightblue;
+    border-radius: 20px;
+}
+
+.thumb {
+    background-color: lightblue;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}

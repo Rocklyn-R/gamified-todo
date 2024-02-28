@@ -5,9 +5,7 @@ import './TaskForm.css';
 import { setTasks, editTask } from '../../../store/TasksSlice';
 import { Task } from '../../../types/Types';
 import { v4 as uuidv4 } from "uuid";
-import DatePicker from 'react-datepicker';
 import Calendar from 'react-calendar';
-import { FaRegCalendarAlt } from "react-icons/fa";
 import 'react-calendar/dist/Calendar.css';
 import { FaRegEdit } from "react-icons/fa";
 

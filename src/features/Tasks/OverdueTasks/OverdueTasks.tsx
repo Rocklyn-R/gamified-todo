@@ -1,9 +1,5 @@
 import "./OverdueTasks.css";
-import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectTasks } from "../../../store/TasksSlice";
-import { Task } from "../../../types/Types";
-import { IoIosArrowDown } from "react-icons/io";
 import Card from "../../../components/Card/Card";
 import { selectOverdueTasks } from "../../../store/TasksSlice";
 import { TaskItem } from "../TaskItem/TaskItem";
@@ -12,12 +8,10 @@ import { moveOverdueToHistory } from "../../../store/TasksSlice";
 
 export const OverdueTasks = () => {
 
-    const tasks = useSelector(selectTasks);
-    const [showOverdueTasks, setShowOverdueTasks] = useState(false);
     const overdueTasks = useSelector(selectOverdueTasks);
     const dispatch = useDispatch()
 
-    const numOfOverdueTasks = (tasks: Task[]) => {
+  /*  const numOfOverdueTasks = (tasks: Task[]) => {
         // If tasks array is empty, return 0
         if (tasks.length === 0) {
             return 0;
@@ -27,7 +21,7 @@ export const OverdueTasks = () => {
         return tasks.reduce((count, task) => {
             return count + (task.overdue ? 1 : 0);
         }, 0);
-    };
+    };*/
 
 
     const handleAcceptPenalty = () => {

@@ -3,7 +3,6 @@ import "./RewardItem.css";
 import { InventoryItem, Reward } from "../../../types/Types";
 import { FaCoins } from "react-icons/fa";
 import { renderIcon } from "../../../utilities/utilities";
-import { emitKeypressEvents } from "readline";
 
 interface RewardItemProps {
     reward: Reward | InventoryItem;

@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Task } from '../../../types/Types';
 import { CompleteTask } from '../CompleteTask/CompleteTask';
 import "./TaskItem.css";
 import { formatDeadline } from '../../../utilities/utilities';
 import { FaCoins } from 'react-icons/fa';
-import { subtractCoins } from '../../../store/RewardsSlice';
-import { useDispatch } from 'react-redux';
 
 interface TaskItemProps {
     task: Task,
@@ -17,7 +15,6 @@ interface TaskItemProps {
 
 
 export const TaskItem: React.FC<TaskItemProps> = ({ task, index, handleViewTaskClick, history }) => {
-    const dispatch = useDispatch()
 
 
 

@@ -79,7 +79,7 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
                             <MdDeleteOutline className='delete-reward-icon' />
                         </button>
                     </div>
-                    <img src={renderIcon(selectedReward.icon)} height="40" width="40" />
+                    <img alt="" src={renderIcon(selectedReward.icon)} height="40" width="40" />
                     <p className="reward-name">
                         Name: {selectedReward.name}
                     </p>

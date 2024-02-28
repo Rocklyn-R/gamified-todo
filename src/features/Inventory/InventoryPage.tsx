@@ -7,7 +7,7 @@ import { selectTotalCoins, selectInventory, selectUsedRewards } from "../../stor
 import { useSelector } from "react-redux";
 import { RewardItem } from "../Rewards/RewardItem/RewardItem";
 import { ViewInventoryItem } from "./ViewInventoryItem/ViewInventoryItem";
-import { InventoryItem, Reward } from "../../types/Types";
+import { InventoryItem } from "../../types/Types";
 import { GrHistory } from "react-icons/gr";
 
 export const InventoryPage = () => {

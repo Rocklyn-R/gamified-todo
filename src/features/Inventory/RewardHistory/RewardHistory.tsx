@@ -17,7 +17,7 @@ export const RewardHistory = () => {
             {usedRewards.map(item => (
                 <div className='inventory-history-box'>
                     <div className='history-container-1'>
-                        <img src={renderIcon(item.icon)} height="24" />
+                        <img alt="" src={renderIcon(item.icon)} height="24" />
                         <div className='history-container-2'>
                             <p>{item.name}</p>
                             <p className='reward-description'>{item.description}</p>
