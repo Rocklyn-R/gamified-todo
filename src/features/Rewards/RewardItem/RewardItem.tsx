@@ -46,7 +46,7 @@ export const RewardItem: React.FC<RewardItemProps> = ({ reward, index, handleVie
 
                 {inventory && (
                     <div className="reward-quantity">
-                        <p>Quantity: {(reward as InventoryItem).quantity}</p>
+                        <p id="reward-quantity">Quantity: {(reward as InventoryItem).quantity}</p>
                     </div>
                 )}
 

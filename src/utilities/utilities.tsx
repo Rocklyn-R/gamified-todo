@@ -60,3 +60,32 @@ export const renderIcon = (icon: string) => {
 
     }
 }
+
+
+export const formatDeadline = (deadline: string) => {
+    const todayString = new Date().toISOString().slice(0, 10);
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowString = tomorrow.toISOString().slice(0, 10);
+
+    const deadlineDateString = deadline.slice(0, 10);
+
+      const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayString = yesterday.toISOString().slice(0, 10);
+
+    if (deadlineDateString === todayString) {
+        return "Today";
+    } else if (deadlineDateString === tomorrowString) {
+        return "Tomorrow";
+    } else if (deadlineDateString === yesterdayString) {
+        return "Yesterday";
+    } else {
+        const deadlineDate = new Date(deadline);
+        const year = deadlineDate.getFullYear().toString().slice(-2);
+        const month = (deadlineDate.getMonth() + 1).toString().padStart(2, "0");
+        const day = deadlineDate.getDate().toString().padStart(2, "0");
+        return `${month}/${day}/${year}`;
+    }
+}

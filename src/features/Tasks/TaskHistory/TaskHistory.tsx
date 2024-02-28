@@ -1,24 +1,31 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Card from '../../../components/Card/Card';
-import { selectCompletedTasks } from '../../../store/TasksSlice';
+import { selectHistoryTasks } from '../../../store/TasksSlice';
 import { useSelector } from 'react-redux';
 import { TaskItem } from '../TaskItem/TaskItem';
 import "./TaskHistory.css";
 import { IoArrowBackOutline } from "react-icons/io5";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Task } from '../../../types/Types';
 import { ViewTask } from '../ViewTask/ViewTask';
+import { selectTotalCoins } from '../../../store/RewardsSlice';
+import { FaCoins } from 'react-icons/fa';
 
 export const TaskHistory = () => {
-    const completedTasks = useSelector(selectCompletedTasks);
+    const historyTasks = useSelector(selectHistoryTasks);
+    const totalCoins = useSelector(selectTotalCoins)
     const [ viewHistoryTask, setViewHistoryTask ] = useState(false);
-    const [ selectedTask, setSelectedTask ] = useState({
+    const [ selectedTask, setSelectedTask ] = useState<Task>({
         name: "",
         notes: "",
         coinReward: 0,
-        id: ""
+        id: "",
+        deadline: "",
+        coinPenalty: 0,
+        overdue: false
     })
     const overlayRef = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
 
     const handleViewHistoryTask = (task: Task) => {
         setViewHistoryTask(true);
@@ -39,6 +46,12 @@ export const TaskHistory = () => {
         };
     }, []);
 
+    useEffect(() => {
+        if (historyTasks.length === 0) {
+            navigate('../tasks'); // Use navigate to navigate
+        }
+    }, [historyTasks, navigate]);
+
     const handleHideTask = () => {
         setViewHistoryTask(false);
     }
@@ -47,8 +60,11 @@ export const TaskHistory = () => {
         <>
         <Link to="../tasks"><IoArrowBackOutline className="back-icon" /></Link>
          <Card className="tasks-container">
-            <h1> Task History </h1>
-            {completedTasks.map((task, index) => (
+         <div className="coin-count-header">
+                    <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
+                </div>
+            <h1 id="task-history-heading"> TASK HISTORY </h1>
+            {historyTasks.map((task, index) => (
                 <TaskItem 
                     key={index}
                     task={task}

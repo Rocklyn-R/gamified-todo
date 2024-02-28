@@ -9,54 +9,33 @@ export const TasksSlice = createSlice({
     initialState: {
         tasks: [
             {
-            name: "Wash the dishes",
-            notes: "This one might be tough",
-            coinReward: 50,
-            id: '1234'
-        },
-        {
-            name: "Wash a load of laundry",
-            notes: "Hard One",
+                name: "Wash the dishes",
+                notes: "This one might be tough",
+                coinReward: 50,
+                id: '1234',
+                deadline: "2024-02-25T22:59:59.999Z",
+                coinPenalty: 0,
+                overdue: false
+            },
+            {
+                name: "New",
+                notes: "hard task",
+                coinReward: 100,
+                id: "13132",
+                deadline: "2024-02-27T22:59:59.999Z",
+                coinPenalty: 15,
+                overdue: false
+            }] as Task[],
+        historyTasks: [{
+            name: "New",
+            notes: "hard task",
             coinReward: 100,
-            id: '12134'
-        },
-        {
-            name: "Wash the dishes",
-            notes: "This one might be tough",
-            coinReward: 50,
-            id: '1234'
-        },
-        {
-            name: "Wash a load of laundry",
-            notes: "Hard One",
-            coinReward: 100,
-            id: '12133'
-        },
-        {
-            name: "Wash the dishes",
-            notes: "This one might be tough",
-            coinReward: 50,
-            id: '123433'
-        },
-        {
-            name: "Wash a load of laundry",
-            notes: "Hard One",
-            coinReward: 100,
-            id: '1213242'
-        },
-        {
-            name: "Wash the dishes",
-            notes: "This one might be tough",
-            coinReward: 50,
-            id: '12341414'
-        },
-        {
-            name: "Wash a load of laundry",
-            notes: "Hard One",
-            coinReward: 100,
-            id: '121314123'
-        }] as Task[],
-        completedTasks: []
+            id: "13132",
+            deadline: "2024-02-23T22:59:59.999Z",
+            coinPenalty: 15,
+            overdue: false
+        }],
+        overdueTasks: []
     } as TasksState,
 
     reducers: {
@@ -76,26 +55,77 @@ export const TasksSlice = createSlice({
         },
 
         completeTask: (state, action: PayloadAction<Task>) => {
+            const completedTaskIndex = state.tasks.findIndex(task => task.id === action.payload.id);
+            state.tasks[completedTaskIndex].overdue = false;
             const completedTask = state.tasks.find(task => task.id === action.payload.id)
             state.tasks = state.tasks.filter(task => task.id !== action.payload.id);
-            
+
             if (completedTask) {
-                state.completedTasks.unshift(completedTask);
+                state.historyTasks.unshift(completedTask);
             }
         },
 
         undoCompleteTask: (state, action: PayloadAction<Task>) => {
-            const taskToUndo = state.completedTasks.find(task => task.id === action.payload.id);
-            state.completedTasks = state.completedTasks.filter(task => task.id !== action.payload.id);
+            const taskToUndo = state.historyTasks.find(task => task.id === action.payload.id);
+            state.historyTasks = state.historyTasks.filter(task => task.id !== action.payload.id);
 
             if (taskToUndo) {
                 state.tasks.unshift(taskToUndo);
             }
-            
+
         },
 
         deleteTaskFromHistory: (state, action: PayloadAction<Task>) => {
-            state.completedTasks = state.completedTasks.filter(task => task.id !== action.payload.id);
+            state.historyTasks = state.historyTasks.filter(task => task.id !== action.payload.id);
+        },
+
+        markAsOverDue: (state, action: PayloadAction<Task>) => {
+            const { id } = action.payload;
+
+            const taskToMarkOverdue = state.tasks.find(task => task.id === id);
+
+            if (taskToMarkOverdue) {
+
+                taskToMarkOverdue.overdue = true;
+
+                state.tasks = state.tasks.filter(task => task.id !== id);
+
+                state.overdueTasks.unshift(taskToMarkOverdue);
+            }
+        },
+
+        completeOverdueTask: (state, action: PayloadAction<Task>) => {
+            const completedTaskIndex = state.overdueTasks.findIndex(task => task.id === action.payload.id);
+            state.overdueTasks[completedTaskIndex].overdue = false;
+            const completedTask = state.overdueTasks.find(task => task.id === action.payload.id);
+            state.overdueTasks = state.overdueTasks.filter(task => task.id !== action.payload.id);
+
+            if (completedTask) {
+                state.historyTasks.unshift(completedTask);
+            }
+
+        },
+
+        moveOverdueToHistory: (state, action: PayloadAction<Task>) => {
+            const taskToMove = state.overdueTasks.find(task => task.id === action.payload.id);
+            if (taskToMove) {
+                state.historyTasks.unshift(taskToMove)
+            };
+            state.overdueTasks = state.overdueTasks.filter(task => task.id !== action.payload.id);
+        },
+
+        completeOverdueHistoryTask: (state, action: PayloadAction<Task>) => {
+            const taskIndex = state.historyTasks.findIndex(task => task.id === action.payload.id);
+            if (taskIndex !== -1) {
+                state.historyTasks[taskIndex].overdue = false;
+            }
+        },
+
+        markHistoryTaskAsOverdue: (state, action: PayloadAction<Task>) => {
+            const taskIndex = state.historyTasks.findIndex(task => task.id === action.payload.id);
+            if (taskIndex !== -1) {
+                state.historyTasks[taskIndex].overdue = true;
+            }
         }
     }
 })
@@ -106,9 +136,15 @@ export const {
     deleteTask,
     completeTask,
     undoCompleteTask,
-    deleteTaskFromHistory
+    deleteTaskFromHistory,
+    markAsOverDue,
+    completeOverdueTask,
+    moveOverdueToHistory,
+    completeOverdueHistoryTask,
+    markHistoryTaskAsOverdue
 } = TasksSlice.actions;
 
 export const selectTasks = (state: RootState) => state.tasks.tasks;
-export const selectCompletedTasks = (state: RootState) => state.tasks.completedTasks;
+export const selectHistoryTasks = (state: RootState) => state.tasks.historyTasks;
+export const selectOverdueTasks = (state: RootState) => state.tasks.overdueTasks;
 export default TasksSlice.reducer;

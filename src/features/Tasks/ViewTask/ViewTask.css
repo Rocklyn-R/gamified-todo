@@ -56,5 +56,29 @@
     cursor: pointer;
 }
 
+#penalty-text {
+    color: red;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
 
+.coin-reward-text {
+    color: green;
+}
+
+.hide-coin-reward {
+    display: none;
+}
+
+.hide-penalty-text {
+    display: none;
+}
+
+.view-coin-text, .view-penalty-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 

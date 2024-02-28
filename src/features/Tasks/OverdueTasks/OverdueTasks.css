@@ -1,0 +1,29 @@
+.overdue-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: fit-content;
+    background-color: #135382;
+    color: aliceblue;
+}
+
+
+
+.show-overdue-arrow {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    color: lightblue
+}
+
+.show-overdue-arrow:hover {
+    color: pink;
+}
+
+.accept-penalty {
+    margin-top: 2rem;
+}

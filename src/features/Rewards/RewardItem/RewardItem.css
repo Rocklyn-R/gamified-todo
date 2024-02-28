@@ -8,6 +8,7 @@
 .view-reward p {
     margin: 0;
     padding: 0;
+    text-align: start;
 }
 
 .view-reward img {
@@ -24,11 +25,13 @@
 
 .reward-item {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    width: 100%;
 }
 
 .icon-with-details {
     display: flex;
+    align-items: center;
 }
 
 .reward-description {
@@ -38,4 +41,8 @@
 .reward-quantity {
     margin-left: 4rem;
     font-size: .8rem;
+}
+
+#reward-quantity {
+    text-align: end;
 }

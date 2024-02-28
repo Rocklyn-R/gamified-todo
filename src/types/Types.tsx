@@ -3,11 +3,15 @@ export interface Task {
     notes: string;
     coinReward: number;
     id: string;
+    deadline: string;
+    coinPenalty: number;
+    overdue: boolean;
 }
 
 export interface TasksState {
     tasks: Task[];
-    completedTasks: Task[];
+    historyTasks: Task[];
+    overdueTasks: Task[];
 }
 
 export interface InventoryItem {

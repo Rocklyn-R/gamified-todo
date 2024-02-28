@@ -14,3 +14,12 @@
     cursor: pointer;
 }
 
+.tasks-container h1 {
+    margin: 0;
+}
+
+#task-history-heading {
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: aliceblue;
+}

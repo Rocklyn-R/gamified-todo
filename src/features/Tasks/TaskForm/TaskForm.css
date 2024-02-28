@@ -29,11 +29,15 @@
     text-align: start;
 }
 
-.form-container input {
+.form-container input, #deadline {
     margin-bottom: 1.5rem;
 }
 
-#notes, #task-name, #coin-reward, #item-name, #price, #description {
+.deadline-box {
+    width: 100%;
+}
+
+#notes, #task-name, #coin-reward, #item-name, #price, #description, #deadline, #penalty {
     width: 70%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -58,4 +62,16 @@
 }
 
 
+.selected-deadline {
+    display: flex;
+    align-items: center;
+    margin-top: -1.5rem;
+}
 
+.selected-deadline button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}

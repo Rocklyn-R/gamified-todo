@@ -9,7 +9,6 @@
 }
 
 .date-box {
-    margin-bottom: 1rem;
     background-color: #135382;
     padding: 1rem;
     /* Add padding for spacing */
@@ -38,15 +37,6 @@
     flex-direction: column;
     width: 70%;
 }
-
-.to-do-element {
-    display: flex;
-    margin-bottom: 1rem;
-    justify-content: space-between;
-    width: 100%;
-}
-
-
 
 .view-task {
     width: 85%;
@@ -99,7 +89,7 @@
     font-size: 1.3em;
 }
 
-.overlay {
+.overlay, .overdue-task-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -113,3 +103,4 @@
     z-index: 1000;
     /* Ensure it appears above other content */
 }
+

@@ -60,11 +60,10 @@ export const InventoryPage = () => {
                         <Link to="/inventory/history" ><GrHistory className='history-icon' /></Link>
                     </div>
                 )}
-
+                <Card className="inventory-box">
                 <div className="coin-count-header">
                     <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
                 </div>
-                <Card className="inventory-box">
                     <h1>Inventory:</h1>
                     {inventory.length === 0 && (
                         <p className="inventory-empty-message">Inventory empty! Create and buy rewards in the shop!</p>

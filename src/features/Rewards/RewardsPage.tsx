@@ -62,12 +62,10 @@ export const RewardsPage = () => {
 
     return (
         <>
-
-            <div className='rewards-container'>
+                <Card className="rewards-box">
                 <div className="coin-count-header">
                     <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
                 </div>
-                <Card className="rewards-box">
                     <h1>Rewards Shop:</h1>
                     {shopItems.map((item, index) =>
                         <RewardItem reward={item} index={index} handleViewReward={handleViewReward} inventory={false} />
@@ -97,7 +95,6 @@ export const RewardsPage = () => {
                 <div className="add-reward">
                     <button onClick={() => handleAddNewItem()}><IoIosAddCircleOutline /></button>
                 </div>
-            </div>
         </>
 
 

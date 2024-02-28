@@ -9,8 +9,12 @@ import "./ViewTask.css"
 import { TaskForm } from "../TaskForm/TaskForm";
 import { DeleteMessage } from "../../../components/DeleteMessage/DeleteMessage";
 import { selectTasks } from "../../../store/TasksSlice";
-import { undoCompleteTask } from "../../../store/TasksSlice";
+import { undoCompleteTask, completeOverdueHistoryTask, markHistoryTaskAsOverdue } from "../../../store/TasksSlice";
 import { subtractCoins } from "../../../store/RewardsSlice";
+import { formatDeadline } from "../../../utilities/utilities";
+import { addToCoins } from "../../../store/RewardsSlice";
+import { parseISO, isAfter } from "date-fns";
+
 
 interface ViewTaskProps {
     selectedTask: Task,
@@ -42,8 +46,26 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
     }
 
     const handleUndoComplete = (task: Task) => {
-        dispatch(undoCompleteTask(task));
-        dispatch(subtractCoins(task.coinReward));
+        const now = new Date();
+        const deadline = parseISO(task.deadline);
+
+        if (isAfter(deadline, now)) {
+            dispatch(undoCompleteTask(task));
+            dispatch(subtractCoins(task.coinReward));
+        } else {
+            dispatch(markHistoryTaskAsOverdue(task));
+            dispatch(subtractCoins(task.coinReward));
+            dispatch(subtractCoins(task.coinPenalty));
+        }
+
+
+        handleHideTask();
+    }
+
+    const handleCompleteOverdueHistoryTask = (task: Task) => {
+        dispatch(completeOverdueHistoryTask(task));
+        dispatch(addToCoins(task.coinPenalty));
+        dispatch(addToCoins(task.coinReward));
         handleHideTask();
     }
 
@@ -56,7 +78,9 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
         if (!allTasks.includes(selectedTask)) {
             setSelectedTaskDeleted(true);
         }
-    }, [allTasks, selectedTask, history])
+    }, [allTasks, selectedTask, history]);
+
+
 
 
 
@@ -94,31 +118,40 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
                     <p>
                         Name: {selectedTask.name}
                     </p>
-                    <p>
-                        {selectedTask.notes && `Notes: ${selectedTask.notes}`}
-                    </p>
-                    <p>
+
+                    {selectedTask.notes && (
+                        <p>Notes: {selectedTask.notes}</p>
+                    )}
+                    {selectedTask.deadline && (
+                        <p>Deadline: {formatDeadline(selectedTask.deadline)}</p>
+                    )}
+                    <p className={(history && selectedTask.overdue) ? "hide-coin-reward" : (history && !selectedTask.overdue) ? "coin-reward-text" : "view-coin-text"}>
                         Coin Reward: <FaCoins className="coins-icon" />{selectedTask.coinReward}
                     </p>
-                    {history && 
+
+                    <p className={(history && selectedTask.overdue) ? "penalty-text" : (history && !selectedTask.overdue) ? "hide-penalty-text" : "view-penalty-text"}>Penalty: <FaCoins className="coins-icon" /> {selectedTask.coinPenalty} </p>
+
+                    {(history && !selectedTask.overdue) &&
                         <button className="undo-complete" onClick={() => handleUndoComplete(selectedTask)}>
                             Undo completion
                         </button>}
-
-
-                     </Card>
+                    {(history && selectedTask.overdue) &&
+                        <button className="undo-complete" onClick={() => handleCompleteOverdueHistoryTask(selectedTask)}>
+                            Change to Completed
+                        </button>}
+                </Card>
             }
-        
-                    {showDeleteMessage && editTask &&
-                            <DeleteMessage
-                                hideDeleteMessage={hideDeleteMessage}
-                                selectedTask={selectedTask}
-                                history={history}
-                                handleHideTask={handleHideTask}
-                            />
 
-                    }
-           
+            {showDeleteMessage && editTask &&
+                <DeleteMessage
+                    hideDeleteMessage={hideDeleteMessage}
+                    selectedTask={selectedTask}
+                    history={history}
+                    handleHideTask={handleHideTask}
+                />
+
+            }
+
             {editTask && !showDeleteMessage &&
                 <TaskForm
                     selectedTask={selectedTask}
