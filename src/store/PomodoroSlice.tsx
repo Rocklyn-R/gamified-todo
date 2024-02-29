@@ -25,9 +25,6 @@ export const PomodoroSlice = createSlice({
         pause: (state) => {
             state.isPaused = true;
         },
-        setMode: (state, action) => {
-
-        },
         tick: (state) => {
             if (state.isPaused) {
                 return;

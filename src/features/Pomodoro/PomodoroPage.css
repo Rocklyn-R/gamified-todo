@@ -2,6 +2,10 @@
     background-color: #135382;
 }
 
+.pomodoro-container h1 {
+    color: aliceblue;
+}
+
 .settings-button {
     background-color: transparent;
     border: none;
@@ -20,8 +24,23 @@
 
 
 .pomodoro-button {
-    margin-top: 2rem;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    color: aliceblue;
+    display: flex;
+    border-radius: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.pomodoro-icon {
+    margin-bottom: .3rem;
+    margin-right: .5rem;
+}
+
+#mode-string {
+    color: aliceblue;
 }
