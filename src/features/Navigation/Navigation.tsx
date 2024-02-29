@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Navigation.css";
 import { Link } from 'react-router-dom';
-import tomatoImg from "../../images/tomato.png"
+import tomato from "../../images/tomato.png"
 import { FaTasks } from "react-icons/fa";
 import lightbulb from "../../images/lightbulb.svg"
 import gift from "../../images/gift.png";
@@ -19,7 +19,7 @@ export const Navigation = () => {
                     <span className="nav-text">Tasks</span>
                 </Link></li>
                 <li><Link to="/pomodoro">
-                    <img alt="" src={tomatoImg} width="24" height="24" />
+                    <img alt="" src={tomato} width="24" height="24" />
                     <span className="nav-text">Pomodoro</span>
                 </Link>
                 </li>
