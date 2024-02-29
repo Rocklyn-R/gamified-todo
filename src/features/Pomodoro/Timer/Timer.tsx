@@ -4,8 +4,23 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa6";
+import { FaStop } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { selectIsPaused, play, pause, tick, selectSecondsLeft, selectWorkMinutes, selectBreakMinutes, selectMode } from "../../../store/PomodoroSlice";
+import { 
+    selectIsPaused, 
+    play, 
+    pause, 
+    tick, 
+    selectSecondsLeft, 
+    selectWorkMinutes, 
+    selectBreakMinutes, 
+    selectMode,
+    reset,
+    skip
+} from "../../../store/PomodoroSlice";
+import { IoPlaySkipForward } from "react-icons/io5";
+import { BsFillSkipEndFill } from "react-icons/bs";
+
 
 let intervalId: any = null;
 
@@ -23,6 +38,9 @@ export const Timer = () => {
         
         if (isPaused) {
             clearInterval(intervalId);
+            console.log(mode);
+            console.log(secondsLeft);
+            console.log(totalSeconds);
         }
     }, [isPaused]);
 
@@ -54,6 +72,14 @@ export const Timer = () => {
         startTimer();
     }
 
+    const resetTimer = () => {
+        dispatch(reset());
+    }
+
+    const skipTimer = () => {
+        dispatch(skip());
+    }
+
 
 
      const totalSeconds = mode === "work" ? workMinutes * 60 : breakMinutes * 60;
@@ -82,6 +108,10 @@ export const Timer = () => {
                     trailColor: "rgb(240,248,255)"
                 })} />
             <div className="control-timer-buttons">
+            <button 
+            className="play-button"
+            onClick={resetTimer}
+            ><FaStop className="control-icon" /></button>
                 {isPaused &&
                     <button
                         className="play-button"
@@ -89,7 +119,10 @@ export const Timer = () => {
                     >
                         <FaPlay className="control-icon" /></button>}
                 {!isPaused && <button className="play-button" onClick={pauseTimer}><FaPause className="control-icon" /></button>}
-
+                <button 
+                className="play-button"
+                onClick={skipTimer}
+                ><BsFillSkipEndFill className="play-button" /></button>
             </div>
 
         </div>

@@ -42,6 +42,24 @@ export const PomodoroSlice = createSlice({
             } else {
                 state.secondsLeft = state.secondsLeft - 1;
             }
+        },
+        reset: (state) => {
+            state.isPaused = true;
+            if (state.mode === "work") {
+                state.secondsLeft = state.workMinutes * 60;
+            } else {
+                state.secondsLeft = state.breakMinutes * 60;
+            }
+        },
+        skip: (state) => {
+            state.isPaused = true;
+            if (state.mode === "work") {
+                state.mode = "break";
+                state.secondsLeft = state.breakMinutes * 60;
+            } else {
+                state.mode = "work";
+                state.secondsLeft = state.workMinutes * 60;
+            }
         }
     }
 })
@@ -51,7 +69,9 @@ export const {
     setBreakMinutes,
     play,
     pause,
-    tick
+    tick,
+    reset,
+    skip
 } = PomodoroSlice.actions
 
 export const selectWorkMinutes = (state: RootState) => state.pomodoro.workMinutes;
