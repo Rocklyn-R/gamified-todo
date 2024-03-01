@@ -4,7 +4,7 @@ import Card from "../../components/Card/Card";
 import { Timer } from "./Timer/Timer";
 import { IoIosSettings } from "react-icons/io";
 import { Settings } from "./Settings/Settings";
-import tomato from "../../images/pomodoro.png";
+import tomato from "../../images/tomato-svgrepo-com.png"
 import { useSelector } from "react-redux";
 import { selectIsPaused, selectMode, selectPomodoros } from "../../store/PomodoroSlice";
 
