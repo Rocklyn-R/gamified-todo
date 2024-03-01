@@ -18,7 +18,6 @@ import {
     reset,
     skip
 } from "../../../store/PomodoroSlice";
-import { IoPlaySkipForward } from "react-icons/io5";
 import { BsFillSkipEndFill } from "react-icons/bs";
 
 
@@ -38,10 +37,8 @@ export const Timer = () => {
         
         if (isPaused) {
             clearInterval(intervalId);
-            console.log(mode);
-            console.log(secondsLeft);
-            console.log(totalSeconds);
         }
+        
     }, [isPaused]);
 
 
