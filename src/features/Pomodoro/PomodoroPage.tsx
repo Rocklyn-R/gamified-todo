@@ -4,9 +4,10 @@ import Card from "../../components/Card/Card";
 import { Timer } from "./Timer/Timer";
 import { IoIosSettings } from "react-icons/io";
 import { Settings } from "./Settings/Settings";
-import tomato from "../../images/tomato-svgrepo-com.png"
+import tomato from "../../images/tomato.png"
 import { useSelector } from "react-redux";
 import { selectIsPaused, selectMode, selectPomodoros } from "../../store/PomodoroSlice";
+import { PomodoroForm } from "./PomodoroForm/PomodoroForm";
 
 export const PomodoroPage = () => {
     const [showSettings, setShowSettings] = useState(false);
@@ -14,6 +15,7 @@ export const PomodoroPage = () => {
     const pomodoros = useSelector(selectPomodoros);
     const isPaused = useSelector(selectIsPaused);
     const mode = useSelector(selectMode);
+    const [showSellPomodoros, setShowSellPomodoros] = useState(false);
 
 
     const handleOpenSettings = () => {
@@ -23,6 +25,7 @@ export const PomodoroPage = () => {
     const handleOverlayClick = (event: MouseEvent) => {
         if (event.target === overlayRef.current) {
             setShowSettings(false);
+            setShowSellPomodoros(false);
         }
     };
 
@@ -42,30 +45,45 @@ export const PomodoroPage = () => {
 
     const modeString = mode === "work" ? "Work Session" : "Break Session"
 
+    const handleShowSellPomodoros = () => {
+        setShowSellPomodoros(true);
+    }
+
+    const hideShowSellPomodoros = () => {
+        setShowSellPomodoros(false);
+    }
+
     return (
 
         <Card className="pomodoro-container">
             <h1>POMODORO TIMER</h1>
             {isPaused && (
-                  <button
-                className="settings-button"
-                onClick={handleOpenSettings}
-            >
-                <IoIosSettings className="settings-icon" /></button>
+                <button
+                    className="settings-button"
+                    onClick={handleOpenSettings}
+                >
+                    <IoIosSettings className="settings-icon" /></button>
             )}
-          
 
-                <Timer />
-                {showSettings && (
-                    <div className="overlay" ref={overlayRef}>
-                        <Settings handleCloseSettings={handleCloseSettings} />
-                    </div>
-                )}
-                <button className="pomodoro-button">
+
+            <Timer />
+            {showSettings && (
+                <div className="overlay" ref={overlayRef}>
+                    <Settings handleCloseSettings={handleCloseSettings} />
+                </div>
+            )}
+
+            <button className="pomodoro-button" onClick={handleShowSellPomodoros}>
                 <img alt="" src={tomato} className="pomodoro-icon" height="30" width="30" />
                 <p>{pomodoros}</p>
-                </button>
-                    <p id="mode-string">{modeString}</p>
+            </button>
+            {showSellPomodoros && (
+                <div className="overlay" ref={overlayRef}>
+                    <PomodoroForm hideForm={hideShowSellPomodoros} />
+                </div>
+            )}
+
+            <p id="mode-string">{modeString}</p>
         </Card>
     )
 }

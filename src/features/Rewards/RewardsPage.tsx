@@ -66,7 +66,7 @@ export const RewardsPage = () => {
                 <div className="coin-count-header">
                     <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
                 </div>
-                    <h1>Rewards Shop:</h1>
+                    <h1>REWARDS SHOP:</h1>
                     {shopItems.map((item, index) =>
                         <RewardItem reward={item} index={index} handleViewReward={handleViewReward} inventory={false} />
                     )}

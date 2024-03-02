@@ -33,7 +33,7 @@ export const RewardsSlice = createSlice({
                 description: "2 hour long",
                 id: "12423",
                 icon: "gift",
-                dateUsed: "02/14/14"
+                dateUsed: "02/14/2014"
             },
             {
                 name: "Movie",
@@ -41,7 +41,7 @@ export const RewardsSlice = createSlice({
                 description: "2 hour long",
                 id: "12423",
                 icon: "gift",
-                dateUsed: "02/14/14"
+                dateUsed: "02/14/2014"
             }
         ]
     } as RewardsState,
@@ -98,8 +98,8 @@ export const RewardsSlice = createSlice({
 
         spendReward: (state, action: PayloadAction<InventoryItem>) => {
             const existingItemIndex = state.inventory.findIndex(item => item.id === action.payload.id);
-            if (existingItemIndex !== -1) {
-                state.inventory[existingItemIndex].quantity -=1;
+            if (existingItemIndex !== -1 && state.inventory[existingItemIndex].quantity > 1) {
+                    state.inventory[existingItemIndex].quantity -=1;
             } else {
                 state.inventory = state.inventory.filter(item => item.id !== action.payload.id);
             }

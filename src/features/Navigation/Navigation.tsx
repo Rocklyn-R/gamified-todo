@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Navigation.css";
 import { Link } from 'react-router-dom';
-import tomato from "../../images/tomato-svgrepo-com.png"
+import tomato from "../../images/tomato.png"
 import { FaTasks } from "react-icons/fa";
 import lightbulb from "../../images/lightbulb.svg"
 import gift from "../../images/gift.png";
