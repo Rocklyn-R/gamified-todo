@@ -45,7 +45,7 @@ export const DeleteMessage: React.FC<DeleteMessageProps> = ({
     }
 
     return (
-        <Card >
+        <Card className="delete-message-container" >
             <h4>Delete</h4>
             {selectedTask && <p>Do you really wish to delete this task{history && " from your history"}?</p>}
             {selectedReward && <p>Do you really wish to delete this item?</p>}

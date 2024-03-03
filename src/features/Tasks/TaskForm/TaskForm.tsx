@@ -40,6 +40,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
             setNotes(selectedTask.notes);
             setCoinReward(selectedTask.coinReward);
             setPenalty(selectedTask.coinPenalty);
+            
         }
     }, [isEditMode, selectedTask]);
 

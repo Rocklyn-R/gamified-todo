@@ -7,3 +7,7 @@
     margin-right: 1rem;
     cursor: pointer;
 }
+
+.delete-message-container {
+    padding: 20px;
+}
