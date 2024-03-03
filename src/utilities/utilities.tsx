@@ -71,7 +71,7 @@ export const formatDeadline = (deadline: string) => {
 
     const deadlineDateString = deadline.slice(0, 10);
 
-      const yesterday = new Date();
+    const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     const yesterdayString = yesterday.toISOString().slice(0, 10);
 
@@ -88,4 +88,24 @@ export const formatDeadline = (deadline: string) => {
         const day = deadlineDate.getDate().toString().padStart(2, "0");
         return `${month}/${day}/${year}`;
     }
+}
+
+export const convertDateToString = (value: string) => {
+    const today = new Date();
+    today.setHours(23, 59, 59, 999);
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(23, 59, 59, 999);
+    if (value === "today") {
+        const isoString = today.toISOString();
+        return isoString;
+    } else if (value === "tomorrow") {
+        const isoString = tomorrow.toISOString();
+        console.log(isoString);
+        return isoString;
+    } else if (value === "nodeadline") {
+        return ""
+    } else return ""
+
 }

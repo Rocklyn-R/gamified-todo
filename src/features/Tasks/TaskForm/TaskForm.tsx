@@ -8,8 +8,8 @@ import { v4 as uuidv4 } from "uuid";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { FaRegEdit } from "react-icons/fa";
-
-
+import { convertDateToString } from '../../../utilities/utilities';
+import { formatDeadline } from '../../../utilities/utilities';
 
 
 interface TaskFormProps {
@@ -25,11 +25,11 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
     const [taskName, setTaskName] = useState("");
     const [notes, setNotes] = useState('');
     const [deadlineOption, setDeadlineOption] = useState("");
-    const [deadline, setDeadline] = useState<Date | null>(null);
+    const [deadline, setDeadline] = useState<string | null>(null);
     const [coinReward, setCoinReward] = useState(0);
     const [submitError, setSubmitError] = useState(false);
     const [penalty, setPenalty] = useState(0);
-   
+
     const overlayRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -40,7 +40,17 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
             setNotes(selectedTask.notes);
             setCoinReward(selectedTask.coinReward);
             setPenalty(selectedTask.coinPenalty);
-            
+            if (selectedTask.deadline === "") {
+                setDeadlineOption("nodeadline");
+            } else if (selectedTask.deadline === convertDateToString("tomorrow")) {
+                setDeadlineOption("tomorrow")
+            } else if (selectedTask.deadline === convertDateToString("today")) {
+                setDeadlineOption("today");
+            } else {
+                setDeadlineOption("custom");
+                setDeadline(selectedTask.deadline);
+            }
+
         }
     }, [isEditMode, selectedTask]);
 
@@ -48,16 +58,18 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
 
     const handleSelectDeadlineOption = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setDeadlineOption(event.target.value);
-        console.log(event.target.value);
         if (event.target.value === "today") {
             const today = new Date();
             today.setHours(23, 59, 59, 999);
-            setDeadline(today);
+            const todayString = today.toISOString();
+            setDeadline(todayString);
         } else if (event.target.value === "tomorrow") {
             const tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
             tomorrow.setHours(23, 59, 59, 999);
-            setDeadline(tomorrow);
+            const tomorrowString = tomorrow.toISOString();
+            setDeadline(tomorrowString);
+
         } else {
             setDeadline(null);
         }
@@ -71,7 +83,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const taskDeadline = deadline ? deadline.toISOString() : ""
+        const taskDeadline = deadline ? deadline : ""
         if (!isEditMode) {
             dispatch(setTasks({
                 name: taskName,
@@ -93,7 +105,6 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                 coinPenalty: penalty,
                 overdue: false
             }))
-            console.log(deadline)
             handleHideTask();
         }
 
@@ -137,7 +148,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
                 />
-                 <label htmlFor='coin-reward'>Coin Reward:</label>
+                <label htmlFor='coin-reward'>Coin Reward:</label>
                 <input
                     placeholder='Coin Reward'
                     id="coin-reward"
@@ -159,40 +170,41 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                 </select>
                 {deadlineOption === 'custom' && !deadline && (
                     <div className='overlay' ref={overlayRef}>
-                        <Calendar 
-                        minDate={new Date()}
-                        value={deadline} 
-                        onChange={(date) => {
-                            if (date instanceof Date) {
-                                date.setHours(23, 59, 59, 999);
-                                setDeadline(date);
-                                console.log(date);
-                            }
-                        }} />
+                        <Calendar
+                            minDate={new Date()}
+                            value={deadline}
+                            onChange={(date) => {
+                                if (date instanceof Date) {
+                                    date.setHours(23, 59, 59, 999);
+                                    const dateString = date.toISOString();
+                                    setDeadline(dateString);
+                                    console.log(dateString);
+                                }
+                            }} />
                     </div>
                 )}
                 {deadline && deadlineOption === "custom" &&
-                <div className='selected-deadline'>
-                 <p>{deadline.toLocaleDateString()}</p>
-                <button 
-                onClick={handleEditDeadline}
-                type="button">
-                    <FaRegEdit />
-                    </button>
-                </div>
-               
+                    <div className='selected-deadline'>
+                        <p>{formatDeadline(deadline)}</p>
+                        <button
+                            onClick={handleEditDeadline}
+                            type="button">
+                            <FaRegEdit />
+                        </button>
+                    </div>
+
                 }
                 {(deadlineOption === "today" || deadlineOption === "tomorrow" || deadlineOption === "custom") && (
                     <>
-                    <label>Coin Penalty: (optional)</label>
-                    <input 
-                        id='penalty'
-                        type="number"
-                        value={penalty}
-                        onChange={(e) => setPenalty(parseInt(e.target.value, 10))}
-                    />
+                        <label>Coin Penalty: (optional)</label>
+                        <input
+                            id='penalty'
+                            type="number"
+                            value={penalty}
+                            onChange={(e) => setPenalty(parseInt(e.target.value, 10))}
+                        />
                     </>
-                    
+
                 )}
                 <button type="submit" value="Submit" className="command-button">{selectedTask ? "Done editing" : "Create task"}</button>
 
