@@ -22,7 +22,7 @@
     color: #135382;
     font-family: "Nunito", sans-serif;
     font-size: 1rem;
-    background: linear-gradient(to bottom right, aliceblue, #97c8ed);
+    background: linear-gradient(to bottom right, aliceblue, #6fa8dc);
     padding: 10px;
    
 }
@@ -31,6 +31,26 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+
+.overdue-task-button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 12rem;
+    max-width: 15rem;
+    background-color: #135382;
+    border: none;
+    color: aliceblue;
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+    border-radius: .4rem;
+    padding: 10px;
+}
+
+.overdue-task-button:hover {
+    background-color: #0c3d63;
 }
 
 
@@ -61,7 +81,7 @@
 }
 
 #overdue-text {
-    color: red;
+    color: #c11b1d;
     font-weight: bolder;
     font-size: 1rem;
     margin: 0;

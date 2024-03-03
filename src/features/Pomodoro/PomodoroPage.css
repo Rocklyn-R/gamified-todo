@@ -1,9 +1,16 @@
 .pomodoro-container {
     background-color: #135382;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
 }
 
 .pomodoro-container h1 {
     color: aliceblue;
+    margin: 0;
+    font-size: 2rem;
 }
 
 .settings-button {
@@ -23,24 +30,6 @@
 }
 
 
-.pomodoro-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: aliceblue;
-    display: flex;
-    border-radius: 2rem;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 3rem;
-}
-
-.pomodoro-icon {
-    margin-bottom: .3rem;
-    margin-right: .5rem;
-}
-
-#mode-string {
-    color: aliceblue;
+#sessions-remaining {
+    margin-top: 2em;
 }

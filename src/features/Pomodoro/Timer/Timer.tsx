@@ -6,39 +6,48 @@ import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa6";
 import { FaStop } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { 
-    selectIsPaused, 
-    play, 
-    pause, 
-    tick, 
-    selectSecondsLeft, 
-    selectWorkMinutes, 
-    selectBreakMinutes, 
+import {
+    selectIsPaused,
+    play,
+    pause,
+    tick,
+    selectSecondsLeft,
+    selectWorkMinutes,
+    selectBreakMinutes,
     selectMode,
     reset,
-    skip
+    skip,
+    selectLongBreakMinutes,
+    selectPomodoros
 } from "../../../store/PomodoroSlice";
 import { BsFillSkipEndFill } from "react-icons/bs";
+import tomato from "../../../images/tomato.png";
 
 
 let intervalId: any = null;
 
-export const Timer = () => {
+interface TimerProps {
+    handleShowSellPomodoros: () => void;
+}
+
+export const Timer: React.FC<TimerProps> = ({ handleShowSellPomodoros }) => {
     const dispatch = useDispatch();
     const isPaused = useSelector(selectIsPaused);
     const mode = useSelector(selectMode);
     const secondsLeft = useSelector(selectSecondsLeft);
     const workMinutes = useSelector(selectWorkMinutes);
     const breakMinutes = useSelector(selectBreakMinutes);
+    const longBreakMinutes = useSelector(selectLongBreakMinutes);
+    const pomodoros = useSelector(selectPomodoros);
 
 
 
     useEffect(() => {
-        
+
         if (isPaused) {
             clearInterval(intervalId);
         }
-        
+
     }, [isPaused]);
 
 
@@ -47,6 +56,7 @@ export const Timer = () => {
     const pauseTimer = () => {
         dispatch(pause());
     };
+
     const startTimer = () => {
         let iterations = 0;
         const maxIterations = secondsLeft;
@@ -58,7 +68,7 @@ export const Timer = () => {
                 intervalId = id;
             }
         }, 1000);
-        intervalId = id; 
+        intervalId = id;
     };
 
 
@@ -79,8 +89,8 @@ export const Timer = () => {
 
 
 
-     const totalSeconds = mode === "work" ? workMinutes * 60 : breakMinutes * 60;
-     const percentage = (secondsLeft / totalSeconds) * 100;
+    const totalSeconds = mode === "work" ? workMinutes * 60 : mode === "break" ? breakMinutes * 60 : longBreakMinutes * 60;
+    const percentage = (secondsLeft / totalSeconds) * 100;
 
     const timeString = (): string => {
         let formattedSeconds = secondsLeft % 60;
@@ -92,10 +102,10 @@ export const Timer = () => {
     }
 
 
-
+    const modeString = mode === "work" ? "Work Session" : mode === "break" ? "Break" : "Long Break";
 
     return (
-        <div>
+        <div className="circular-progressbar-wrapper">
             <CircularProgressbar
                 value={percentage}
                 text={timeString()}
@@ -104,11 +114,16 @@ export const Timer = () => {
                     pathColor: "rgba(111,168,220)",
                     trailColor: "rgb(240,248,255)"
                 })} />
+            <p id="mode-string">{modeString}</p>
+            <button className="pomodoro-button" onClick={handleShowSellPomodoros}>
+                <img alt="" src={tomato} className="pomodoro-icon" height="30" width="30" />
+                <p>{pomodoros}</p>
+            </button>
             <div className="control-timer-buttons">
-            <button 
-            className="play-button"
-            onClick={resetTimer}
-            ><FaStop className="control-icon" /></button>
+                <button
+                    className="play-button"
+                    onClick={resetTimer}
+                ><FaStop className="control-icon" /></button>
                 {isPaused &&
                     <button
                         className="play-button"
@@ -116,9 +131,9 @@ export const Timer = () => {
                     >
                         <FaPlay className="control-icon" /></button>}
                 {!isPaused && <button className="play-button" onClick={pauseTimer}><FaPause className="control-icon" /></button>}
-                <button 
-                className="play-button"
-                onClick={skipTimer}
+                <button
+                    className="play-button"
+                    onClick={skipTimer}
                 ><BsFillSkipEndFill className="play-button" /></button>
             </div>
 

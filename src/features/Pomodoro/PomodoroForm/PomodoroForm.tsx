@@ -30,7 +30,7 @@ export const PomodoroForm: React.FC<PomodoroFormProps> = ({ hideForm }) => {
 
 
     return (
-        <Card className="pomodoro-form-container">
+        <Card className="pomodoro-form-container overlay-card">
             <form onSubmit={confirmPomodoroSale}>
                 {numOfPomodoros > 0 && (
                     <>

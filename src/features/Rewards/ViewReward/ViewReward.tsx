@@ -55,7 +55,7 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
         <>
             {!editMode && (
 
-                <Card className="view-rewards-container">
+                <Card className="view-rewards-container overlay-card">
                     <button
                         className="close"
                         onClick={handleHideReward}

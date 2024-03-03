@@ -9,12 +9,13 @@ interface TaskItemProps {
     task: Task,
     index: number,
     handleViewTaskClick?: (task: Task) => void;
-    history?: boolean
+    history?: boolean,
+    overdue?: boolean
 }
 
 
 
-export const TaskItem: React.FC<TaskItemProps> = ({ task, index, handleViewTaskClick, history }) => {
+export const TaskItem: React.FC<TaskItemProps> = ({ task, index, handleViewTaskClick, history, overdue }) => {
 
 
 
@@ -24,7 +25,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task, index, handleViewTaskC
             {!history && <CompleteTask task={task} />}
             <button
                 key={index}
-                className={"view-task"}
+                className={overdue ? "overdue-task-button" : "view-task"}
                 onClick={() => { if(handleViewTaskClick) {
                      handleViewTaskClick(task)
                 } }}

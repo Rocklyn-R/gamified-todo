@@ -112,11 +112,11 @@ export const Tasks = () => {
                 </div>
             }
             <Card className="tasks-container">
-            <div className="coin-count-header">
-                    <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
-                </div>
                 <div className="date-box">
                     <h1>{formattedDate}</h1>
+                </div>
+                <div className="coin-count-header">
+                    <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
                 </div>
                 <div className='to-do-list'>
                     {tasks.length === 0 && <p>Add new tasks!</p>}

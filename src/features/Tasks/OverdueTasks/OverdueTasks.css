@@ -2,13 +2,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30%;
+    width: fit-content;
     height: fit-content;
-    background-color: #135382;
-    color: aliceblue;
+    background-color: aliceblue;
+    color: #0c3d63;
 }
 
-
+#overdue-tasks-heading {
+    color: #0c3d63;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
 
 .show-overdue-arrow {
     background-color: transparent;

@@ -34,9 +34,10 @@ export const OverdueTasks = () => {
 
 
     return (
-        <Card className="overdue-container">
+        <Card className="overdue-container overlay-card">
+            <h1 id="overdue-tasks-heading">OVERDUE TASKS</h1>
             {overdueTasks.map((task, index) => {
-                return <TaskItem task={task} index={index}
+                return <TaskItem task={task} index={index} overdue={true}
                 />
             })}
             <button 

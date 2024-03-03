@@ -33,9 +33,9 @@ export const CompleteTask: React.FC<CompleteTaskProps> = ({ task }) => {
     }
 
     return (
-        <label className="custom-checkbox">
+        <label className={task.overdue ? "custom-checkbox-overdue" : "custom-checkbox"}>
             <input type="checkbox" checked={isChecked} onChange={handleCompleteTask} />
-            <span className="checkmark"></span>
+            <span className={task.overdue ? "checkmark-overdue" : "checkmark"}></span>
         </label>
     )
 }

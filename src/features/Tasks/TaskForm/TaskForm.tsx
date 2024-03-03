@@ -106,7 +106,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
 
 
     return (
-        <Card className="form-container">
+        <Card className="form-container overlay-card">
             <form onSubmit={handleSubmit}>
                 <button
                     type="button"

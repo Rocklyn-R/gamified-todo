@@ -1,25 +1,7 @@
-.back-icon {
-    position: fixed;
-    top: 3rem;
-    left: 0rem;
-    margin-top: 20px;
-    margin-left: 20px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    font-size: 3rem;
-    color: lightblue;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
 .tasks-container h1 {
     margin: 0;
 }
 
 #task-history-heading {
-    padding: 1rem;
-    font-size: 1.6rem;
     color: aliceblue;
 }

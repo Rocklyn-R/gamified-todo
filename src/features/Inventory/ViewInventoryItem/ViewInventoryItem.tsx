@@ -25,7 +25,7 @@ export const ViewInventoryItem: React.FC<ViewInventoryItemProps> = ({ selectedIn
     }
   
     return (
-        <Card>
+        <Card className="overlay-card">
             <img alt="" src={renderIcon(selectedInventoryItem.icon)} height="40" width="40" />
             <p>Name: {selectedInventoryItem.name}</p>
             {selectedInventoryItem.description && <p>Description: {selectedInventoryItem.description}</p>}

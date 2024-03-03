@@ -18,11 +18,11 @@ export const TasksSlice = createSlice({
                 overdue: false
             },
             {
-                name: "New",
+                name: "Do the Laundry",
                 notes: "hard task",
                 coinReward: 100,
                 id: "13132",
-                deadline: "2024-02-27T22:59:59.999Z",
+                deadline: "2024-03-11T22:59:59.999Z",
                 coinPenalty: 15,
                 overdue: false
             }] as Task[],
@@ -96,7 +96,9 @@ export const TasksSlice = createSlice({
 
         completeOverdueTask: (state, action: PayloadAction<Task>) => {
             const completedTaskIndex = state.overdueTasks.findIndex(task => task.id === action.payload.id);
-            state.overdueTasks[completedTaskIndex].overdue = false;
+            if (completedTaskIndex !== -1) {
+               state.overdueTasks[completedTaskIndex].overdue = false; 
+            }
             const completedTask = state.overdueTasks.find(task => task.id === action.payload.id);
             state.overdueTasks = state.overdueTasks.filter(task => task.id !== action.payload.id);
 

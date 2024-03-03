@@ -3,7 +3,7 @@ import Card from "../../../components/Card/Card";
 import ReactSlider from "react-slider";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectWorkMinutes, selectBreakMinutes, selectPomodoroPrice } from "../../../store/PomodoroSlice";
+import { selectWorkMinutes, selectBreakMinutes, selectPomodoroPrice, selectLongBreakMinutes, selectNumOfSessionsToLongBreak, setLongBreakMinutes, setNumOfSessionsToLongBreak } from "../../../store/PomodoroSlice";
 import { useDispatch } from "react-redux";
 import { setWorkMinutes, setBreakMinutes, setSellingPrice } from "../../../store/PomodoroSlice";
 import { FaCoins } from "react-icons/fa";
@@ -15,8 +15,12 @@ interface SettingsProps {
 export const Settings: React.FC<SettingsProps> = ({handleCloseSettings}) => {
     const workMinutes = useSelector(selectWorkMinutes);
     const breakMinutes = useSelector(selectBreakMinutes);
+    const longBreakMinutes = useSelector(selectLongBreakMinutes);
+    const numOfSessionsToLongBreak = useSelector(selectNumOfSessionsToLongBreak);
     const [workMinutesLocal, setWorkMinutesLocal] = useState(workMinutes);
     const [breakMinutesLocal, setBreakMinutesLocal] = useState(breakMinutes);
+    const [longBreakMinutesLocal, setLongBreakMinutesLocal] = useState(longBreakMinutes);
+    const [numOfSessionsToLongBreakLocal, setNumOfSessionsToLongBreakLocal] = useState(numOfSessionsToLongBreak);
     const pomodoroPrice = useSelector(selectPomodoroPrice);
     const [priceOfTomato, setPriceOfTomato] = useState(pomodoroPrice);
 
@@ -26,12 +30,14 @@ export const Settings: React.FC<SettingsProps> = ({handleCloseSettings}) => {
     const handleChangeSettings = () => {
         dispatch(setWorkMinutes(workMinutesLocal));
         dispatch(setBreakMinutes(breakMinutesLocal));
+        dispatch(setLongBreakMinutes(longBreakMinutesLocal));
+        dispatch(setNumOfSessionsToLongBreak(numOfSessionsToLongBreakLocal));
         dispatch(setSellingPrice(priceOfTomato));
         handleCloseSettings();
     }
     
     return (
-        <Card className="pomodoro-settings-container">
+        <Card className="pomodoro-settings-container overlay-card">
             <label>Work session duration: {workMinutesLocal} minutes</label>
             <ReactSlider 
                 className="slider"
@@ -52,8 +58,26 @@ export const Settings: React.FC<SettingsProps> = ({handleCloseSettings}) => {
                 min={1}
                 max={120}
             />
-            <label>Long break duration:</label>
-            <label>Work sessions until long break:</label>
+            <label>Long break duration: {longBreakMinutesLocal} minutes</label>
+            <ReactSlider 
+                className="slider"
+                thumbClassName="thumb"
+                trackClassName="track"
+                value={longBreakMinutesLocal}
+                onChange={newValue => setLongBreakMinutesLocal(newValue)}
+                min={1}
+                max={120}
+            />
+            <label>Work sessions until long break: {numOfSessionsToLongBreakLocal} sessions</label>
+            <ReactSlider 
+                className="slider"
+                thumbClassName="thumb"
+                trackClassName="track"
+                value={numOfSessionsToLongBreakLocal}
+                onChange={newValue => setNumOfSessionsToLongBreakLocal(newValue)}
+                min={1}
+                max={10}
+            />
             <label>Selling price of 1 tomato: <FaCoins className="coins-icon" />{priceOfTomato}</label>
             <ReactSlider 
                 className="slider"
@@ -64,7 +88,7 @@ export const Settings: React.FC<SettingsProps> = ({handleCloseSettings}) => {
                 min={1}
                 max={100}
             />
-            <button className="command-button" onClick={handleChangeSettings}>Done</button>
+            <button className="command-button pomodoro-settings-done" onClick={handleChangeSettings}>Done</button>
         </Card>
     )
 }

@@ -1,13 +1,4 @@
 
-.coin-count-header {
-   
-    background-color: #135382;
-    /* Add padding for spacing */
-    text-align: center;
-    /* Center align text */
-    border-radius: 2rem;
-        /* Add shadow */
-}
 
 .rewards-box {
     display: flex;
@@ -21,29 +12,8 @@
 
 .rewards-box h1 {
     padding: 0;
-    margin-top: 0;
-    color: aliceblue;
-}
-
-.coin-count-header h1 {
-    font-size: 2rem;
-    /* Adjust font size */
-    font-weight: bold;
-    /* Make the text bold */
-    color: aliceblue;
-    /* Text color */
-    text-transform: uppercase;
-    /* Convert text to uppercase */
     margin: 0;
-    /* Remove margin to avoid extra spacing */
-    /* Add any additional styling to make it creative */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    color: aliceblue;
+    font-size: 2rem;
 }
 
-.coin-icon {
-    color: gold;
-    margin-right: .5rem;
-}

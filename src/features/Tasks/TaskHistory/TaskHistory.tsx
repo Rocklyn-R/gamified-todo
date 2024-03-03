@@ -60,10 +60,10 @@ export const TaskHistory = () => {
         <>
         <Link to="../tasks"><IoArrowBackOutline className="back-icon" /></Link>
          <Card className="tasks-container">
-         <div className="coin-count-header">
+            <h1 id="task-history-heading"> TASK HISTORY </h1>
+            <div className="coin-count-header">
                     <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
                 </div>
-            <h1 id="task-history-heading"> TASK HISTORY </h1>
             {historyTasks.map((task, index) => (
                 <TaskItem 
                     key={index}

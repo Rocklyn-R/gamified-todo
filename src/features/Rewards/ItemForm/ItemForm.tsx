@@ -84,7 +84,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
 
 
     return (
-        <Card className="form-container">
+        <Card className="form-container overlay-card">
             <form onSubmit={handleSubmitAddItem}>
                 <button
                     type="button"

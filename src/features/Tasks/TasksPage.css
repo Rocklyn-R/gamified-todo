@@ -2,33 +2,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30%;
+    width: 60%;
     height: fit-content;
     margin-top: 2rem;
     background-color: #135382;
 }
 
-.date-box {
-    background-color: #135382;
-    padding: 1rem;
-    /* Add padding for spacing */
-    text-align: center;
-    /* Center align text */
-        /* Add shadow */
-}
-
-.date-box h1 {
-    font-size: 1.6rem;
-    /* Adjust font size */
+.tasks-container h1 {
+    font-size: 2rem;
     font-weight: bold;
-    /* Make the text bold */
     color: aliceblue;
-    /* Text color */
     text-transform: uppercase;
-    /* Convert text to uppercase */
     margin: 0;
-    /* Remove margin to avoid extra spacing */
-    /* Add any additional styling to make it creative */
 
 }
 
@@ -44,24 +29,6 @@
     align-items: center;
 }
 
-.task-history-icon, .inventory-link, .inventory-history-icon {
-    position: fixed;
-    top: 4rem;
-    right: 0;
-    margin-bottom: 20px;
-    margin-right: 20px;
-}
-
-
-.history-icon {
-    display: flex;
-    align-items: center;
-    font-size: 3rem;
-    color: lightblue;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
 
 .add-task, .add-reward {
     position: fixed;

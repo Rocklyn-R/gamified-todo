@@ -54,6 +54,11 @@ export interface PomodoroState {
     isPaused: boolean;
     workMinutes: number;
     breakMinutes: number;
-    mode: "work" | "break";
+    longBreakMinutes: number;
+    numOfSessionsToLongBreak: number;
+    sessionsRemaining: number;
+    mode: "work" | "break" | "longBreak";
     pomodoros: number;
+    pomodoroPrice: number;
 }
+

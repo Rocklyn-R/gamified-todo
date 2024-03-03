@@ -1,4 +1,4 @@
-.custom-checkbox {
+.custom-checkbox, .custom-checkbox-overdue {
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;
@@ -6,7 +6,8 @@
   position: relative;
 }
 
-.custom-checkbox input[type="checkbox"] {
+
+.custom-checkbox input[type="checkbox"], .custom-checkbox-overdue input[type="checkbox"] {
   display: none;
 }
 
@@ -22,9 +23,27 @@
   border: 1px solid lightblue;
 }
 
+.checkmark-overdue {
+  position: absolute;
+  top: 50%;
+  left: -1.5em;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: lightblue;
+  border: 1px solid lightblue;
+}
+
+
+
 /* Background color when checked */
 .custom-checkbox input[type="checkbox"]:checked + .checkmark {
   background-color: aliceblue;
+}
+
+.custom-checkbox-overdue input[type="checkbox"]:checked + .checkmark-overdue {
+  background-color: lightblue;
 }
 
 /* White checkmark */
@@ -41,7 +60,24 @@
   transition: top 0.3s ease; /* Add transition effect for top position */
 }
 
+.checkmark-overdue:after {
+  content: "";
+  position: absolute;
+  top: -10px; /* Initial position off-screen */
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg); /* Rotate the checkmark */
+  width: 5px; /* Adjust the length of the checkmark lines */
+  height: 10px;
+  border: solid aliceblue;
+  border-width: 0 3px 3px 0; /* Create the checkmark shape */
+  transition: top 0.3s ease; /* Add transition effect for top position */
+}
+
 /* Show white checkmark when checked */
 .custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
   top: 50%; /* Move the checkmark to its final position */
+}
+
+.custom-checkbox-overdue input[type="checkbox"]:checked + .checkmark-overdue:after {
+  top: 50%;
 }
