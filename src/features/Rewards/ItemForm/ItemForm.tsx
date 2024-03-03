@@ -24,7 +24,7 @@ import headphones from "../../../images/headphones.png";
 import money from "../../../images/money.png";
 import love from "../../../images/love.png";
 import gift from "../../../images/gift.png";
-
+import { TextField } from "@mui/material";
 
 
 interface ItemFormProps {
@@ -84,7 +84,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
 
 
     return (
-        <Card className="form-container overlay-card">
+        <Card className="reward-form-container overlay-card">
             <form onSubmit={handleSubmitAddItem}>
                 <button
                     type="button"
@@ -93,28 +93,43 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                 >
                     X
                 </button>
-                <label>Name:</label>
-                <input
-                    placeholder="Name"
-                    id="item-name"
+                <TextField
+                    label="Name" // MUI TextField uses a label prop instead of placeholder for floating label text
+                    variant="outlined" // You can choose "filled" or "standard" as well, depending on your design preference
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
+                    sx={{
+                        width: '100%',
+                        marginTop: "1rem",
+                        marginBottom: '20px',
+                        color: "#0c3d63" // Using the sx prop to apply margin
+                    }}
                 />
-                <label>Description:</label>
-                <input
-                    placeholder="Description (optional)"
-                    id="description"
+                <TextField
+                    label="Description" // MUI TextField uses a label prop instead of placeholder for floating label text
+                    variant="outlined" // You can choose "filled" or "standard" as well, depending on your design preference
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
+                    sx={{
+                        width: '100%',
+                        marginTop: "1rem",
+                        marginBottom: '20px',
+                        color: "#0c3d63" // Using the sx prop to apply margin
+                    }}
                 />
-                <label>Price:</label>
-                <input
-                    placeholder='0'
-                    id="price"
-                    type="number"
+                <TextField
+                    label="Price" // MUI TextField uses a label prop instead of placeholder for floating label text
+                    variant="outlined" // You can choose "filled" or "standard" as well, depending on your design preference
                     value={price}
-                    onChange={(e) => setPrice(parseInt(e.target.value))}
+                    type="number"
+                    onChange={(e) => setPrice(parseInt(e.target.value, 10))}
+                    sx={{
+                        width: '100%',
+                        marginTop: "1rem",
+                        marginBottom: '20px',
+                        color: "#0c3d63" // Using the sx prop to apply margin
+                    }}
                 />
                 <label>Select icon:</label>
                 <div className="icon-choices">

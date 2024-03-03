@@ -10,7 +10,7 @@
     height: fit-content;
 }
 
-.form-container form {
+.form-container form, .reward-form-container form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,7 +43,6 @@
 }
 
 #notes, #task-name, #coin-reward, #item-name, #price, #description, #deadline, #penalty {
-    width: 70%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -77,30 +76,5 @@
     cursor: pointer;
 }
 
-.react-calendar {
-    background-color: aliceblue;
-  }
-  
-  /* Color of all dates */
-  .react-calendar button {
-    color: #135382;
-  }
-  
-  /* Color of text, including navigation buttons */
-  .react-calendar .react-calendar__navigation button {
-    color: #135382;
-  }
-  
-  .react-calendar .react-calendar__month-view__days__day--weekend {
-    color: #135382 !important; /* Override weekend specific styles if necessary */
-  }
-  
-  /* Background color of the selected date */
-  .react-calendar__tile--active {
-    background-color: lightblue !important;
-    color: #135382 !important;
-  }
 
-  #text-field {
-    width: 50%;
-  }
+ 
