@@ -13,7 +13,7 @@ export const PomodoroSlice = createSlice({
         longBreakMinutes: 15,
         numOfSessionsToLongBreak: 4,
         sessionsRemaining: 4,
-        pomodoros: 5,
+        pomodoros: 10,
         pomodoroPrice: 10,
     } as PomodoroState,
     reducers: {

@@ -41,8 +41,8 @@ export const PomodoroForm: React.FC<PomodoroFormProps> = ({ hideForm }) => {
                             <input
                                 type="number"
                                 name="number"
-                                min={numOfPomodoros > 0 ? 1 : 0}
-                                max="5"
+                                min={pomodoros > 0 ? 1 : 0}
+                                max={pomodoros}
                                 placeholder={numOfPomodoros.toString()}
                                 value={numOfPomodoros}
                                 onChange={(e) => setNumOfPomodoros(parseInt(e.target.value))}

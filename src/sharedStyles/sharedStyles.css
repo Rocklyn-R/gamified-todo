@@ -15,7 +15,8 @@
 .price-details {
     display: flex;
     align-items: center;
-    margin-left: 4rem;
+    margin-left: auto;
+    justify-self: flex-end;
 }
 
 

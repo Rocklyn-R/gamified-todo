@@ -56,3 +56,8 @@
     transform: translateY(0); /* Move the text back to its original position */
 }
 
+@media (min-width: 768px) and (max-width: 991px) {
+    .nav-text {
+        font-size: 1rem;
+    }
+}

@@ -3,6 +3,7 @@
     font-size: 1rem;
 }
 
+
 .sell-label-input {
     display: flex;
     align-items: center;
@@ -11,6 +12,7 @@
 }
 
 .pomodoro-form-container input {
-    width: fit-content;
+    width: 2.5rem;
     margin-left: 1em;
+    
 }

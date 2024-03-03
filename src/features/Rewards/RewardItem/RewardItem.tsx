@@ -28,13 +28,14 @@ export const RewardItem: React.FC<RewardItemProps> = ({ reward, index, handleVie
                 className="view-reward"
                 onClick={() => handleViewItem()}
             >
-                <div className="icon-with-details">
+                <div className="icon-container">
                     <img alt="" src={renderIcon(reward.icon)}  />
+                    </div>    
                     <div className="reward-details">
                         <p>{reward.name}</p>
                         <p className="reward-description">{reward.description}</p>
                     </div>
-                </div>
+            
 
                 {!inventory && (
                     <div className="price-details">

@@ -10,29 +10,65 @@ export const TasksSlice = createSlice({
         tasks: [
             {
                 name: "Wash the dishes",
-                notes: "This one might be tough",
+                notes: "",
                 coinReward: 50,
-                id: '1234',
+                id: '1asfasfdasdf234',
                 deadline: "2024-02-25T22:59:59.999Z",
-                coinPenalty: 0,
+                coinPenalty: 20,
                 overdue: false
             },
             {
                 name: "Do the Laundry",
-                notes: "hard task",
+                notes: "",
+                coinReward: 30,
+                id: "1313asfdafs2",
+                deadline: "2024-03-11T22:59:59.999Z",
+                coinPenalty: 10,
+                overdue: false
+            },
+            {
+                name: "Clean the bathroom",
+                notes: "Toilet, sink, shower",
                 coinReward: 100,
-                id: "13132",
+                id: "13132fa3424d",
+                deadline: "2024-03-13T22:59:59.999Z",
+                coinPenalty: 40,
+                overdue: false
+            },
+            {
+                name: "Cook Dinner",
+                notes: "Chicken and potatoes",
+                coinReward: 50,
+                id: "13132afds3",
                 deadline: "2024-03-11T22:59:59.999Z",
                 coinPenalty: 15,
                 overdue: false
-            }] as Task[],
+            }, 
+            {
+                name: "Study for Exam",
+                notes: "",
+                coinReward: 150,
+                id: "131fs32asfa",
+                deadline: "2024-03-11T22:59:59.999Z",
+                coinPenalty: 40,
+                overdue: false
+            },
+        {
+            name: "Return book to library",
+            notes: "",
+            coinReward: 150,
+            id: "131fs32aagadsfsfa",
+            deadline: "2024-02-28T22:59:59.999Z",
+            coinPenalty: 20,
+            overdue: false
+        }] as Task[],
         historyTasks: [{
-            name: "New",
+            name: "Complete work project",
             notes: "hard task",
-            coinReward: 100,
-            id: "13132",
+            coinReward: 300,
+            id: "13132afsdfadsfsdfdfn",
             deadline: "2024-02-23T22:59:59.999Z",
-            coinPenalty: 15,
+            coinPenalty: 20,
             overdue: false
         }],
         overdueTasks: []
@@ -97,7 +133,7 @@ export const TasksSlice = createSlice({
         completeOverdueTask: (state, action: PayloadAction<Task>) => {
             const completedTaskIndex = state.overdueTasks.findIndex(task => task.id === action.payload.id);
             if (completedTaskIndex !== -1) {
-               state.overdueTasks[completedTaskIndex].overdue = false; 
+                state.overdueTasks[completedTaskIndex].overdue = false;
             }
             const completedTask = state.overdueTasks.find(task => task.id === action.payload.id);
             state.overdueTasks = state.overdueTasks.filter(task => task.id !== action.payload.id);

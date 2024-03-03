@@ -13,7 +13,7 @@ export const RewardHistory = () => {
     return (
         <Card className="rewards-history">
             <Link to="../inventory"><IoArrowBackOutline className="back-icon" /></Link>
-            <h1>Rewards history:</h1>
+            <h1>REWARDS HISTORY</h1>
             {usedRewards.map(item => (
                 <div className='inventory-history-box'>
                     <div className='history-container-1'>

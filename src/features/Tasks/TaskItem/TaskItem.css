@@ -9,8 +9,7 @@
     justify-content: center;
 }
 
-.view-task, .view-reward {
-    min-width: 12rem;
+.view-task {
     max-width: 15rem;
     display: flex;
     align-items: center;
@@ -18,19 +17,19 @@
     cursor: pointer;
     border: none;
     border-radius: .4rem;
-    background-color: #97c8ed;
     color: #135382;
     font-family: "Nunito", sans-serif;
     font-size: 1rem;
     background: linear-gradient(to bottom right, aliceblue, #6fa8dc);
-    padding: 10px;
-   
+    padding: .5rem;
+   min-height: 5rem;
 }
 
 .view-task {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
 }
 
 
@@ -49,9 +48,7 @@
     padding: 10px;
 }
 
-.overdue-task-button:hover {
-    background-color: #0c3d63;
-}
+
 
 
 .view-task:hover, .view-reward:hover {
@@ -61,7 +58,7 @@
 
 .deadline-details {
     margin: 0;
-    font-size: .5rem;
+    font-size: .6rem;
     display: flex;
     justify-content: space-between;
     width: 100%;
