@@ -1,15 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import Card from '../../../components/Card/Card';
 import './TaskForm.css';
 import { setTasks, editTask } from '../../../store/TasksSlice';
 import { Task } from '../../../types/Types';
 import { v4 as uuidv4 } from "uuid";
-import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { FaRegEdit } from "react-icons/fa";
 import { convertDateToString } from '../../../utilities/utilities';
-import { formatDeadline } from '../../../utilities/utilities';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { SelectChangeEvent, TextField } from '@mui/material';
+import { Select, FormControl, InputLabel, MenuItem } from "@mui/material";
+import dayjs from 'dayjs';
+
 
 
 interface TaskFormProps {
@@ -30,7 +34,6 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
     const [submitError, setSubmitError] = useState(false);
     const [penalty, setPenalty] = useState(0);
 
-    const overlayRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
 
@@ -56,8 +59,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
 
 
 
-    const handleSelectDeadlineOption = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setDeadlineOption(event.target.value);
+    const handleSelectDeadlineOption = (event: SelectChangeEvent) => {
+        const value = event.target.value as string;
+        setDeadlineOption(value);
         if (event.target.value === "today") {
             const today = new Date();
             today.setHours(23, 59, 59, 999);
@@ -75,9 +79,6 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
         }
     }
 
-    const handleEditDeadline = () => {
-        setDeadline(null);
-    }
 
 
 
@@ -114,7 +115,16 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
         setSubmitError(false);
     }
 
-
+    const handleDateChange = (newValue: dayjs.Dayjs | null) => {
+        // newValue is a dayjs object
+        console.log(newValue); // See the dayjs object in console
+    
+        if (newValue) {
+          setDeadline(newValue.toISOString()); // Example of using dayjs object to set state
+        } else {
+          setDeadline(null); // Handle case where date is cleared
+        }
+      };
 
 
     return (
@@ -132,76 +142,89 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                 {submitError &&
                     <p>Please name your task</p>
                 }
-                <label htmlFor='task-name'>Name:</label>
-                <input
-                    placeholder="Task Name"
-                    id="task-name"
+
+                <TextField
+                    label="Task Name" // MUI TextField uses a label prop instead of placeholder for floating label text
+                    variant="outlined" // You can choose "filled" or "standard" as well, depending on your design preference
                     value={taskName}
                     onChange={(e) => setTaskName(e.target.value)}
                     required
+                    sx={{
+                        width: '100%',
+                        marginTop: "1rem",
+                        marginBottom: '20px',
+                        color: "#0c3d63" // Using the sx prop to apply margin
+                    }}
                 />
 
-                <label htmlFor='notes'>Notes:</label>
-                <input
-                    placeholder='Notes (optional)'
-                    id="notes"
+
+                <TextField
+                    label="Notes"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
+                    sx={{
+                        width: '100%',
+                        marginBottom: '20px', // Using the sx prop to apply margin
+                    }}
                 />
-                <label htmlFor='coin-reward'>Coin Reward:</label>
-                <input
-                    placeholder='Coin Reward'
-                    id="coin-reward"
+
+                <TextField
+                    label="Coin Reward"
                     type="number"
                     value={coinReward}
                     onChange={(e) => setCoinReward(parseInt(e.target.value, 10))}
-                    required
+                    sx={{
+                        width: '100%',
+                        marginBottom: '20px', // Using the sx prop to apply margin
+                    }}
                 />
-                <label>Deadline</label>
-                <select
-                    id="deadline"
+                <FormControl fullWidth >
+                    <InputLabel id="deadline-label">Deadline</InputLabel>
+                    <Select
+                    labelId="deadline-label"
+                    label="Deadline"
                     value={deadlineOption}
                     onChange={handleSelectDeadlineOption}
+                    sx={{ 
+                        width: '100%',
+                        marginBottom: '20px',
+                        textAlign: 'start' 
+                    }}
                 >
-                    <option value="nodeadline">No deadline</option>
-                    <option value="today">Today</option>
-                    <option value="tomorrow">Tomorrow</option>
-                    <option value="custom">Custom</option>
-                </select>
-                {deadlineOption === 'custom' && !deadline && (
-                    <div className='overlay' ref={overlayRef}>
-                        <Calendar
-                            minDate={new Date()}
-                            value={deadline}
-                            onChange={(date) => {
-                                if (date instanceof Date) {
-                                    date.setHours(23, 59, 59, 999);
-                                    const dateString = date.toISOString();
-                                    setDeadline(dateString);
-                                    console.log(dateString);
-                                }
-                            }} />
-                    </div>
+                    <MenuItem value={"nodeadline"}>No deadline</MenuItem>
+                    <MenuItem value={"today"}>Today</MenuItem>
+                    <MenuItem value={"tomorrow"}>Tomorrow</MenuItem>
+                    <MenuItem value={"custom"}>Custom</MenuItem>
+                </Select> 
+                </FormControl>
+               
+                {deadlineOption === "custom" && (
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker 
+                        label="Select Date" 
+                        value={deadline ? dayjs(deadline) : null}
+                        minDate={dayjs()}
+                        onChange={handleDateChange}
+                        sx={{ 
+                            width: '100%',
+                            marginBottom: '20px',
+                            textAlign: 'start' 
+                        }}
+                        />
+                    </LocalizationProvider>
                 )}
-                {deadline && deadlineOption === "custom" &&
-                    <div className='selected-deadline'>
-                        <p>{formatDeadline(deadline)}</p>
-                        <button
-                            onClick={handleEditDeadline}
-                            type="button">
-                            <FaRegEdit />
-                        </button>
-                    </div>
-
-                }
+    
                 {(deadlineOption === "today" || deadlineOption === "tomorrow" || deadlineOption === "custom") && (
                     <>
-                        <label>Coin Penalty: (optional)</label>
-                        <input
-                            id='penalty'
+                        <TextField
+                            label="Coin Penalty"
                             type="number"
                             value={penalty}
                             onChange={(e) => setPenalty(parseInt(e.target.value, 10))}
+                            sx={{
+                                width: '100%',
+                                marginBottom: '20px', // Using the sx prop to apply margin
+                            }}
                         />
                     </>
 
