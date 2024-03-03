@@ -118,13 +118,13 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
     const handleDateChange = (newValue: dayjs.Dayjs | null) => {
         // newValue is a dayjs object
         console.log(newValue); // See the dayjs object in console
-    
+
         if (newValue) {
-          setDeadline(newValue.toISOString()); // Example of using dayjs object to set state
+            setDeadline(newValue.toISOString()); // Example of using dayjs object to set state
         } else {
-          setDeadline(null); // Handle case where date is cleared
+            setDeadline(null); // Handle case where date is cleared
         }
-      };
+    };
 
 
     return (
@@ -144,6 +144,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                 }
 
                 <TextField
+                    type="text"
                     label="Task Name" // MUI TextField uses a label prop instead of placeholder for floating label text
                     variant="outlined" // You can choose "filled" or "standard" as well, depending on your design preference
                     value={taskName}
@@ -159,6 +160,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
 
 
                 <TextField
+                    type="text"
                     label="Notes"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
@@ -181,39 +183,39 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                 <FormControl fullWidth >
                     <InputLabel id="deadline-label">Deadline</InputLabel>
                     <Select
-                    labelId="deadline-label"
-                    label="Deadline"
-                    value={deadlineOption}
-                    onChange={handleSelectDeadlineOption}
-                    sx={{ 
-                        width: '100%',
-                        marginBottom: '20px',
-                        textAlign: 'start' 
-                    }}
-                >
-                    <MenuItem value={"nodeadline"}>No deadline</MenuItem>
-                    <MenuItem value={"today"}>Today</MenuItem>
-                    <MenuItem value={"tomorrow"}>Tomorrow</MenuItem>
-                    <MenuItem value={"custom"}>Custom</MenuItem>
-                </Select> 
-                </FormControl>
-               
-                {deadlineOption === "custom" && (
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker 
-                        label="Select Date" 
-                        value={deadline ? dayjs(deadline) : null}
-                        minDate={dayjs()}
-                        onChange={handleDateChange}
-                        sx={{ 
+                        labelId="deadline-label"
+                        label="Deadline"
+                        value={deadlineOption}
+                        onChange={handleSelectDeadlineOption}
+                        sx={{
                             width: '100%',
                             marginBottom: '20px',
-                            textAlign: 'start' 
+                            textAlign: 'start'
                         }}
+                    >
+                        <MenuItem value={"nodeadline"}>No deadline</MenuItem>
+                        <MenuItem value={"today"}>Today</MenuItem>
+                        <MenuItem value={"tomorrow"}>Tomorrow</MenuItem>
+                        <MenuItem value={"custom"}>Custom</MenuItem>
+                    </Select>
+                </FormControl>
+
+                {deadlineOption === "custom" && (
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                            label="Select Date"
+                            value={deadline ? dayjs(deadline) : null}
+                            minDate={dayjs()}
+                            onChange={handleDateChange}
+                            sx={{
+                                width: '100%',
+                                marginBottom: '20px',
+                                textAlign: 'start'
+                            }}
                         />
                     </LocalizationProvider>
                 )}
-    
+
                 {(deadlineOption === "today" || deadlineOption === "tomorrow" || deadlineOption === "custom") && (
                     <>
                         <TextField

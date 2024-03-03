@@ -94,6 +94,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                     X
                 </button>
                 <TextField
+                    type="text"
                     label="Name" // MUI TextField uses a label prop instead of placeholder for floating label text
                     variant="outlined" // You can choose "filled" or "standard" as well, depending on your design preference
                     value={name}
@@ -107,6 +108,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                     }}
                 />
                 <TextField
+                    type="text"
                     label="Description" // MUI TextField uses a label prop instead of placeholder for floating label text
                     variant="outlined" // You can choose "filled" or "standard" as well, depending on your design preference
                     value={description}
