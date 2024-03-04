@@ -111,7 +111,7 @@ export const Timer: React.FC<TimerProps> = ({ handleShowSellPomodoros }) => {
                 text={timeString()}
                 styles={buildStyles({
                     textColor: "rgb(240,248,255)",
-                    pathColor: "rgba(111,168,220)",
+                    pathColor: "#91cbf2",
                     trailColor: "rgb(240,248,255)"
                 })} />
             <p id="mode-string">{modeString}</p>

@@ -12,7 +12,7 @@ interface SettingsProps {
     handleCloseSettings: () => void;
 }
 
-export const Settings: React.FC<SettingsProps> = ({handleCloseSettings}) => {
+export const Settings: React.FC<SettingsProps> = ({ handleCloseSettings }) => {
     const workMinutes = useSelector(selectWorkMinutes);
     const breakMinutes = useSelector(selectBreakMinutes);
     const longBreakMinutes = useSelector(selectLongBreakMinutes);
@@ -35,11 +35,15 @@ export const Settings: React.FC<SettingsProps> = ({handleCloseSettings}) => {
         dispatch(setSellingPrice(priceOfTomato));
         handleCloseSettings();
     }
-    
+
+    const handleCancel = () => {
+        handleCloseSettings();
+    }
+
     return (
         <Card className="pomodoro-settings-container overlay-card">
             <label>Work session duration: {workMinutesLocal} minutes</label>
-            <ReactSlider 
+            <ReactSlider
                 className="slider"
                 thumbClassName="thumb"
                 trackClassName="track"
@@ -49,7 +53,7 @@ export const Settings: React.FC<SettingsProps> = ({handleCloseSettings}) => {
                 max={120}
             />
             <label>Short break duration: {breakMinutesLocal} minutes</label>
-            <ReactSlider 
+            <ReactSlider
                 className="slider"
                 thumbClassName="thumb"
                 trackClassName="track"
@@ -59,7 +63,7 @@ export const Settings: React.FC<SettingsProps> = ({handleCloseSettings}) => {
                 max={120}
             />
             <label>Long break duration: {longBreakMinutesLocal} minutes</label>
-            <ReactSlider 
+            <ReactSlider
                 className="slider"
                 thumbClassName="thumb"
                 trackClassName="track"
@@ -69,7 +73,7 @@ export const Settings: React.FC<SettingsProps> = ({handleCloseSettings}) => {
                 max={120}
             />
             <label>Work sessions until long break: {numOfSessionsToLongBreakLocal} sessions</label>
-            <ReactSlider 
+            <ReactSlider
                 className="slider"
                 thumbClassName="thumb"
                 trackClassName="track"
@@ -79,7 +83,7 @@ export const Settings: React.FC<SettingsProps> = ({handleCloseSettings}) => {
                 max={10}
             />
             <label>Selling price of 1 tomato: <FaCoins className="coins-icon" />{priceOfTomato}</label>
-            <ReactSlider 
+            <ReactSlider
                 className="slider"
                 thumbClassName="thumb"
                 trackClassName="track"
@@ -88,7 +92,11 @@ export const Settings: React.FC<SettingsProps> = ({handleCloseSettings}) => {
                 min={1}
                 max={100}
             />
-            <button className="command-button pomodoro-settings-done" onClick={handleChangeSettings}>Done</button>
+            <div className="command-buttons-container">
+                <button className="command-button" onClick={handleCancel}>Cancel</button>
+                <button className="command-button pomodoro-settings-done" onClick={handleChangeSettings}>Done</button>
+            </div>
+
         </Card>
     )
 }

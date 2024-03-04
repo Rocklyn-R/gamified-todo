@@ -31,7 +31,7 @@ export const CompleteTask: React.FC<CompleteTaskProps> = ({ task }) => {
                 dispatch(addToCoins(task.coinReward));
             }
             setIsChecked(false);
-        }, 500)
+        }, 1500)
 
     }
 
@@ -45,7 +45,5 @@ export const CompleteTask: React.FC<CompleteTaskProps> = ({ task }) => {
                 </svg>
             </label>
         </div>
-
-     
     )
 }

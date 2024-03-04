@@ -22,12 +22,12 @@
 }
 
 .checkbox-overdue {
-  background-color: #95c6f5;
+  background-color: #91c5f2;
   border: 2px solid #135382;
 }
 
 .checkbox {
-  border: 2px solid #95c6f5;
+  border: 2px solid #91c5f2;
   background-color: aliceblue;
 }
 
@@ -37,8 +37,8 @@
 }
 
 .check-input:checked + .checkbox, .check-input:checked + .checkbox-overdue {
-  background: #95c6f5;
-  border: 2px solid #95c6f5;
+  background: #91c5f2;
+  border: 2px solid #91c5f2;
 }
 
 .check-input:checked + .checkbox svg path, .check-input:checked + .checkbox-overdue svg path {
