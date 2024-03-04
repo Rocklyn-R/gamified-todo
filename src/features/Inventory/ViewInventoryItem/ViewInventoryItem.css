@@ -7,3 +7,12 @@
     margin-right: 1rem;
     cursor: pointer;
 }
+
+.quantity-container {
+    margin-bottom: 1.5rem;
+}
+
+.quantity-input {
+    width: 2rem;
+    margin-left: 1rem;
+}

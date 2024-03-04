@@ -90,7 +90,7 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
                         Price: <FaCoins className='coins-icon view-coins-icon' />{selectedReward.price}
                     </p>
                     {purchaseFailed && (
-                        <p>You don't have enough coins to buy this item!</p>
+                        <p>Not enough coins!</p>
                     )}
                     <button
                         className='command-button'

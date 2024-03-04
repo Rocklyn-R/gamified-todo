@@ -95,6 +95,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                 </button>
                 <TextField
                     type="text"
+                    name="name"
                     label="Name" // MUI TextField uses a label prop instead of placeholder for floating label text
                     variant="outlined" // You can choose "filled" or "standard" as well, depending on your design preference
                     value={name}
@@ -106,12 +107,13 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                         marginBottom: '20px',
                         color: "#0c3d63" // Using the sx prop to apply margin
                     }}
-                    InputProps={{
-                        autoComplete: 'off', // More specific to potentially improve browser compliance
-                      }}
+                    inputProps={{
+                        autoComplete: "off"
+                    }}
                 />
                 <TextField
                     type="text"
+                    name="description"
                     label="Description" // MUI TextField uses a label prop instead of placeholder for floating label text
                     variant="outlined" // You can choose "filled" or "standard" as well, depending on your design preference
                     value={description}
@@ -122,9 +124,9 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                         marginBottom: '20px',
                         color: "#0c3d63" // Using the sx prop to apply margin
                     }}
-                    InputProps={{
-                        autoComplete: 'off', // More specific to potentially improve browser compliance
-                      }}
+                    inputProps={{
+                        autoComplete: "off"
+                    }}
                 />
                 <TextField
                     label="Price" // MUI TextField uses a label prop instead of placeholder for floating label text
@@ -256,7 +258,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                         <img src={gift} height="30" alt="" /></button>
                 </div>
 
-                <button type="submit" value="Submit" className="submit-task-button">
+                <button type="submit" value="Submit" className="command-button">
                     {isEditMode ? "Done editing" : "Create item"}
                 </button>
 

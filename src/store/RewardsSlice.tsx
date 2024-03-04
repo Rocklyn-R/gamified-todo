@@ -125,21 +125,28 @@ export const RewardsSlice = createSlice({
             state.totalCoins = state.totalCoins - action.payload.price;
         },
 
-        spendReward: (state, action: PayloadAction<InventoryItem>) => {
-            const existingItemIndex = state.inventory.findIndex(item => item.id === action.payload.id);
-            if (existingItemIndex !== -1 && state.inventory[existingItemIndex].quantity > 1) {
-                state.inventory[existingItemIndex].quantity -= 1;
-            } else {
-                state.inventory = state.inventory.filter(item => item.id !== action.payload.id);
+        spendReward: (state, action: PayloadAction<{item: InventoryItem, quantity: number}>) => {
+            const { item, quantity } = action.payload;
+            const existingItemIndex = state.inventory.findIndex(inventoryItem => inventoryItem.id === item.id);
+            if (existingItemIndex !== -1) {
+                state.inventory[existingItemIndex].quantity -= quantity;
+                if (state.inventory[existingItemIndex].quantity === 0) {
+                    // If the quantity becomes 0, remove the item from the inventory
+                    state.inventory.splice(existingItemIndex, 1);
+                }
             }
-            state.usedRewards.unshift({
-                name: action.payload.name,
-                price: action.payload.price,
-                description: action.payload.description,
-                id: action.payload.id,
-                icon: action.payload.icon,
+
+            for (let i = 0; i < quantity; i++) {
+                 state.usedRewards.unshift({
+                name: item.name,
+                price: item.price,
+                description: item.description,
+                id: item.id,
+                icon: item.icon,
                 dateUsed: formattedDate
             });
+            }
+           
 
         }
     }
