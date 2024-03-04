@@ -1,83 +1,72 @@
-.custom-checkbox, .custom-checkbox-overdue {
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 10px; /* Adjust as needed */
-  position: relative;
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
 }
 
-
-.custom-checkbox input[type="checkbox"], .custom-checkbox-overdue input[type="checkbox"] {
+.check-input {
   display: none;
 }
 
-.checkmark {
-  position: absolute;
-  top: 50%;
-  left: -1.5em;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
+.checkbox, .checkbox-overdue {
+  width: 25px;
+  height: 25px;
+  border: 2px solid #135382;
   border-radius: 50%;
-  background-color: aliceblue;
-  border: 1px solid lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 3px;
+  transition: 0.3s all;
 }
 
-.checkmark-overdue {
-  position: absolute;
-  top: 50%;
-  left: -1.5em;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: lightblue;
-  border: 1px solid lightblue;
+.checkbox-overdue {
+  background-color: #95c6f5;
+  border: 2px solid #135382;
 }
 
-
-
-/* Background color when checked */
-.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+.checkbox {
+  border: 2px solid #95c6f5;
   background-color: aliceblue;
 }
 
-.custom-checkbox-overdue input[type="checkbox"]:checked + .checkmark-overdue {
-  background-color: lightblue;
+.checkbox svg, .checkbox-overdue svg {
+  width: 20px;
+  height: 20px;
 }
 
-/* White checkmark */
-.checkmark:after {
+.check-input:checked + .checkbox, .check-input:checked + .checkbox-overdue {
+  background: #95c6f5;
+  border: 2px solid #95c6f5;
+}
+
+.check-input:checked + .checkbox svg path, .check-input:checked + .checkbox-overdue svg path {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  stroke: #0c3d63;
+  stroke-width: 3;
+  animation: check 4s forwards;
+}
+
+.checkbox::before, .checkbox-overdue:before {
   content: "";
+  background: #26bfbf66;
   position: absolute;
-  top: -10px; /* Initial position off-screen */
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg); /* Rotate the checkmark */
-  width: 5px; /* Adjust the length of the checkmark lines */
-  height: 10px;
-  border: solid #135382;
-  border-width: 0 3px 3px 0; /* Create the checkmark shape */
-  transition: top 0.3s ease; /* Add transition effect for top position */
+  border-radius: 50%;
+  transform: scale(0);
+  display: block;
+  width: 60px;
+  height: 60px;
+  z-index: -1;
 }
 
-.checkmark-overdue:after {
-  content: "";
-  position: absolute;
-  top: -10px; /* Initial position off-screen */
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg); /* Rotate the checkmark */
-  width: 5px; /* Adjust the length of the checkmark lines */
-  height: 10px;
-  border: solid aliceblue;
-  border-width: 0 3px 3px 0; /* Create the checkmark shape */
-  transition: top 0.3s ease; /* Add transition effect for top position */
+.check-input:checked + .checkbox::before, .check-input:checked + .checkbox-overdue::before {
+  animation: ripple 0.3s;
 }
 
-/* Show white checkmark when checked */
-.custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
-  top: 50%; /* Move the checkmark to its final position */
-}
-
-.custom-checkbox-overdue input[type="checkbox"]:checked + .checkmark-overdue:after {
-  top: 50%;
+@keyframes check {
+  to {
+    stroke-dashoffset: 0;
+  }
 }

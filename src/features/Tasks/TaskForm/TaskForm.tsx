@@ -129,7 +129,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
 
     return (
         <Card className="form-container overlay-card">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoComplete="off">
                 <button
                     type="button"
                     className='close'
@@ -156,6 +156,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                         marginBottom: '20px',
                         color: "#0c3d63" // Using the sx prop to apply margin
                     }}
+                    InputProps={{
+                        autoComplete: 'off', // More specific to potentially improve browser compliance
+                      }}
                 />
 
 
@@ -168,6 +171,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                         width: '100%',
                         marginBottom: '20px', // Using the sx prop to apply margin
                     }}
+                    InputProps={{
+                        autoComplete: 'off', // More specific to potentially improve browser compliance
+                      }}
                 />
 
                 <TextField
@@ -179,6 +185,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                         width: '100%',
                         marginBottom: '20px', // Using the sx prop to apply margin
                     }}
+                    InputProps={{
+                        autoComplete: 'off', // More specific to potentially improve browser compliance
+                      }}
                 />
                 <FormControl fullWidth >
                     <InputLabel id="deadline-label">Deadline</InputLabel>
@@ -227,6 +236,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ handleCloseForm, isEditMode,
                                 width: '100%',
                                 marginBottom: '20px', // Using the sx prop to apply margin
                             }}
+                            InputProps={{
+                                autoComplete: 'off', // More specific to potentially improve browser compliance
+                              }}
                         />
                     </>
 

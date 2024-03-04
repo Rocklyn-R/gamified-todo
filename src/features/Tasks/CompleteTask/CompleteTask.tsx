@@ -7,7 +7,7 @@ import { addToCoins } from '../../../store/RewardsSlice';
 import { completeOverdueTask } from '../../../store/TasksSlice';
 
 interface CompleteTaskProps {
-    task: Task
+    task: Task,
 }
 
 export const CompleteTask: React.FC<CompleteTaskProps> = ({ task }) => {
@@ -17,7 +17,10 @@ export const CompleteTask: React.FC<CompleteTaskProps> = ({ task }) => {
 
 
     const handleCompleteTask = () => {
-        setIsChecked(!isChecked);
+        if (isChecked) {
+            return;
+        }
+        setIsChecked(true);
         console.log(task);
         setTimeout(() => {
             if (!task.overdue) {
@@ -28,14 +31,21 @@ export const CompleteTask: React.FC<CompleteTaskProps> = ({ task }) => {
                 dispatch(addToCoins(task.coinReward));
             }
             setIsChecked(false);
-        }, 800)
+        }, 500)
 
     }
 
     return (
-        <label className={task.overdue ? "custom-checkbox-overdue" : "custom-checkbox"}>
-            <input type="checkbox" checked={isChecked} onChange={handleCompleteTask} />
-            <span className={task.overdue ? "checkmark-overdue" : "checkmark"}></span>
-        </label>
+     
+        <div className='checkbox-container'>
+            <input type="checkbox" id={task.id} className='check-input' checked={isChecked} onChange={handleCompleteTask} />
+            <label htmlFor={task.id} className={task.overdue ? "checkbox-overdue" : "checkbox"}>
+                <svg viewBox='0 0 22 16' fill="none">
+                    <path d="M1 6.85L8.09677 14L21 1" />
+                </svg>
+            </label>
+        </div>
+
+     
     )
 }

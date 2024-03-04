@@ -85,7 +85,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
 
     return (
         <Card className="reward-form-container overlay-card">
-            <form onSubmit={handleSubmitAddItem}>
+            <form onSubmit={handleSubmitAddItem} autoComplete="off">
                 <button
                     type="button"
                     className='close'
@@ -106,6 +106,9 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                         marginBottom: '20px',
                         color: "#0c3d63" // Using the sx prop to apply margin
                     }}
+                    InputProps={{
+                        autoComplete: 'off', // More specific to potentially improve browser compliance
+                      }}
                 />
                 <TextField
                     type="text"
@@ -119,6 +122,9 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                         marginBottom: '20px',
                         color: "#0c3d63" // Using the sx prop to apply margin
                     }}
+                    InputProps={{
+                        autoComplete: 'off', // More specific to potentially improve browser compliance
+                      }}
                 />
                 <TextField
                     label="Price" // MUI TextField uses a label prop instead of placeholder for floating label text
@@ -132,6 +138,9 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                         marginBottom: '20px',
                         color: "#0c3d63" // Using the sx prop to apply margin
                     }}
+                    InputProps={{
+                        autoComplete: 'off', // More specific to potentially improve browser compliance
+                      }}
                 />
                 <label>Select icon:</label>
                 <div className="icon-choices">
