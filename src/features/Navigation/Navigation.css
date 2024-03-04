@@ -3,7 +3,8 @@
     top: 0;
     width: 100%;
     background-color: #0c3d63; /* Adjust as needed */
-    padding: 1rem; /* Adjust padding as needed */
+    padding-top: 1rem;
+    padding-bottom: 1rem; /* Adjust padding as needed */
     height: 1.5rem;
 }
 
@@ -50,10 +51,28 @@
     opacity: 0; /* Initially hidden */
 }
 
-.navbar ul li:hover .nav-text  {
-    display: flex;
-    opacity: 1; /* Show the text */
-    transform: translateY(0); /* Move the text back to its original position */
+
+/*Screens that don't have hover (most mobile devices except Samsung) */
+@media (hover: none) {
+    .navbar ul li:hover .nav-text {
+        display: none;
+    }
+}
+
+/* Screens that have hover and are not Samsung (laptops etc) */
+@media (hover:hover) and (min-width: 501px) {
+    .navbar ul li:hover .nav-text {
+        display: flex;
+        opacity: 1; /* Show the text */
+        transform: translateY(0);
+    }
+}
+
+/*Samsung screens that have hover but don't behave like they do */
+@media (hover:hover) and (max-width: 500px) {
+    .navbar ul li:hover .nav-text {
+        display: none;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
