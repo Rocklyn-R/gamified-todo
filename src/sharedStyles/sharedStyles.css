@@ -229,7 +229,13 @@
 
 /*Samsung screens that have hover but don't behave like they do */
 @media (hover:hover) and (max-width: 500px) {
-   
+   .add-task button:active {
+    background-color: #0c3d63;
+   }
+
+   .task-history-icon:active {
+    background-color: #0c3d63;
+   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

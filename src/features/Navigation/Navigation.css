@@ -70,6 +70,10 @@
         background-color: #135382;
     }
 
+    .nabar ul li:active {
+        background-color: #135382;
+    }
+
 }
 
 /* Screens that have hover and are not Samsung (laptops etc) */
@@ -84,9 +88,6 @@
         background-color: #135382;
     }
 
-    .navbar ul li:focus {
-        background-color: #135382;
-    }
 
 }
 
@@ -94,6 +95,10 @@
 @media (hover:hover) and (max-width: 500px) {
     .navbar ul li:hover .nav-text {
         display: none;
+    }
+
+    .navbar ul li:active {
+        background-color: #135382;
     }
 }
 
