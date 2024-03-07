@@ -3,9 +3,9 @@
     top: 0;
     width: 100%;
     background-color: #0c3d63; /* Adjust as needed */
-    padding-top: 1rem;
-    padding-bottom: 1rem; /* Adjust padding as needed */
-    height: 1.5rem;
+    z-index: 3;
+    /* Adjust padding as needed */
+    height: fit-content;
 }
 
 .navbar ul {
@@ -17,10 +17,12 @@
 }
 
 .navbar ul li {
-    padding: 0 20px; /* Adjust padding as needed */
+    padding: 1rem; /* Adjust padding as needed */
     font-size: 1.3rem;
     display: flex;
     position: relative;
+    border-radius: 50%;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .navbar ul li a {
@@ -30,10 +32,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    -webkit-tap-higlight-color: transparent;
 }
+
 
 .tasks-icon {
     color: aliceblue;
+
 }
 
 .shopping-icon {
@@ -42,7 +47,7 @@
 
 .nav-text {
     position: absolute;
-    top: 0;
+    top: 1rem;
     left: 80%;
     display: none;
     margin-left: 5px; /* Adjust as needed */
@@ -57,6 +62,12 @@
     .navbar ul li:hover .nav-text {
         display: none;
     }
+
+ 
+    .navbar ul li:active {
+        background-color: #135382;
+    }
+
 }
 
 /* Screens that have hover and are not Samsung (laptops etc) */
