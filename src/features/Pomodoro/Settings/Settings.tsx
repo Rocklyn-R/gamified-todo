@@ -82,7 +82,7 @@ export const Settings: React.FC<SettingsProps> = ({ handleCloseSettings }) => {
                 min={1}
                 max={10}
             />
-            <label>Selling price of 1 tomato: <FaCoins className="coins-icon" />{priceOfTomato}</label>
+            <label><p id="tomato-selling-price">Selling price of 1 tomato: <FaCoins className="coins-icon" />{priceOfTomato}</p></label>
             <ReactSlider
                 className="slider"
                 thumbClassName="thumb"

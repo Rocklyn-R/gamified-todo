@@ -25,7 +25,7 @@ export const RewardItem: React.FC<RewardItemProps> = ({ reward, index, handleVie
     return (
         <div className="reward-item">
             <button
-                className="view-reward"
+                className="view-reward no-select"
                 onClick={() => handleViewItem()}
             >
                 <div className="icon-container">

@@ -56,10 +56,12 @@ export const PomodoroPage = () => {
     return (
 
         <Card className="pomodoro-container">
-            <h1 id="pomodoro-header">POMODORO TIMER</h1>
+           
+               <h1 id="pomodoro-header">POMODORO TIMER</h1>
             <div className="coin-count-header pomodoro-coin-count">
                     <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
-                </div>
+                </div> 
+            
             {isPaused && (
                 <button
                     className="settings-button no-select"

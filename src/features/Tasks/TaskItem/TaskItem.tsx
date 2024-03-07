@@ -25,7 +25,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task, index, handleViewTaskC
             {!history && <CompleteTask task={task} />}
             <button
                 key={index}
-                className={overdue ? "overdue-task-button" : "view-task"}
+                className={overdue ? "overdue-task-button no-select" : "view-task no-select"}
                 onClick={() => { if(handleViewTaskClick) {
                      handleViewTaskClick(task)
                 } }}

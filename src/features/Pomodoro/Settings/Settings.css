@@ -1,8 +1,9 @@
 .pomodoro-settings-container {
-    width: 30%;
+    min-width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-height: 90%;
 }
 
 .pomodoro-settings-container label {
@@ -15,7 +16,7 @@
 }
 
 .slider {
-    height: 35px;
+    height: 30px;
     border: 2px solid #135382;
     border-radius: 20px;
     width: 80%;
@@ -24,11 +25,22 @@
 .thumb {
     background-color: #135382;
     cursor: pointer;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     border-radius: 20px;
 }
 
 .command-buttons-container {
     margin-top: 1.5rem;
+}
+
+#tomato-selling-price {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width) {
+    
 }

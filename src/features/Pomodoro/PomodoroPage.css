@@ -6,6 +6,7 @@
     align-items: center;
     color: aliceblue;
     width: 70%;
+    height: 100%;
 }
 
 .pomodoro-container h1 {
@@ -42,11 +43,6 @@
 }
 
 
-@media (max-width: 300px) {
-    #pomodoro-header {
-        font-size: 1.4rem
-    }
-}
 
 
 @media (max-width: 350px) {
@@ -54,18 +50,69 @@
         font-size: 3rem;
     }
 
-    .pomodoro-coin-count {
-        display: none;
-    }
-
-    #pomodoro-header {
-        display: none;
-    }
 
 }
 
+@media (max-width: 650px) {
+    .pomodoro-coin-count {
+        display: none;
+    }
 
-@media (max-width: 1200px) and (max-height: 900px) {
+    #pomodoro-header {
+        display: none;
+    }
+
+    .pomodoro-container {
+        margin-top: 5rem;
+    }
+}
+
+@media (max-height: 700px) {
+    .pomodoro-coin-count {
+        display: none;
+    }
+
+    #pomodoro-header {
+        display: none;
+    }
+    .pomodoro-container {
+        margin-top: 3rem;
+    }
+}
+
+@media (min-height: 701px) and (max-height: 750px) {
+    .pomodoro-coin-count {
+        display: none;
+    }
+
+    #pomodoro-header {
+        display: none;
+    }
+
+    .pomodoro-container {
+        margin-top: 5rem;
+    }
+}
+
+@media (min-width: 651px) and (max-width: 1100px) and (max-height: 650px) {
+    .pomodoro-coin-count {
+        display: none;
+    }
+
+    #pomodoro-header {
+        display: none;
+    }
+
+    .pomodoro-container {
+        margin-top: 0.5rem;
+    }
+
+    #sessions-remaining {
+        margin-top: 1.5rem;
+    }
+}
+/*
+@media (max-width: 1000px) and (max-height: 800px) {
 
     .pomodoro-coin-count {
         display: none;
@@ -75,6 +122,13 @@
         display: none;
     }
 
+    .pomodoro-container {
+        margin-top: 3rem;
+    }
+}
+
+
+@media (max-width: 1200px) and (max-height: 800px) {
     #sessions-remaining {
         margin-top: 1.5rem;
     }
@@ -82,16 +136,34 @@
     .pomodoro-container {
         margin-top: 1.5rem;
     }
-    
-}
-
-@media (min-width: 401px) and (max-width: 545px) {
+    .pomodoro-coin-count {
+        display: none;
+    }
 
     #pomodoro-header {
-        font-size: 1.8rem;
+        display: none;
     }
+
     
 }
+
+@media (min-width: 260px) and (max-width: 450px) {
+
+    #pomodoro-header {
+        display: none;
+    }
+
+    .pomodoro-coin-count {
+        display: none;
+    }
+
+    .pomodoro-container {
+        margin-top: 4rem;
+    }
+    
+} */
+
+
 
 
 /* Screens that have hover and are not Samsung (laptops etc) */
