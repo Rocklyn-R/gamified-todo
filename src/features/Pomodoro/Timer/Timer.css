@@ -35,7 +35,7 @@
 }
 
 #pomodoro-coin-p {
-       display: none; 
+    display: none;
 }
 
 
@@ -45,6 +45,7 @@
     display: flex;
     align-items: center;
 }
+
 .pomodoro-coin-icon {
     margin-right: .5rem;
     color: #d4af37;
@@ -65,7 +66,8 @@
     padding: .5rem 1rem;
 }
 
-.pomodoro-button:hover, .pomodoro-button {
+.pomodoro-button:hover,
+.pomodoro-button {
     font-size: 1.2rem;
 }
 
@@ -81,56 +83,57 @@
 /* Screens that have hover and are not Samsung (laptops etc) */
 @media (hover:hover) and (min-width: 501px) {
     .play-button:active {
-     background-color: #91cbf2;
+        background-color: #91cbf2;
     }
 
-  
+
     .pomodoro-button:active {
         background-color: #91cbf2;
         color: #0c3d63;
     }
- }
- 
- /* Screens that don't have hover (most mobile devices except Samsung) */
- /* :hover behaves as active */
- @media (hover: none) {
+}
+
+/* Screens that don't have hover (most mobile devices except Samsung) */
+/* :hover behaves as active */
+@media (hover: none) {
     .play-button:active {
         background-color: #91cbf2;
-       }
+    }
 
-       .pomodoro-button:active {
+    .pomodoro-button:active {
         background-color: #91cbf2;
         color: #0c3d63;
     }
-    
- }
- 
- 
- /*Samsung screens that have hover but don't behave like they do */
- @media (hover:hover) and (max-width: 500px) {
-    .play-button:hover {
-        background-color: #91cbf2;
-       }
 
-       .pomodoro-button:hover {
+}
+
+
+/*Samsung screens that have hover but don't behave like they do */
+@media (hover:hover) and (max-width: 500px) {
+    .play-button:active {
+        background-color: #91cbf2;
+    }
+
+    .pomodoro-button:active {
         background-color: #91cbf2;
         color: #0c3d63;
-       }
- }
-
-
- @media (max-width: 650px) {
-    #pomodoro-coin-p {
-        display: flex;
     }
- }
+}
 
 
- @media (max-height: 750px) {
+@media (max-width: 650px) {
     #pomodoro-coin-p {
         display: flex;
     }
 }
+
+
+@media (max-height: 750px) {
+    #pomodoro-coin-p {
+        display: flex;
+    }
+}
+
 /*
 @media (min-width: 260px) and (max-width: 450px) {
 
