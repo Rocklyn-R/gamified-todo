@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './CompleteTask.css';
 import { useDispatch } from 'react-redux';
 import { Task } from '../../../types/Types';
