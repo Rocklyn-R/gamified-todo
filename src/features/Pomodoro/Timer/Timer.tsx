@@ -22,6 +22,8 @@ import {
 } from "../../../store/PomodoroSlice";
 import { BsFillSkipEndFill } from "react-icons/bs";
 import tomato from "../../../images/tomato.png";
+import { FaCoins } from "react-icons/fa";
+import { selectTotalCoins } from "../../../store/RewardsSlice";
 
 
 let intervalId: any = null;
@@ -39,6 +41,7 @@ export const Timer: React.FC<TimerProps> = ({ handleShowSellPomodoros }) => {
     const breakMinutes = useSelector(selectBreakMinutes);
     const longBreakMinutes = useSelector(selectLongBreakMinutes);
     const pomodoros = useSelector(selectPomodoros);
+    const totalCoins = useSelector(selectTotalCoins);
 
 
 
@@ -115,24 +118,30 @@ export const Timer: React.FC<TimerProps> = ({ handleShowSellPomodoros }) => {
                     trailColor: "rgb(240,248,255)"
                 })} />
             <p id="mode-string">{modeString}</p>
-            <button className="pomodoro-button" onClick={handleShowSellPomodoros}>
+            <div className="coin-pomodoro-box">
+               
+                    <p id="pomodoro-coin-p"><FaCoins className='pomodoro-coin-icon' /> {totalCoins}</p>
+            
+            <button className="pomodoro-button no-select" onClick={handleShowSellPomodoros}>
                 <img alt="" src={tomato} className="pomodoro-icon" height="30" width="30" />
                 <p>{pomodoros}</p>
             </button>
+            </div>
+            
             <div className="control-timer-buttons">
                 <button
-                    className="play-button"
+                    className="play-button no-select"
                     onClick={resetTimer}
                 ><FaStop className="control-icon" /></button>
                 {isPaused &&
                     <button
-                        className="play-button"
+                        className="play-button no-select"
                         onClick={playTimer}
                     >
                         <FaPlay className="control-icon" /></button>}
-                {!isPaused && <button className="play-button" onClick={pauseTimer}><FaPause className="control-icon" /></button>}
+                {!isPaused && <button className="play-button no-select" onClick={pauseTimer}><FaPause className="control-icon" /></button>}
                 <button
-                    className="play-button"
+                    className="play-button no-select"
                     onClick={skipTimer}
                 ><BsFillSkipEndFill className="play-button" /></button>
             </div>

@@ -56,13 +56,13 @@ export const PomodoroPage = () => {
     return (
 
         <Card className="pomodoro-container">
-            <h1>POMODORO TIMER</h1>
-            <div className="coin-count-header">
+            <h1 id="pomodoro-header">POMODORO TIMER</h1>
+            <div className="coin-count-header pomodoro-coin-count">
                     <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
                 </div>
             {isPaused && (
                 <button
-                    className="settings-button"
+                    className="settings-button no-select"
                     onClick={handleOpenSettings}
                 >
                     <IoIosSettings className="settings-icon" /></button>

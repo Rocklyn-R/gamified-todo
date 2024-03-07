@@ -125,6 +125,8 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    padding: 0;
+    border-radius: 50%;
 }
 
 .add-task,
@@ -176,7 +178,7 @@
 
 @media (max-width: 350px) {
     .task-history-icon {
-        margin-right: .25rem;
+        margin-right: .15rem;
     }
 
     .history-icon {
@@ -211,6 +213,10 @@
     .task-history-icon:active {
         background-color: #0c3d63;
     }
+
+    .back-icon:active {
+        background-color: #0c3d63;
+    }
 }
 
 /* Screens that don't have hover (most mobile devices except Samsung) */
@@ -224,6 +230,9 @@
         background-color: #0c3d63;
     }
 
+    .back-icon:hover {
+        background-color: #0c3d63;
+    }
 }
 
 
@@ -234,6 +243,10 @@
    }
 
    .task-history-icon:active {
+    background-color: #0c3d63;
+   }
+
+   .back-icon:active {
     background-color: #0c3d63;
    }
 }
