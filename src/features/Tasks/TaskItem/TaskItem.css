@@ -1,8 +1,11 @@
 .to-do-element, .reward-item {
     display: flex;
     margin-bottom: 1rem;
-    width: 100%;
+    width: 30%;
     align-items: center;
+    min-height: 3rem;
+    min-width: 17rem;
+    max-width: 20rem;
 }
 
 .to-do-element {
@@ -10,7 +13,6 @@
 }
 
 .view-task {
-    max-width: 15rem;
     display: flex;
     align-items: center;
     height: fit-content;
@@ -22,7 +24,7 @@
     font-size: 1rem;
     background: linear-gradient(to bottom right, aliceblue, #6fa8dc);
     padding: .5rem;
-   min-height: 5rem;
+    width: 100%
 }
 
 .view-task {
@@ -96,4 +98,33 @@
 
 #completed-text {
     color: green;
+}
+
+@media (max-width: 315px) {
+    .to-do-element {
+       min-width: 15rem; 
+       max-width: 90%;
+    }
+    .tasks-container {
+        min-width: fit-content;
+    }
+}
+
+@media (min-width: 316px) and (max-width: 350px) {
+    .to-do-element {
+        min-width: 16rem;
+    }
+}
+
+@media (min-width: 351px) and (max-width: 400px) {
+    .to-do-element {
+        min-width: 17rem;
+    }
+}
+
+
+@media (min-width: 351) and (max-width: 500px) {
+    .to-do-element {
+        min-width: 18rem;
+    }
 }

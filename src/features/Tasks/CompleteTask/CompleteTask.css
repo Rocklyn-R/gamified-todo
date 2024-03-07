@@ -70,3 +70,9 @@
     stroke-dashoffset: 0;
   }
 }
+
+@media (max-width: 300px) {
+  .checkbox, .checkbox-overdue {
+    margin-left: 1rem;
+  }
+}

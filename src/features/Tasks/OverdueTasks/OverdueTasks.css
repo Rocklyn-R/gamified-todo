@@ -10,8 +10,8 @@
 
 #overdue-tasks-heading {
     color: #0c3d63;
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
 }
 
 .show-overdue-arrow {
@@ -30,4 +30,10 @@
 
 .accept-penalty {
     margin-top: 2rem;
+}
+
+@media (max-width: 350px) {
+    .overdue-container {
+        width: 100%;
+    }
 }

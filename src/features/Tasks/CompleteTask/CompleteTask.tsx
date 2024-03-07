@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CompleteTask.css';
 import { useDispatch } from 'react-redux';
 import { Task } from '../../../types/Types';
@@ -21,6 +21,8 @@ export const CompleteTask: React.FC<CompleteTaskProps> = ({ task }) => {
             return;
         }
         setIsChecked(true);
+   
+        
         console.log(task);
         setTimeout(() => {
             if (!task.overdue) {
@@ -34,6 +36,7 @@ export const CompleteTask: React.FC<CompleteTaskProps> = ({ task }) => {
         }, 1500)
 
     }
+    
 
     return (
      

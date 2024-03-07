@@ -27,3 +27,11 @@
     font-size: 1rem;
 }
 
+.item-description {
+    margin-bottom: 0;
+}
+
+#not-enough-coins {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}

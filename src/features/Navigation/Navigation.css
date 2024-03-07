@@ -6,6 +6,8 @@
     z-index: 3;
     /* Adjust padding as needed */
     height: fit-content;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
 .navbar ul {
@@ -17,7 +19,7 @@
 }
 
 .navbar ul li {
-    padding: 1rem; /* Adjust padding as needed */
+    padding: .5rem; /* Adjust padding as needed */
     font-size: 1.3rem;
     display: flex;
     position: relative;
@@ -47,10 +49,10 @@
 
 .nav-text {
     position: absolute;
-    top: 1rem;
+    top: .5rem;
     left: 80%;
     display: none;
-    margin-left: 5px; /* Adjust as needed */
+    margin-left: 1rem; /* Adjust as needed */
     transform: translateY(-10px); /* Move the text up initially */
     transition: opacity 1s ease, transform 1s ease; /* Add transition effect for opacity and transform */
     opacity: 0; /* Initially hidden */
@@ -64,7 +66,7 @@
     }
 
  
-    .navbar ul li:active {
+    .navbar ul li:hover {
         background-color: #135382;
     }
 
@@ -77,6 +79,15 @@
         opacity: 1; /* Show the text */
         transform: translateY(0);
     }
+
+    .navbar ul li:active {
+        background-color: #135382;
+    }
+
+    .navbar ul li:focus {
+        background-color: #135382;
+    }
+
 }
 
 /*Samsung screens that have hover but don't behave like they do */

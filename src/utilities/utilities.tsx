@@ -109,3 +109,21 @@ export const convertDateToString = (value: string) => {
     } else return ""
 
 }
+
+
+
+const currentDate = new Date();
+
+// Options to get the day of the week
+const dayOptions: { weekday: "long"; } = {
+    weekday: "long"
+};
+export const day = currentDate.toLocaleDateString('en-US', dayOptions);
+
+// Options to get the month and day without the year
+const dateOptions: { month: "long"; day: "numeric"; } = {
+    month: "long",
+    day: "numeric"
+};
+
+export const date = currentDate.toLocaleDateString('en-US', dateOptions);

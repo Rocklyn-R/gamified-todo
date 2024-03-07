@@ -4,6 +4,7 @@ import { Task, TasksState } from "../types/Types"
 
 
 
+
 export const TasksSlice = createSlice({
     name: "tasks",
     initialState: {
@@ -15,7 +16,7 @@ export const TasksSlice = createSlice({
                 id: '1asfasfdasdf234',
                 deadline: "2024-02-25T22:59:59.999Z",
                 coinPenalty: 20,
-                overdue: false,
+                overdue: false
             },
             {
                 name: "Do the Laundry",

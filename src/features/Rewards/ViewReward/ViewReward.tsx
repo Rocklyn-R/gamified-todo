@@ -62,7 +62,7 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
                     >
                         X
                     </button>
-                    
+
                     <div className="edit-delete-buttons">
 
                         <button
@@ -83,14 +83,17 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
                     <p className="reward-name">
                         Name: {selectedReward.name}
                     </p>
-                    <p className='item-description'>
-                        {selectedReward.description && `Description: ${selectedReward.description}`}
-                    </p>
+                    {selectedReward.description && (
+                        <p className='item-description'>
+                            Description: {selectedReward.description}
+                        </p>
+                    )}
+
                     <p className='view-item-price-details'>
                         Price: <FaCoins className='coins-icon view-coins-icon' />{selectedReward.price}
                     </p>
                     {purchaseFailed && (
-                        <p>Not enough coins!</p>
+                        <p id="not-enough-coins">Not enough coins!</p>
                     )}
                     <button
                         className='command-button'

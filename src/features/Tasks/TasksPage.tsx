@@ -15,6 +15,7 @@ import { OverdueTasks } from './OverdueTasks/OverdueTasks';
 import { selectOverdueTasks } from '../../store/TasksSlice';
 import { selectTotalCoins } from '../../store/RewardsSlice';
 import { FaCoins } from 'react-icons/fa';
+import { day, date } from '../../utilities/utilities';
 
 
 
@@ -36,11 +37,6 @@ export const Tasks = () => {
 
     const overlayRef = useRef<HTMLDivElement>(null);
     const overdueTasksOverlayRef = useRef<HTMLDivElement>(null);
-
-    const currentDate = new Date();
-    const options: Intl.DateTimeFormatOptions = { weekday: 'long', month: 'long', day: 'numeric' };
-    const formattedDate = currentDate.toLocaleDateString('en-US', options);
-
     const historyTasks = useSelector(selectHistoryTasks);
     const overdueTasks = useSelector(selectOverdueTasks);
     const totalCoins = useSelector(selectTotalCoins)
@@ -108,22 +104,25 @@ export const Tasks = () => {
         <>
             {historyTasks.length > 0 &&
                 <div className='task-history-icon'>
-                    <Link to="/tasks/history" ><GrHistory className='history-icon' /></Link>
+                    <Link to="/tasks/history" className='task-history-link no-select' ><GrHistory className='history-icon' /></Link>
                 </div>
             }
             <Card className="tasks-container">
                 <div className="date-box">
-                    <h1>{formattedDate}</h1>
+                    <h1>{day},</h1>
+                    <h1 id="date">{date}</h1>
                 </div>
                 <div className="coin-count-header">
                     <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
                 </div>
-                <div className='to-do-list'>
+                    
                     {tasks.length === 0 && <p>Add new tasks!</p>}
-                    {tasks.map((task, index) => {
+                    <div className='todo-list'>
+                        {tasks.map((task, index) => {
                         return <TaskItem task={task} index={index} handleViewTaskClick={handleViewTaskClick} />
                     })}
-                </div>
+                    </div>
+                    
 
                 {(overdueTasks.length > 0 && showOverdueTasks) && (
                     <div className='overlay' ref={overdueTasksOverlayRef}>
@@ -153,7 +152,7 @@ export const Tasks = () => {
                 }
             </Card>
             <div className="add-task">
-                <button onClick={handleAddTaskClick}><IoIosAddCircleOutline /></button>
+                <button className="no-select" onClick={handleAddTaskClick}><IoIosAddCircleOutline className="add-icon" /></button>
             </div>
         </>
     )
