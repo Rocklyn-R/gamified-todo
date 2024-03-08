@@ -97,7 +97,8 @@ export const Tasks = () => {
             }
             setShowOverdueTasks(true);
         })
-    })
+    });
+
 
 
     return (
@@ -108,6 +109,7 @@ export const Tasks = () => {
                 </div>
             }
             <Card className="tasks-container">
+          
                 <div className="date-box">
                     <h1>{day},</h1>
                     <h1 id="date">{date}</h1>

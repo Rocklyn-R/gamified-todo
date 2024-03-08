@@ -1,6 +1,10 @@
 .rewards-history {
     background-color: #135382;
-    color: lightblue
+    color: lightblue;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .rewards-history h1 {
@@ -26,6 +30,9 @@
     padding: 10px;
     margin-bottom: 1em;
     justify-content: space-between;
+    min-height: 3rem;
+    min-width: 17rem;
+    max-width: 20rem;
 }
 
 .inventory-history-box img {

@@ -49,7 +49,7 @@
   animation: check 4s forwards;
 }
 
-.checkbox::before, .checkbox-overdue:before {
+.checkbox:before, .checkbox-overdue:before {
   content: "";
   background: #26bfbf66;
   position: absolute;
@@ -74,5 +74,13 @@
 @media (max-width: 300px) {
   .checkbox, .checkbox-overdue {
     margin-left: 1rem;
+  }
+}
+
+
+/* Screens that have hover and are not Samsung (laptops etc) */
+@media (hover:hover) and (min-width: 501px) {
+  .checkbox:hover, .checkbox-overdue:hover {
+   background-color: #acd7fa;
   }
 }

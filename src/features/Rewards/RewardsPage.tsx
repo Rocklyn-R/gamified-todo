@@ -63,7 +63,7 @@ export const RewardsPage = () => {
     return (
         <>
                 <Card className="rewards-box">
-                    <h1>REWARDS SHOP</h1>
+                    <h1 className="rewards-header">REWARDS SHOP</h1>
                     <div className="coin-count-header">
                     <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
                 </div>
@@ -93,7 +93,7 @@ export const RewardsPage = () => {
 
                 </Card>
                 <div className="add-reward">
-                    <button onClick={() => handleAddNewItem()}><IoIosAddCircleOutline /></button>
+                    <button className='no-select' onClick={() => handleAddNewItem()}><IoIosAddCircleOutline /></button>
                 </div>
         </>
 

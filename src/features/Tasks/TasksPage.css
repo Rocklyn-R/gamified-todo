@@ -37,8 +37,6 @@
 
 .view-task {
     width: 85%;
-    display: flex;
-    align-items: center;
 }
 
 
@@ -66,14 +64,18 @@
     /* Ensure it appears above other content */
 }
 
-@media (max-width: 300px) {
+.hidden {
+    display: none;
+}
+
+@media (max-width: 350px) {
     .date-box h1 {
         font-size: 1.4rem
     }
 }
 
 
-@media (min-width: 301px) and (max-width: 400px) {
+@media (min-width: 351px) and (max-width: 450px) {
   
     .date-box {
         align-self: center;
@@ -88,7 +90,7 @@
     }
 }
 
-@media (min-width: 401px) and (max-width: 545px) {
+@media (min-width: 451px) and (max-width: 650px) {
     #date {
         margin-left: 0;
     }
@@ -106,7 +108,7 @@
 
 /* Screens that have hover and are not Samsung (laptops etc) */
 @media (hover:hover) and (min-width: 501px) {
-    
+
 }
 
 /*Screens that don't have hover (most mobile devices except Samsung) */

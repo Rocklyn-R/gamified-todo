@@ -54,14 +54,13 @@ export const InventoryPage = () => {
 
     return (
         <>
-            <div className="rewards-container">
                 {usedRewards.length > 0 && (
                     <div className='inventory-history-icon'>
                         <Link to="/inventory/history" ><GrHistory className='history-icon' /></Link>
                     </div>
                 )}
                 <Card className="inventory-box">
-                    <h1>INVENTORY</h1>
+                    <h1 className="rewards-header">INVENTORY</h1>
                     <div className="coin-count-header">
                         <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
                     </div>
@@ -87,7 +86,6 @@ export const InventoryPage = () => {
                         </div>
                     )}
                 </Card>
-            </div>
         </>
     )
 }

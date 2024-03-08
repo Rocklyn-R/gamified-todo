@@ -3,9 +3,9 @@
     height: fit-content;
     align-items: center;
     width: 100%;
+    min-width: 18rem;
     min-height: 5rem;
-    min-width: 17rem;
-    max-width: 20rem;
+    max-width: 18rem;
     cursor: pointer;
     border: none;
     border-radius: .4rem;
@@ -37,6 +37,8 @@
     flex-direction: column;
     align-items: flex-start;
     min-width: 4rem;
+    max-width: 9rem;
+
 }
 
 .reward-item {
@@ -62,4 +64,17 @@
 #reward-quantity {
     text-align: end;
     padding-right: .5rem;
+}
+
+@media (max-width: 350px) {
+    .view-reward {
+        width: 90%;
+    }
+}
+
+
+@media (max-width: 300px) {
+    .view-reward {
+        width: 80%;
+    }
 }

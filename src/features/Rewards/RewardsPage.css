@@ -4,16 +4,36 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: auto;
     height: fit-content;
     margin-top: 2rem;
     background-color: #135382;
+    margin-bottom: 4rem;
 }
 
-.rewards-box h1 {
+.rewards-header {
     padding: 0;
     margin: 0;
     color: aliceblue;
     font-size: 2rem;
 }
 
+@media (max-width: 300px) {
+    .rewards-header {
+        font-size: 1.4rem
+    }
+}
+
+
+@media (min-width: 301px) and (max-width: 400px) {
+  
+    .rewards-header {
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 545px) {
+    .rewards-header {
+        font-size: 1.8rem;
+    }
+}

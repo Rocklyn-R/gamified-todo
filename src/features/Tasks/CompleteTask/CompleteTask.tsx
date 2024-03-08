@@ -42,7 +42,7 @@ export const CompleteTask: React.FC<CompleteTaskProps> = ({ task }) => {
      
         <div className='checkbox-container'>
             <input type="checkbox" id={task.id} className='check-input' checked={isChecked} onChange={handleCompleteTask} />
-            <label htmlFor={task.id} className={task.overdue ? "checkbox-overdue" : "checkbox"}>
+            <label htmlFor={task.id} className={task.overdue ? "checkbox-overdue no-select" : "checkbox no-select"}>
                 <svg viewBox='0 0 22 16' fill="none">
                     <path d="M1 6.85L8.09677 14L21 1" />
                 </svg>

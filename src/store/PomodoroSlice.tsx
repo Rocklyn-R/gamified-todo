@@ -54,6 +54,20 @@ export const PomodoroSlice = createSlice({
                 state.longBreakMinutesQueued = null;
             }
         },
+        applyQueuedSettingsAtReset: (state) => {
+            if (state.workMinutesQueued) {
+                state.workMinutes = state.workMinutesQueued;
+                state.workMinutesQueued = null;
+            }
+            if (state.breakMinutesQueued) {
+                state.breakMinutes = state.breakMinutesQueued;
+                state.breakMinutesQueued = null;
+            }
+            if (state.longBreakMinutesQueued) {
+                state.longBreakMinutes = state.longBreakMinutesQueued;
+                state.longBreakMinutesQueued = null;
+            }
+        },
         tick: (state) => {
             if (state.isPaused) {
                 return;
@@ -127,6 +141,7 @@ export const {
     play,
     pause,
     applyQueuedSettings,
+    applyQueuedSettingsAtReset,
     tick,
     reset,
     skip,

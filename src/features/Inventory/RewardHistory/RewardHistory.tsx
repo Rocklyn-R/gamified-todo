@@ -11,8 +11,10 @@ export const RewardHistory = () => {
     const usedRewards = useSelector(selectUsedRewards);
 
     return (
-        <Card className="rewards-history">
-            <Link to="../inventory"><IoArrowBackOutline className="back-icon" /></Link>
+
+    <>
+    <Link to="../inventory"><IoArrowBackOutline className="back-icon" /></Link>
+    <Card className="rewards-history">
             <h1>REWARDS HISTORY</h1>
             {usedRewards.map(item => (
                 <div className='inventory-history-box'>
@@ -31,5 +33,7 @@ export const RewardHistory = () => {
 
             ))}
         </Card>
+    </>
+        
     )
 }
