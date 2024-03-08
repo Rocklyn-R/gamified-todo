@@ -55,6 +55,9 @@ export interface PomodoroState {
     workMinutes: number;
     breakMinutes: number;
     longBreakMinutes: number;
+    workMinutesQueued: null | number;
+    breakMinutesQueued: null | number;
+    longBreakMinutesQueued: null | number;
     numOfSessionsToLongBreak: number;
     sessionsRemaining: number;
     mode: "work" | "break" | "longBreak";

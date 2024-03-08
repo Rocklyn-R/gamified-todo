@@ -11,6 +11,9 @@ export const PomodoroSlice = createSlice({
         workMinutes: 25,
         breakMinutes: 5,
         longBreakMinutes: 15,
+        workMinutesQueued: null,
+        breakMinutesQueued: null,
+        longBreakMinutesQueued: null,
         numOfSessionsToLongBreak: 4,
         sessionsRemaining: 4,
         pomodoros: 10,
@@ -18,13 +21,13 @@ export const PomodoroSlice = createSlice({
     } as PomodoroState,
     reducers: {
         setWorkMinutes: (state, action: PayloadAction<number>) => {
-            state.workMinutes = action.payload;
+            state.workMinutesQueued = action.payload;
         },
         setBreakMinutes: (state, action: PayloadAction<number>) => {
-            state.breakMinutes = action.payload;
+            state.breakMinutesQueued = action.payload;
         },
         setLongBreakMinutes: (state, action: PayloadAction<number>) => {
-            state.longBreakMinutes = action.payload;
+            state.longBreakMinutesQueued = action.payload;
         },
         setNumOfSessionsToLongBreak: (state, action: PayloadAction<number>) => {
             const completedSessions = state.numOfSessionsToLongBreak - state.sessionsRemaining;
@@ -37,12 +40,27 @@ export const PomodoroSlice = createSlice({
         pause: (state) => {
             state.isPaused = true;
         },
+        applyQueuedSettings: (state) => {
+            if (state.workMinutesQueued && state.mode !== "work") {
+                state.workMinutes = state.workMinutesQueued;
+                state.workMinutesQueued = null;
+            }
+            if (state.breakMinutesQueued && state.mode !== "break") {
+                state.breakMinutes = state.breakMinutesQueued;
+                state.breakMinutesQueued = null;
+            }
+            if (state.longBreakMinutesQueued && state.mode !== "longBreak") {
+                state.longBreakMinutes = state.longBreakMinutesQueued;
+                state.longBreakMinutesQueued = null;
+            }
+        },
         tick: (state) => {
             if (state.isPaused) {
                 return;
             }
             if (state.secondsLeft === 0) {
                 state.isPaused = true;
+                
                 if (state.mode === 'work' && state.sessionsRemaining > 1) {
                     state.mode = 'break';
                     state.secondsLeft = state.breakMinutes * 60;
@@ -108,6 +126,7 @@ export const {
     setNumOfSessionsToLongBreak,
     play,
     pause,
+    applyQueuedSettings,
     tick,
     reset,
     skip,
@@ -125,5 +144,8 @@ export const selectSecondsLeft = (state: RootState) => state.pomodoro.secondsLef
 export const selectPomodoros = (state: RootState) => state.pomodoro.pomodoros;
 export const selectMode = (state: RootState) => state.pomodoro.mode
 export const selectPomodoroPrice = (state: RootState) => state.pomodoro.pomodoroPrice;
+export const selectWorkMinutesQueued = (state: RootState) => state.pomodoro.workMinutesQueued;
+export const selectBreakMinutesQueued = (state: RootState) => state.pomodoro.breakMinutesQueued;
+export const selectLongBreakMinutesQueued = (state: RootState) => state.pomodoro.longBreakMinutesQueued;
 
 export default PomodoroSlice.reducer;

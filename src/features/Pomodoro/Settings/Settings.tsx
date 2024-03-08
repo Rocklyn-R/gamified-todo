@@ -3,7 +3,17 @@ import Card from "../../../components/Card/Card";
 import ReactSlider from "react-slider";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectWorkMinutes, selectBreakMinutes, selectPomodoroPrice, selectLongBreakMinutes, selectNumOfSessionsToLongBreak, setLongBreakMinutes, setNumOfSessionsToLongBreak } from "../../../store/PomodoroSlice";
+import { selectWorkMinutes, 
+    selectBreakMinutes, 
+    selectPomodoroPrice, 
+    selectLongBreakMinutes, 
+    selectNumOfSessionsToLongBreak, 
+    setLongBreakMinutes, 
+    setNumOfSessionsToLongBreak,
+    selectWorkMinutesQueued,
+    selectBreakMinutesQueued,
+    selectLongBreakMinutesQueued 
+} from "../../../store/PomodoroSlice";
 import { useDispatch } from "react-redux";
 import { setWorkMinutes, setBreakMinutes, setSellingPrice } from "../../../store/PomodoroSlice";
 import { FaCoins } from "react-icons/fa";
@@ -17,9 +27,13 @@ export const Settings: React.FC<SettingsProps> = ({ handleCloseSettings }) => {
     const breakMinutes = useSelector(selectBreakMinutes);
     const longBreakMinutes = useSelector(selectLongBreakMinutes);
     const numOfSessionsToLongBreak = useSelector(selectNumOfSessionsToLongBreak);
-    const [workMinutesLocal, setWorkMinutesLocal] = useState(workMinutes);
-    const [breakMinutesLocal, setBreakMinutesLocal] = useState(breakMinutes);
-    const [longBreakMinutesLocal, setLongBreakMinutesLocal] = useState(longBreakMinutes);
+    const workMinutesQueued = useSelector(selectWorkMinutesQueued);
+    const breakMinutesQueued = useSelector(selectBreakMinutesQueued);
+    const longBreakMinutesQueued = useSelector(selectLongBreakMinutesQueued);
+
+    const [workMinutesLocal, setWorkMinutesLocal] = useState(workMinutesQueued || workMinutes);
+    const [breakMinutesLocal, setBreakMinutesLocal] = useState(breakMinutesQueued || breakMinutes);
+    const [longBreakMinutesLocal, setLongBreakMinutesLocal] = useState(longBreakMinutesQueued || longBreakMinutes);
     const [numOfSessionsToLongBreakLocal, setNumOfSessionsToLongBreakLocal] = useState(numOfSessionsToLongBreak);
     const pomodoroPrice = useSelector(selectPomodoroPrice);
     const [priceOfTomato, setPriceOfTomato] = useState(pomodoroPrice);

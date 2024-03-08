@@ -18,7 +18,8 @@ import {
     reset,
     skip,
     selectLongBreakMinutes,
-    selectPomodoros
+    selectPomodoros,
+    applyQueuedSettings
 } from "../../../store/PomodoroSlice";
 import { BsFillSkipEndFill } from "react-icons/bs";
 import tomato from "../../../images/tomato.png";
@@ -42,7 +43,7 @@ export const Timer: React.FC<TimerProps> = ({ handleShowSellPomodoros }) => {
     const longBreakMinutes = useSelector(selectLongBreakMinutes);
     const pomodoros = useSelector(selectPomodoros);
     const totalCoins = useSelector(selectTotalCoins);
-
+    
 
 
     useEffect(() => {
@@ -78,15 +79,18 @@ export const Timer: React.FC<TimerProps> = ({ handleShowSellPomodoros }) => {
 
 
     const playTimer = () => {
+        dispatch(applyQueuedSettings());
         dispatch(play());
         startTimer();
     }
 
     const resetTimer = () => {
+        dispatch(applyQueuedSettings());
         dispatch(reset());
     }
 
     const skipTimer = () => {
+        dispatch(applyQueuedSettings());
         dispatch(skip());
     }
 
