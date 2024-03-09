@@ -54,6 +54,20 @@
 
 }
 
+@media (max-width: 600px) {
+    .settings-div {
+        display: none;
+    }
+}
+
+@media (min-width: 601px) {
+    .mobile-settings-div {
+        display: none;
+    }
+}
+
+
+
 @media (max-width: 650px) {
     .pomodoro-coin-count {
         display: none;
@@ -118,57 +132,6 @@
         margin-top: 1.5rem;
     }
 }
-/*
-@media (max-width: 1000px) and (max-height: 800px) {
-
-    .pomodoro-coin-count {
-        display: none;
-    }
-
-    #pomodoro-header {
-        display: none;
-    }
-
-    .pomodoro-container {
-        margin-top: 3rem;
-    }
-}
-
-
-@media (max-width: 1200px) and (max-height: 800px) {
-    #sessions-remaining {
-        margin-top: 1.5rem;
-    }
-
-    .pomodoro-container {
-        margin-top: 1.5rem;
-    }
-    .pomodoro-coin-count {
-        display: none;
-    }
-
-    #pomodoro-header {
-        display: none;
-    }
-
-    
-}
-
-@media (min-width: 260px) and (max-width: 450px) {
-
-    #pomodoro-header {
-        display: none;
-    }
-
-    .pomodoro-coin-count {
-        display: none;
-    }
-
-    .pomodoro-container {
-        margin-top: 4rem;
-    }
-    
-} */
 
 
 

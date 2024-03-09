@@ -9,6 +9,7 @@ import { selectIsPaused, selectSessionsRemaining } from "../../store/PomodoroSli
 import { PomodoroForm } from "./PomodoroForm/PomodoroForm";
 import { FaCoins } from "react-icons/fa";
 import { selectTotalCoins } from "../../store/RewardsSlice";
+import { SettingsMobile } from "./Settings/SettingsMobile/SettingsMobile";
 
 export const PomodoroPage = () => {
     const [showSettings, setShowSettings] = useState(false);
@@ -74,7 +75,13 @@ export const PomodoroPage = () => {
             <Timer handleShowSellPomodoros={handleShowSellPomodoros} />
             {showSettings && (
                 <div className="overlay" ref={overlayRef}>
-                    <Settings handleCloseSettings={handleCloseSettings} />
+                    <div className="settings-div">
+                        <Settings handleCloseSettings={handleCloseSettings} />     
+                    </div>
+                  <div className="mobile-settings-div">
+                    <SettingsMobile handleCloseSettings={handleCloseSettings} />
+                  </div>
+                    
                 </div>
             )}
 

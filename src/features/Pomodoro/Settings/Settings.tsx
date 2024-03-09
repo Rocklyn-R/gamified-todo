@@ -17,6 +17,7 @@ import { selectWorkMinutes,
 import { useDispatch } from "react-redux";
 import { setWorkMinutes, setBreakMinutes, setSellingPrice } from "../../../store/PomodoroSlice";
 import { FaCoins } from "react-icons/fa";
+import Picker from "react-mobile-picker";
 
 interface SettingsProps {
     handleCloseSettings: () => void;
@@ -53,6 +54,12 @@ export const Settings: React.FC<SettingsProps> = ({ handleCloseSettings }) => {
     const handleCancel = () => {
         handleCloseSettings();
     }
+
+    const [breakMinutesPickerValue, setPickerValue] = useState({
+        "breakMinutes": String(breakMinutesLocal)
+    })
+
+    const numberSelectionTo120 = Array.from({ length: 120 }, (_, i) => i + 1);
 
     return (
         <Card className="pomodoro-settings-container overlay-card">
