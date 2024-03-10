@@ -13,11 +13,7 @@
     flex-direction: column;
 }
 
-.picker-card h4 {
-    align-self: flex-start;
-    justify-self: flex-start;
-    margin-left: 1rem;
-}
+
 .spacer {
     flex-grow: .4;
 }
@@ -38,5 +34,5 @@
 
 .pomodoro-settings-picker-buttons {
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }

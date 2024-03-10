@@ -6,6 +6,7 @@ import { selectPomodoroPrice, selectPomodoros, sellPomodoros } from "../../../st
 import "./PomodoroForm.css";
 import tomato from "../../../images/tomato.png";
 import { addToCoins } from "../../../store/RewardsSlice";
+import { QuantityInput } from "../../../components/QuantityInput/QuantityInput";
 
 interface PomodoroFormProps {
     hideForm: () => void;
@@ -34,19 +35,16 @@ export const PomodoroForm: React.FC<PomodoroFormProps> = ({ hideForm }) => {
             <form onSubmit={confirmPomodoroSale}>
                 {numOfPomodoros > 0 && (
                     <>
-                        <label>Sell:</label>
+                        <h4>Sell Pomodoros</h4>
 
                         <div className="sell-label-input">
-                            <img src={tomato} alt="" width="24" height="24" />
-                            <input
-                                type="number"
-                                name="number"
-                                min={pomodoros > 0 ? 1 : 0}
-                                max={pomodoros}
-                                placeholder={numOfPomodoros.toString()}
-                                value={numOfPomodoros}
-                                onChange={(e) => setNumOfPomodoros(parseInt(e.target.value))}
+
+                        <QuantityInput 
+                                quantity={numOfPomodoros}
+                                setQuantity={setNumOfPomodoros}
+                                maxQuantity={pomodoros}
                             />
+                            <img src={tomato} alt="" width="24" height="24" />
 
                         </div>
 

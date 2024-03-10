@@ -58,7 +58,8 @@ export const Settings: React.FC<SettingsProps> = ({ handleCloseSettings }) => {
 
     return (
         <Card className="pomodoro-settings-container overlay-card">
-            <label>Work session duration: {workMinutesLocal} minutes</label>
+            <h4>Pomodoro settings</h4>
+            <label id="first-pomodoro-settings-label">Work session duration: {workMinutesLocal} minutes</label>
             <ReactSlider
                 className="slider"
                 thumbClassName="thumb"

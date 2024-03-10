@@ -93,6 +93,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                 >
                     X
                 </button>
+                <h4>Create reward</h4>
                 <TextField
                     type="text"
                     name="name"

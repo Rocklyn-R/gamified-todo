@@ -5,6 +5,11 @@
     color: #0c3d63;
 }
 
+.view-task-container p {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
 .view-task-container button {
     color: #0c3d63;
 }

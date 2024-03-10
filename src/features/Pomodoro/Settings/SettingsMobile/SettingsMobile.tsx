@@ -115,28 +115,34 @@ export const SettingsMobile: React.FC<SettingsMobileProps> = ({ handleCloseSetti
         handleCloseSettings();
     }
 
+const handleShowPicker = () => {
+    setTimeout(() => {
+        setShowPicker({ show: true, mode: "work" });
+      }, 100); 
+}
+
     return (
         <>
-            <Card className="pomodoro-mobile-settings">
+            <Card className="pomodoro-mobile-settings overlay-card">
                 <h4>Pomodoro Settings</h4>
                 <div className="pomodoro-settings-buttons">
-                    <button onClick={() => setShowPicker({ show: true, mode: "work" })}>
+                    <button className="no-select" onClick={handleShowPicker}>
                         <p>Work session duration:</p>
                         <p>{workMinutesLocal}</p>
                     </button>
-                    <button onClick={() => setShowPicker({ show: true, mode: "break" })}>
+                    <button className="no-select" onClick={handleShowPicker}>
                         <p>Short break duration:</p>
                         <p>{breakMinutesLocal}</p>
                     </button>
-                    <button onClick={() => setShowPicker({ show: true, mode: "longBreak" })}>
+                    <button className="no-select" onClick={handleShowPicker}>
                         <p>Long break duration:</p>
                         <p>{longBreakMinutesLocal}</p>
                     </button>
-                    <button onClick={() => setShowPicker({ show: true, mode: "numOfSessions" })}>
+                    <button className="no-select" onClick={handleShowPicker}>
                         <p>Num of sessions to long break:</p>
                         <p>{numOfSessionsToLongBreakLocal}</p>
                     </button>
-                    <button onClick={() => setShowPicker({ show: true, mode: "tomatoPrice" })}>
+                    <button className="no-select" onClick={() => setShowPicker({ show: true, mode: "tomatoPrice" })}>
                         <p>Selling price of tomato:</p>
                         <p>{tomatoPriceLocal}</p>
                     </button>

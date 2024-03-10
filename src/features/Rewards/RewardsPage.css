@@ -18,22 +18,22 @@
     font-size: 2rem;
 }
 
-@media (max-width: 300px) {
-    .rewards-header {
+@media (max-width: 350px) {
+    .rewards-box h1 {
         font-size: 1.4rem
     }
 }
 
 
-@media (min-width: 301px) and (max-width: 400px) {
+@media (min-width: 351px) and (max-width: 450px) {
   
-    .rewards-header {
+    .rewards-box h1 {
         font-size: 1.6rem;
     }
 }
 
-@media (min-width: 401px) and (max-width: 545px) {
-    .rewards-header {
+@media (min-width: 451px) and (max-width: 650px) {
+    .rewards-box h1 {
         font-size: 1.8rem;
     }
 }

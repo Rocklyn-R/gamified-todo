@@ -41,27 +41,41 @@
     margin-bottom: 0;
 }
 
-
-
-
-@media (max-width: 350px) {
-    .settings-icon {
-        font-size: 3rem;
-    }
-    .settings-button {
-        margin-right: 0;
-    }
-
+.settings-div {
+    display: none;
 }
 
-@media (max-width: 600px) {
-    .settings-div {
+
+
+
+
+/* Default styles: Mobile First Approach */
+.mobile-settings-div {
+    display: block;
+}
+
+.settings-div {
+    display: none;
+}
+
+/* Styles for larger screens based on width and height */
+@media (min-width: 601px) and (min-height: 700px) {
+    .mobile-settings-div {
         display: none;
     }
+
+    .settings-div {
+        display: block;
+    }
 }
 
-@media (min-width: 601px) {
+/* Additional condition for height less than 700px */
+@media (max-height: 699px) {
     .mobile-settings-div {
+        display: block;
+    }
+
+    .settings-div {
         display: none;
     }
 }

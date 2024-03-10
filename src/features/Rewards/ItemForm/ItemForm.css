@@ -1,5 +1,10 @@
 .icon-choices {
-    width: 400px;
+    width: auto;
+}
+
+.reward-form-container h4 {
+    margin-bottom: 0;
+    display: flex;
 }
 
 .icon-choices button {

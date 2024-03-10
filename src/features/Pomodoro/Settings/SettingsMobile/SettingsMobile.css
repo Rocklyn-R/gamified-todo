@@ -5,8 +5,6 @@
 }
 .pomodoro-mobile-settings h4 {
     color: #0c3d63;
-    text-align: start;
-    margin-left: 1rem;
 }
 
 .pomodoro-settings-buttons button {
@@ -16,9 +14,6 @@
     align-items: flex-start;
     cursor: pointer;
     padding: 1rem 1rem; 
-    border-right: none;
-    border-left: none;
-    border-top: none;
     border: none;
     width: 100%;
     color: #0c3d63;
@@ -43,16 +38,15 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent black overlay */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    /* Ensure it appears above other content */
 }
 
 .pomodoro-settings-command-buttons {
-    border-top: 1px solid #135382;
-    padding: 2rem;
-
+    padding-bottom: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: 1rem;
 }

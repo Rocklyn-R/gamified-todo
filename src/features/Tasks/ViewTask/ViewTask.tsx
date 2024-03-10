@@ -91,6 +91,7 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
     return (
         <>
             {!editTask && !selectedTaskDeleted &&
+            
                 <Card className="view-task-container overlay-card">
                     <button
                         className="close"

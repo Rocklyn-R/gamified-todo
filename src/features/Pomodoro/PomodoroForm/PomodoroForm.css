@@ -3,10 +3,15 @@
     font-size: 1rem;
 }
 
+.pomodoro-form-container form {
+    padding: 0rem 1rem;
+}
+
 
 .sell-label-input {
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
     margin-top: 1em;
 }

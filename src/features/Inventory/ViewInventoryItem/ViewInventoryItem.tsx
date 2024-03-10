@@ -31,8 +31,17 @@ export const ViewInventoryItem: React.FC<ViewInventoryItemProps> = ({ selectedIn
         hideInventoryItem();
     }
 
+
+
     return (
-        <Card className="overlay-card">
+        <Card className="view-inventory-item-container overlay-card">
+             <button
+                    type="button"
+                    className='close'
+                    onClick={() => hideInventoryItem()}
+                >
+                    X
+                </button>
             <img alt="" src={renderIcon(selectedInventoryItem.icon)} height="40" width="40" />
             <p>Name: {selectedInventoryItem.name}</p>
             {selectedInventoryItem.description && <p>Description: {selectedInventoryItem.description}</p>}

@@ -6,13 +6,17 @@
     height: fit-content;
     background-color: aliceblue;
     color: #0c3d63;
+    padding: 2rem;
 }
 
-#overdue-tasks-heading {
-    color: #0c3d63;
+.overdue-container h4 {
+      color: #0c3d63;
     font-size: 1.3rem;
+    margin-top: 0;
     margin-bottom: 1rem;
 }
+
+
 
 .show-overdue-arrow {
     background-color: transparent;

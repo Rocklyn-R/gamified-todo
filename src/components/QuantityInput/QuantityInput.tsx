@@ -23,7 +23,7 @@ export const QuantityInput: React.FC<QuantityInputProps> = ({quantity, setQuanti
         if (maxQuantity) {
              if (quantity < maxQuantity) {
             setQuantity(quantity + 1);
-        }
+        } else return;
         } else {
             setQuantity(quantity + 1)
         }
@@ -38,7 +38,7 @@ export const QuantityInput: React.FC<QuantityInputProps> = ({quantity, setQuanti
         <div className="quantity-input-container">
             <label>Quantity:</label>
             <div className="input-with-buttons">
-                <button className={minQuantityReached ? "min-reached" : ""} id="decrement-button" onClick={handleDecrement}>
+                <button type="button" className={minQuantityReached ? "min-reached" : ""} id="decrement-button" onClick={handleDecrement}>
                     <FiMinus />
                 </button>
                 <input 
@@ -49,7 +49,7 @@ export const QuantityInput: React.FC<QuantityInputProps> = ({quantity, setQuanti
                  value={quantity}
                  onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
             />
-            <button className={maxQuantityReached ? "max-reached" : ""} onClick={handleIncrement}>
+            <button type="button" className={maxQuantityReached ? "max-reached" : ""} onClick={handleIncrement}>
                 <FiPlus />
                 </button>
             </div>
