@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { renderIcon } from '../../../utilities/utilities';
+import { formatDate } from '../../../utilities/utilities';
 
 export const RewardHistory = () => {
     const usedRewards = useSelector(selectUsedRewards);
@@ -27,7 +28,7 @@ export const RewardHistory = () => {
                     </div>
                     <div className='history-date-used'>
                         <p>Used:</p>
-                        <p className='reward-description'>{item.dateUsed}</p>
+                        <p className='reward-description'>{formatDate(item.dateUsed)}</p>
                     </div>
                 </div>
 

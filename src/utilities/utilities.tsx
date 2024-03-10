@@ -127,3 +127,10 @@ const dateOptions: { month: "long"; day: "numeric"; } = {
 };
 
 export const date = currentDate.toLocaleDateString('en-US', dateOptions);
+
+
+export const formatDate = (dateStr: string) => {
+    const parts = dateStr.split('/');
+    parts[2] = parts[2].slice(-2);
+    return parts.join('/');
+}

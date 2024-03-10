@@ -15,14 +15,13 @@
 }
 
 .inventory-history-box {
-    width: 85%;
+    width: 80%;
     display: flex;
     align-items: center;
     height: fit-content;
     border: none;
     border-radius: .4rem;
     background-color: #97c8ed;
-    width: 100%;
     color: #135382;
     font-family: "Nunito", sans-serif;
     font-size: 1rem;
@@ -31,7 +30,6 @@
     margin-bottom: 1em;
     justify-content: space-between;
     min-height: 3rem;
-    min-width: 17rem;
     max-width: 20rem;
 }
 

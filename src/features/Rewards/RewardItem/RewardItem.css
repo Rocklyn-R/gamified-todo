@@ -53,6 +53,7 @@
 
 .reward-description {
     font-size: .8rem;
+    text-align: start;
 }
 
 .reward-quantity {
