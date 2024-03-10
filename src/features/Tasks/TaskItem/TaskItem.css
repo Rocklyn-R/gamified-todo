@@ -27,13 +27,6 @@
     max-width: 15rem;
 }
 
-.view-task {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-}
-
 
 .overdue-task-button {
     display: flex;
@@ -74,9 +67,9 @@
 }
 
 .status-box {
-    display: flex;
-    justify-content: space-between !important;
-    width: 100%;
+width: 100%;
+   display: flex;
+   justify-content: space-between;
 }
 
 .status-box p {
@@ -100,9 +93,7 @@
 }
 
 .coin-penalty-box {
-    display: flex;
-    align-items: center;
-    align-self: flex-end;
+  
 }
 
 #completed-text {

@@ -3,7 +3,6 @@ import "./Navigation.css";
 import { Link } from 'react-router-dom';
 import tomato from "../../images/tomato.png"
 import { FaTasks } from "react-icons/fa";
-import lightbulb from "../../images/lightbulb.svg"
 import gift from "../../images/gift.png";
 import shop from "../../images/shop.png";
 
@@ -31,10 +30,7 @@ export const Navigation = () => {
                     <img alt="" src={gift} width='24' height="24" className='gift-icon' />
                     <span className="nav-text">Inventory</span>
                 </Link></li>
-                <li><Link to="/help">
-                    <img alt="" src={lightbulb} width="24" height="24" />
-                    <span className="nav-text">Help</span>
-                </Link></li>
+                
             </ul>
         </header>
     )

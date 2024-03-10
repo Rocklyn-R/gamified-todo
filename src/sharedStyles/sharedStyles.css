@@ -12,6 +12,10 @@
     align-self: center;
 }
 
+.command-button-container {
+    margin-top: 1rem;
+}
+
 .price-details {
     display: flex;
     align-items: center;

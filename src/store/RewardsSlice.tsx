@@ -113,16 +113,17 @@ export const RewardsSlice = createSlice({
             state.shop = state.shop.filter(item => item.id !== action.payload.id);
         },
 
-        buyItem: (state, action: PayloadAction<Reward>) => {
-            const existingItemIndex = state.inventory.findIndex(item => item.id === action.payload.id);
+        buyItem: (state, action: PayloadAction<{reward: Reward, quantity: number}>) => {
+            const { reward, quantity } = action.payload;
+            const existingItemIndex = state.inventory.findIndex(item => item.id === reward.id);
             if (existingItemIndex !== -1) {
-                state.inventory[existingItemIndex].quantity += 1;
+                state.inventory[existingItemIndex].quantity += quantity;
             } else {
-                const itemWithQuantity: InventoryItem = { ...action.payload, quantity: 1 };
+                const itemWithQuantity: InventoryItem = { ...reward, quantity: quantity };
                 state.inventory.unshift(itemWithQuantity)
             }
-
-            state.totalCoins = state.totalCoins - action.payload.price;
+            const totalPrice = reward.price * quantity;
+            state.totalCoins = state.totalCoins - totalPrice;
         },
 
         spendReward: (state, action: PayloadAction<{item: InventoryItem, quantity: number}>) => {

@@ -6,7 +6,7 @@ import { InventoryItem } from "../../../types/Types";
 import { FaCoins } from "react-icons/fa";
 import { spendReward } from "../../../store/RewardsSlice";
 import { renderIcon } from "../../../utilities/utilities";
-
+import { QuantityInput } from "../../../components/QuantityInput/QuantityInput";
 
 
 interface ViewInventoryItemProps {
@@ -17,11 +17,16 @@ interface ViewInventoryItemProps {
 export const ViewInventoryItem: React.FC<ViewInventoryItemProps> = ({ selectedInventoryItem, hideInventoryItem }) => {
 
     const [quantity, setQuantity] = useState(1);
+    const [ showErrorMessage, setShowErrorMessage] = useState(false);
 
     const dispatch = useDispatch();
 
     const handleUseReward = () => {
         console.log(quantity);
+        if (selectedInventoryItem.quantity < quantity) {
+            setShowErrorMessage(true);
+            return;
+        }
         dispatch(spendReward({item: selectedInventoryItem, quantity: quantity}));
         hideInventoryItem();
     }
@@ -34,20 +39,20 @@ export const ViewInventoryItem: React.FC<ViewInventoryItemProps> = ({ selectedIn
             <p className='view-item-price-details'>Purchased for <FaCoins className="coins-icon view-coins-icon" />{selectedInventoryItem.price} </p>
 
             {selectedInventoryItem.quantity > 1 && (
-                <div className="quantity-container">
-                    <label>Quantity:</label>
-                    <input
-                        type="number"
-                        className="quantity-input"
-                        min={1}
-                        max={selectedInventoryItem.quantity}
-                        value={quantity}
-                        onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
+                    <QuantityInput 
+                        quantity={quantity}
+                        setQuantity={setQuantity}
+                        maxQuantity={selectedInventoryItem.quantity}
                     />
-                </div>
-            )}
 
-            <button className="command-button" onClick={handleUseReward} >Use</button>
+            )}
+              {showErrorMessage && (
+                        <p id="not-enough-items">Not enough items to use.</p>
+                    )}
+            <div className="command-button-container">
+                <button className="command-button" onClick={handleUseReward} >Use</button>
+            </div>
+            
         </Card>
     )
 }

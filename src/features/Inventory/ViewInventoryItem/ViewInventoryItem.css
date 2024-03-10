@@ -16,3 +16,9 @@
     width: 2rem;
     margin-left: 1rem;
 }
+
+#not-enough-items {
+    margin-bottom: 0;
+    margin-top: 1rem;
+    color: #c11b1d;
+}

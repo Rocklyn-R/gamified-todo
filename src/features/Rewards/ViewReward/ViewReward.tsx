@@ -9,6 +9,7 @@ import { DeleteMessage } from '../../../components/DeleteMessage/DeleteMessage';
 import { buyItem, selectTotalCoins } from '../../../store/RewardsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { renderIcon } from '../../../utilities/utilities';
+import { QuantityInput } from '../../../components/QuantityInput/QuantityInput';
 
 interface ViewRewardProps {
     selectedReward: Reward;
@@ -22,6 +23,7 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
     const [purchaseFailed, setPurchaseFailed] = useState(false);
     const totalCoins = useSelector(selectTotalCoins);
     const dispatch = useDispatch();
+    const [quantity, setQuantity] = useState(1);
 
 
     const handleEditReward = () => {
@@ -43,10 +45,10 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
     }
 
     const handleBuyItem = () => {
-        if (selectedReward.price > totalCoins) {
+        if (selectedReward.price > totalCoins || (selectedReward.price * quantity > totalCoins)) {
             setPurchaseFailed(true);
         } else {
-            dispatch(buyItem(selectedReward));
+            dispatch(buyItem({ reward: selectedReward, quantity: quantity }));
             handleHideReward();
         }
     }
@@ -92,16 +94,23 @@ export const ViewReward: React.FC<ViewRewardProps> = ({ selectedReward, handleHi
                     <p className='view-item-price-details'>
                         Price: <FaCoins className='coins-icon view-coins-icon' />{selectedReward.price}
                     </p>
+
+                    <QuantityInput
+                        quantity={quantity}
+                        setQuantity={setQuantity}
+                    />
+
                     {purchaseFailed && (
                         <p id="not-enough-coins">Not enough coins!</p>
                     )}
-                    <button
-                        className='command-button'
-                        onClick={handleBuyItem}
-                    >
-                        Buy
-                    </button>
-
+                    <div className="command-button-container">
+                        <button
+                            className='command-button'
+                            onClick={handleBuyItem}
+                        >
+                            Buy
+                        </button>
+                    </div>
                 </Card>
             )}
 
