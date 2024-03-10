@@ -133,11 +133,11 @@ export const ViewTask: React.FC<ViewTaskProps> = ({ selectedTask, handleHideTask
                     <p className={(history && selectedTask.overdue) ? "penalty-text" : (history && !selectedTask.overdue) ? "hide-penalty-text" : "view-penalty-text"}>Penalty: <FaCoins className="coins-icon" /> {selectedTask.coinPenalty} </p>
 
                     {(history && !selectedTask.overdue) &&
-                        <button className="undo-complete" onClick={() => handleUndoComplete(selectedTask)}>
+                        <button className="command-button" onClick={() => handleUndoComplete(selectedTask)}>
                             Undo completion
                         </button>}
                     {(history && selectedTask.overdue) &&
-                        <button className="undo-complete" onClick={() => handleCompleteOverdueHistoryTask(selectedTask)}>
+                        <button className="command-button" onClick={() => handleCompleteOverdueHistoryTask(selectedTask)}>
                             Change to Completed
                         </button>}
                 </Card>
