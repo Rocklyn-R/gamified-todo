@@ -11,6 +11,10 @@
     justify-content: center;
 }
 
+.view-rewards-container button {
+    color: #0c3d63;
+}
+
 .view-rewards-container img {
     align-self: center;
     margin-top: 1em;

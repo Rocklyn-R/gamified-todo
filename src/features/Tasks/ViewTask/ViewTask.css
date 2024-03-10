@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
+    color: #0c3d63;
+}
+
+.view-task-container button {
+    color: #0c3d63;
 }
 
 .overlayed-container {
