@@ -211,7 +211,7 @@
         background-color: #0c3d63;
     }
 
-    .task-history-icon:active {
+    .task-history-icon:active, .inventory-history-icon:active {
         background-color: #0c3d63;
     }
 
@@ -227,7 +227,7 @@
         background-color: #0c3d63;
     }
 
-    .task-history-icon:active {
+    .task-history-icon:active, .inventory-history-icon:active {
         background-color: #0c3d63;
     }
 
@@ -243,7 +243,7 @@
     background-color: #0c3d63;
    }
 
-   .task-history-icon:active {
+   .task-history-icon:active, .inventory-history-icon:active {
     background-color: #0c3d63;
    }
 

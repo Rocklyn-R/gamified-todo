@@ -16,6 +16,10 @@
     max-width: 25rem;
 }
 
+.form-container form {
+    padding: 1.5rem;
+}
+
 .form-container h4 {
     margin-bottom: 0;
 }

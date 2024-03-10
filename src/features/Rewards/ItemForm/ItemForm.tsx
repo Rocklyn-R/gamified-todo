@@ -146,7 +146,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                       }}
                 />
                 <label>Select icon:</label>
-                <div className="icon-choices">
+                <div className="icon-choices no-select">
 
                     <button
                         type="button"
@@ -157,109 +157,109 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                     <button
                         type="button"
                         onClick={() => handleIconSelection("videoGame")}
-                        className={selectedIcon === "videoGame" ? "selected" : ""}
+                        className={selectedIcon === "videoGame" ? "selected no-select" : ""}
                     >
                         <img src={videoGame} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("shopping")}
-                        className={selectedIcon === "shopping" ? "selected" : ""}
+                        className={selectedIcon === "shopping" ? "selected no-select" : ""}
                     >
                         <img src={shopping} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("plane")}
-                        className={selectedIcon === "plane" ? "selected" : ""}
+                        className={selectedIcon === "plane" ? "selected no-select" : ""}
                     >
                         <img src={plane} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("book")}
-                        className={selectedIcon === "book" ? "selected" : ""}
+                        className={selectedIcon === "book" ? "selected no-select" : ""}
                     >
                         <img src={book} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("couch")}
-                        className={selectedIcon === "couch" ? "selected" : ""}
+                        className={selectedIcon === "couch" ? "selected no-select" : ""}
                     >
                         <img src={couch} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("artist")}
-                        className={selectedIcon === "artist" ? "selected" : ""}
+                        className={selectedIcon === "artist" ? "selected no-select" : ""}
                     >
                         <img src={artist} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("cocktail")}
-                        className={selectedIcon === "cocktail" ? "selected" : ""}
+                        className={selectedIcon === "cocktail" ? "selected no-select" : ""}
                     >
                         <img src={cocktail} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("beauty")}
-                        className={selectedIcon === "beauty" ? "selected" : ""}
+                        className={selectedIcon === "beauty" ? "selected no-select" : ""}
                     >
                         <img src={beauty} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("music")}
-                        className={selectedIcon === "music" ? "selected" : ""}
+                        className={selectedIcon === "music" ? "selected no-select" : ""}
 
                     >
                         <img src={music} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("phone")}
-                        className={selectedIcon === "phone" ? "selected" : ""}
+                        className={selectedIcon === "phone" ? "selected no-select" : ""}
                     >
                         <img src={phone} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("gym")}
-                        className={selectedIcon === "gym" ? "selected" : ""}
+                        className={selectedIcon === "gym" ? "selected no-select" : ""}
                     >
                         <img src={gym} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("sports")}
-                        className={selectedIcon === "sports" ? "selected" : ""}
+                        className={selectedIcon === "sports" ? "selected no-select" : ""}
                     >
                         <img src={sports} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("nature")}
-                        className={selectedIcon === "nature" ? "selected" : ""}
+                        className={selectedIcon === "nature" ? "selected no-select" : ""}
                     >
                         <img src={nature} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("headphones")}
-                        className={selectedIcon === "headphones" ? "selected" : ""}
+                        className={selectedIcon === "headphones" ? "selected no-select" : ""}
                     >
                         <img src={headphones} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("money")}
-                        className={selectedIcon === "money" ? "selected" : ""}
+                        className={selectedIcon === "money" ? "selected no-select" : ""}
                     >
                         <img src={money} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("love")}
-                        className={selectedIcon === "love" ? "selected" : ""}
+                        className={selectedIcon === "love" ? "selected no-select" : ""}
                     >
                         <img src={love} height="30" alt="" /></button>
                     <button
                         type="button"
                         onClick={() => handleIconSelection("gift")}
-                        className={selectedIcon === "gift" ? "selected" : ""}
+                        className={selectedIcon === "gift" ? "selected no-select" : ""}
                     >
                         <img src={gift} height="30" alt="" /></button>
                 </div>
 
-                <button type="submit" value="Submit" className="command-button">
+                <button type="submit" value="Submit" className="command-button no-select">
                     {isEditMode ? "Done editing" : "Create item"}
                 </button>
 
