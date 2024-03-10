@@ -115,9 +115,9 @@ export const SettingsMobile: React.FC<SettingsMobileProps> = ({ handleCloseSetti
         handleCloseSettings();
     }
 
-const handleShowPicker = () => {
+const handleShowPicker = (modeType: ModeType) => {
     setTimeout(() => {
-        setShowPicker({ show: true, mode: "work" });
+        setShowPicker({ show: true, mode: modeType });
       }, 100); 
 }
 
@@ -126,23 +126,23 @@ const handleShowPicker = () => {
             <Card className="pomodoro-mobile-settings overlay-card">
                 <h4>Pomodoro Settings</h4>
                 <div className="pomodoro-settings-buttons">
-                    <button className="no-select" onClick={handleShowPicker}>
+                    <button className="no-select" onClick={() => handleShowPicker("work")}>
                         <p>Work session duration:</p>
                         <p>{workMinutesLocal}</p>
                     </button>
-                    <button className="no-select" onClick={handleShowPicker}>
+                    <button className="no-select" onClick={() => handleShowPicker("break")}>
                         <p>Short break duration:</p>
                         <p>{breakMinutesLocal}</p>
                     </button>
-                    <button className="no-select" onClick={handleShowPicker}>
+                    <button className="no-select" onClick={() => handleShowPicker("longBreak")}>
                         <p>Long break duration:</p>
                         <p>{longBreakMinutesLocal}</p>
                     </button>
-                    <button className="no-select" onClick={handleShowPicker}>
+                    <button className="no-select" onClick={() => handleShowPicker("numOfSessions")}>
                         <p>Num of sessions to long break:</p>
                         <p>{numOfSessionsToLongBreakLocal}</p>
                     </button>
-                    <button className="no-select" onClick={() => setShowPicker({ show: true, mode: "tomatoPrice" })}>
+                    <button className="no-select" onClick={() => handleShowPicker("tomatoPrice")}>
                         <p>Selling price of tomato:</p>
                         <p>{tomatoPriceLocal}</p>
                     </button>

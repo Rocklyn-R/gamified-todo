@@ -121,7 +121,6 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                     onChange={(e) => setDescription(e.target.value)}
                     sx={{
                         width: '100%',
-                        marginTop: "1rem",
                         marginBottom: '20px',
                         color: "#0c3d63" // Using the sx prop to apply margin
                     }}
@@ -137,7 +136,6 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                     onChange={(e) => setPrice(parseInt(e.target.value, 10))}
                     sx={{
                         width: '100%',
-                        marginTop: "1rem",
                         marginBottom: '20px',
                         color: "#0c3d63" // Using the sx prop to apply margin
                     }}
@@ -260,7 +258,7 @@ export const ItemForm: React.FC<ItemFormProps> = ({ handleCloseForm, isEditMode,
                 </div>
 
                 <button type="submit" value="Submit" className="command-button no-select">
-                    {isEditMode ? "Done editing" : "Create item"}
+                    {isEditMode ? "Done editing" : "Create reward"}
                 </button>
 
 
