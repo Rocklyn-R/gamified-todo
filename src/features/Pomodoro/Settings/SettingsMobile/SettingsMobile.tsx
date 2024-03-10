@@ -18,6 +18,7 @@ import {
 } from "../../../../store/PomodoroSlice";
 import Card from "../../../../components/Card/Card";
 import { NumberPicker } from "./NumberPicker/NumberPicker";
+import { FaCoins } from "react-icons/fa";
 
 type ModeType = "work" | "break" | "longBreak" | "numOfSessions" | "tomatoPrice" | ""
 interface ShowPickerState {
@@ -124,6 +125,13 @@ const handleShowPicker = (modeType: ModeType) => {
     return (
         <>
             <Card className="pomodoro-mobile-settings overlay-card">
+            <button
+                    type="button"
+                    className='close'
+                    onClick={handleCloseSettings}
+                >
+                    X
+                </button>
                 <h4>Pomodoro Settings</h4>
                 <div className="pomodoro-settings-buttons">
                     <button className="no-select" onClick={() => handleShowPicker("work")}>
@@ -144,7 +152,7 @@ const handleShowPicker = (modeType: ModeType) => {
                     </button>
                     <button className="no-select" onClick={() => handleShowPicker("tomatoPrice")}>
                         <p>Selling price of tomato:</p>
-                        <p>{tomatoPriceLocal}</p>
+                        <p id="selling-price-coins-p"><FaCoins className="coin-icon" />{tomatoPriceLocal}</p>
                     </button>
                 </div>
 

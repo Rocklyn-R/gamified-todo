@@ -30,7 +30,7 @@
 
 .settings-icon {
     font-size: 4rem;
-    color: lightblue;
+    color: #acd6fc;
     border-radius: 50%;
     padding: 0;
 }
@@ -56,6 +56,12 @@
 
 .settings-div {
     display: none;
+}
+
+@media (max-width: 350px) {
+.settings-icon {
+    font-size: 2.5rem;
+}
 }
 
 /* Styles for larger screens based on width and height */

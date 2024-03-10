@@ -4,7 +4,10 @@
 }
 
 .pomodoro-form-container form {
-    padding: 0rem 1rem;
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 14rem;
 }
 
 
@@ -13,11 +16,14 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin-top: 1em;
 }
 
 .pomodoro-form-container input {
     width: 2.5rem;
     margin-left: 1em;
     
+}
+
+.sell-pomodoros-button {
+    margin-bottom: .5rem;
 }

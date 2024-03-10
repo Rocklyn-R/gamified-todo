@@ -35,6 +35,13 @@ export const PomodoroForm: React.FC<PomodoroFormProps> = ({ hideForm }) => {
             <form onSubmit={confirmPomodoroSale}>
                 {numOfPomodoros > 0 && (
                     <>
+                      <button
+                    type="button"
+                    className='close'
+                    onClick={hideForm}
+                >
+                    X
+                </button>
                         <h4>Sell Pomodoros</h4>
 
                         <div className="sell-label-input">
@@ -56,7 +63,10 @@ export const PomodoroForm: React.FC<PomodoroFormProps> = ({ hideForm }) => {
                         <p>Collect pomodoros to sell them for coins.</p>
                     </>
                 )}
-                <button type="submit" className="command-button">{numOfPomodoros > 0 ? "Sell" : "Ok"}</button>
+                <div className="command-buttons-container">
+                     <button type="submit" className="command-button sell-pomodoros-button">{numOfPomodoros > 0 ? "Sell" : "Ok"}</button>
+                </div>
+               
             </form>
         </Card>
     )

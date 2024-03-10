@@ -72,7 +72,7 @@
 }
 
 @media (max-width: 300px) {
-  .checkbox, .checkbox-overdue {
+  .checkbox {
     margin-left: 1rem;
   }
 }

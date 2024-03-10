@@ -23,7 +23,7 @@
     font-size: 1rem;
     background: linear-gradient(to bottom right, aliceblue, #6fa8dc);
     padding: .5rem;
-    min-width: 15rem;
+    width: 100%;
     max-width: 15rem;
 }
 
@@ -97,13 +97,11 @@ width: 100%;
 }
 
 @media (max-width: 315px) {
-    .to-do-element {
-       min-width: 15rem; 
-       max-width: 90%;
+    .view-task {
+        min-width: none !important;
     }
-    .tasks-container {
-        min-width: fit-content;
-    }
+
+
 }
 
 @media (min-width: 316px) and (max-width: 350px) {
