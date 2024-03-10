@@ -58,3 +58,24 @@
 }
 
 
+@media (max-width: 350px) {
+    .rewards-history h1 {
+        font-size: 1.4rem
+    }
+}
+
+
+@media (min-width: 351px) and (max-width: 450px) {
+  
+    .rewards-history h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width: 451px) and (max-width: 650px) {
+    .rewards-history h1 {
+        font-size: 1.8rem;
+    }
+}
+
+
