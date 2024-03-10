@@ -39,7 +39,8 @@
     display: flex;
     justify-content: center;
     margin: 1rem;
-    align-items: center
+    align-items: center;
+    height: fit-content;
 }
 
 .input-with-buttons button {
@@ -47,24 +48,26 @@
     justify-content: center;
     align-items: center;
     border: .5px solid #0c3d63;
-    border-radius: 30%;
+    border-radius: 50%;
     cursor: pointer;
     background-color: #c0dffc;
+    padding: 3px;
 }
 
 #decrement-button {
-    padding-left: 7px;
-    padding-right: 7px
+   
 }
 
 .max-reached {
     background-color: #dde5ed !important;
     cursor: default !important;
     border: none !important;
+    color: #7b828a !important;
 }
 
 .min-reached {
     background-color: #dde5ed !important;
     cursor: default !important;
     border: none !important;
+    color: #7b828a !important;
 }
