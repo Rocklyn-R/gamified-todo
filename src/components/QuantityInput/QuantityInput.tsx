@@ -30,7 +30,7 @@ export const QuantityInput: React.FC<QuantityInputProps> = ({quantity, setQuanti
        
     }
 
-    const minQuantityReached: boolean = quantity === 1;
+    const minQuantityReached: boolean = quantity === 1 || quantity === 0;
 
     const maxQuantityReached: boolean = quantity === maxQuantity
 
@@ -47,7 +47,12 @@ export const QuantityInput: React.FC<QuantityInputProps> = ({quantity, setQuanti
                  min={1}
                  max={maxQuantity} 
                  value={quantity}
-                 onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
+                 onChange={(e) => {
+                    const value = ((e.target.value === "") || (e.target.value === "0")) ? 1 : parseInt(e.target.value, 10);
+                    if (!isNaN(value)) {
+                      setQuantity(value);
+                    }
+                 }}
             />
             <button type="button" className={maxQuantityReached ? "max-reached" : ""} onClick={handleIncrement}>
                 <FiPlus />

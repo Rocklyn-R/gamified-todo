@@ -54,8 +54,12 @@ export const PomodoroForm: React.FC<PomodoroFormProps> = ({ hideForm }) => {
                             <img src={tomato} alt="" width="24" height="24" />
 
                         </div>
-
-                        <p>for <FaCoins className="coins-icon" />{priceTotal} </p>
+                        {numOfPomodoros <= pomodoros ? (
+                            <p>for <FaCoins className="coins-icon" />{priceTotal} </p>
+                        ) : (
+                            <p>You have {pomodoros} pomodoros to sell!</p>
+                        )}
+                        
                     </>
                 )}
                 {numOfPomodoros === 0 && (

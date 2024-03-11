@@ -68,7 +68,7 @@ export const RewardsPage = () => {
                     <h1><FaCoins className='coin-icon' /> {totalCoins}</h1>
                 </div>
                     {shopItems.map((item, index) =>
-                        <RewardItem reward={item} index={index} handleViewReward={handleViewReward} inventory={false} />
+                        <RewardItem reward={item} key={index} index={index} handleViewReward={handleViewReward} inventory={false} />
                     )}
 
                     {showForm && (
